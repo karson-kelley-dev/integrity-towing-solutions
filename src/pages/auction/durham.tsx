@@ -15,7 +15,7 @@ function DurhamAuction() {
             Vehicle Auction — Durham
           </Typography>
           <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
-          <Typography sx={{ color: '#3EAACC', fontSize: '1rem', fontWeight: 600, mb: 1 }}>
+          <Typography sx={{ color: '#3EAACC', fontSize: '1rem', fontWeight: 700, mb: 1 }}>
             1025 Harvest Street, Durham, NC 27704
           </Typography>
           <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', lineHeight: 1.7 }}>

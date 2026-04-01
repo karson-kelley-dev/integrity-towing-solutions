@@ -2,6 +2,17 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import { BarChart2, Calendar, Clock, Eye, MessageSquare, Settings, ShieldCheck, TrendingUp, Truck, UserCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
+  const width = height * (117 / 60)
+  return (
+    <svg viewBox="0 0 117 60" width={width} height={height} style={{ opacity, display: 'block' }} xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 23,0 35,30 23,60 0,60 12,30" fill={color} />
+      <polygon points="41,0 64,0 76,30 64,60 41,60 53,30" fill={color} />
+      <polygon points="82,0 105,0 117,30 105,60 82,60 94,30" fill={color} />
+    </svg>
+  )
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
@@ -100,16 +111,19 @@ function MassRelocation() {
           py: { xs: 10, md: 14 },
           textAlign: 'center',
           overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            background:
-              'repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 120px)',
-            pointerEvents: 'none',
-          },
         }}
       >
+        {/* Dot grid texture */}
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+
+        {/* Decorative triple arrows */}
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '7%', top: '50%', transform: 'translateY(-50%)', zIndex: 0, pointerEvents: 'none' }}>
+          <TripleArrows color="#E1AD00" height={180} opacity={0.07} />
+        </Box>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '5%', bottom: '15%', zIndex: 0, pointerEvents: 'none' }}>
+          <TripleArrows color="#E1AD00" height={80} opacity={0.04} />
+        </Box>
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -161,15 +175,18 @@ function MassRelocation() {
       </Box>
 
       {/* ── Intro + Sidebar ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#ffffff' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '-10px', bottom: '-20px', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#1D2B45" height={120} opacity={0.03} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={{ xs: 6, md: 8 }}>
             {/* Main content */}
             <Grid size={{ xs: 12, md: 8 }}>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 variants={fadeUp}
               >
                 <Typography
@@ -231,7 +248,7 @@ function MassRelocation() {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 variants={fadeUp}
               >
                 <Box
@@ -321,15 +338,18 @@ function MassRelocation() {
       </Box>
 
       {/* ── Features ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#F5F6F8' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#F5F6F8', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '-10px', bottom: '-20px', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#1D2B45" height={120} opacity={0.03} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography
                 sx={{
                   color: '#0057A5',
@@ -356,7 +376,7 @@ function MassRelocation() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={stagger}
           >
             <Grid container spacing={3} justifyContent="center">
@@ -401,15 +421,21 @@ function MassRelocation() {
       </Box>
 
       {/* ── Benefits ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#1D2B45' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#1D2B45', position: 'relative', overflow: 'hidden' }}>
+        {/* Dot grid */}
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+        {/* Watermark arrows */}
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#E1AD00" height={160} opacity={0.05} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography
                 sx={{
                   color: '#E1AD00',
@@ -436,7 +462,7 @@ function MassRelocation() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={stagger}
           >
             <Grid container spacing={3} justifyContent="center">
@@ -444,21 +470,8 @@ function MassRelocation() {
                 <Grid key={title} size={{ xs: 12, sm: 6, md: 4 }}>
                   <motion.div variants={fadeUp} style={{ height: '100%' }}>
                     <Box sx={{ textAlign: 'center', px: 2 }}>
-                      <Box
-                        sx={{
-                          width: 62,
-                          height: 62,
-                          borderRadius: '50%',
-                          background: 'rgba(62,170,204,0.12)',
-                          border: '2px solid rgba(62,170,204,0.45)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          mx: 'auto',
-                          mb: 2.5,
-                        }}
-                      >
-                        <Icon size={24} color="#E1AD00" />
+                      <Box sx={{ mb: 2.5, display: 'flex', justifyContent: 'center' }}>
+                        <Icon size={44} color="#E1AD00" strokeWidth={1.25} />
                       </Box>
                       <Typography
                         sx={{
@@ -484,15 +497,18 @@ function MassRelocation() {
       </Box>
 
       {/* ── Tips ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#ffffff' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-10px', bottom: '-20px', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#1D2B45" height={120} opacity={0.03} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography
                 sx={{
                   color: '#0057A5',
@@ -519,7 +535,7 @@ function MassRelocation() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={stagger}
           >
             <Grid container spacing={3}>

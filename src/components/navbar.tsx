@@ -24,7 +24,6 @@ const EMPLOYMENT_URL =
   'https://recruiting.paylocity.com/recruiting/jobs/All/c1bb61df-a5f3-4474-8acd-c589dceb0778/Integrity-Towing-Solutions?source=Indeed_Feed'
 
 const serviceLinks = [
-  { label: 'Services Overview', path: '/services' },
   { label: 'Private Property Towing', path: '/services/private-property' },
   { label: 'Emergency Response & Accident Scene', path: '/services/emergency-response' },
   { label: 'Mass Relocation', path: '/services/mass-relocation' },
@@ -38,7 +37,7 @@ const auctionLinks = [
 
 const btnSx = {
   color: 'rgba(255,255,255,0.9)',
-  fontWeight: 600,
+  fontWeight: 700,
   fontSize: '0.9rem',
   letterSpacing: '0.4px',
   fontFamily: "'Saira', sans-serif",
@@ -84,7 +83,7 @@ function Navbar() {
         ))}
         <ListItem disablePadding>
           <ListItemButton sx={{ color: '#1D2B45' }}>
-            <ListItemText primary="Auction" primaryTypographyProps={{ fontWeight: 600 }} />
+            <ListItemText primary="Auction" primaryTypographyProps={{ fontWeight: 700 }} />
           </ListItemButton>
         </ListItem>
         {auctionLinks.map((link) => (
@@ -123,13 +122,13 @@ function Navbar() {
         zIndex: 1100,
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 } }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', py: '0.4rem', px: '0 !important' }}>
           <Box onClick={() => navigate('/')} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
             <img src={logoWhite} alt="Integrity Towing Solutions" style={{ height: '52px', width: 'auto' }} />
           </Box>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5, alignItems: 'center' }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1.5, alignItems: 'center' }}>
             <Button onClick={() => navigate('/')} sx={btnSx}>About</Button>
 
             <Button endIcon={<KeyboardArrowDownIcon />} onClick={(e) => setServicesAnchor(e.currentTarget)} sx={btnSx}>
@@ -157,6 +156,23 @@ function Navbar() {
             <Button onClick={() => navigate('/find-my-vehicle')} sx={btnSx}>Find My Vehicle</Button>
             <Button component="a" href={EMPLOYMENT_URL} target="_blank" rel="noopener noreferrer" sx={btnSx}>
               Employment
+            </Button>
+            <Button
+              component="a"
+              href="tel:9197909393"
+              sx={{
+                ...btnSx,
+                ml: 1,
+                background: '#E1AD00',
+                color: '#1D2B45',
+                px: 2.5,
+                py: 0.9,
+                fontSize: '0.85rem',
+                borderRadius: 1,
+                '&:hover': { background: '#c99c00', color: '#1D2B45' },
+              }}
+            >
+              (919) 790-9393
             </Button>
           </Box>
 

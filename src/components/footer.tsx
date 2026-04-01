@@ -13,6 +13,9 @@ const locations = [
 
 const footerLinks = [
   { label: 'About', path: '/' },
+  { label: 'Private Property Towing', path: '/services/private-property' },
+  { label: 'Emergency Response', path: '/services/emergency-response' },
+  { label: 'Mass Relocation', path: '/services/mass-relocation' },
   { label: 'Find My Vehicle', path: '/find-my-vehicle' },
   { label: 'Employment', path: EMPLOYMENT_URL, external: true },
   { label: 'Privacy Policy', path: '/privacy-policy' },
@@ -44,34 +47,30 @@ function Footer() {
 
   return (
     <Box component="footer" sx={{ background: '#1D2B45', color: 'rgba(255,255,255,0.5)' }}>
-      {/* Logo row */}
-      <Box sx={{ pt: 7, pb: 5 }}>
-        <Container maxWidth="lg">
-          <Box sx={{ mb: 1 }}>
-            <img
-              src={logoWhite}
-              alt="Integrity Towing Solutions"
-              style={{ height: '48px', width: 'auto', display: 'block' }}
-            />
-          </Box>
-          <Typography sx={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.82rem', fontFamily: "'Saira', sans-serif", mt: 1.5 }}>
-            Professional towing &amp; parking management across the Triangle and Triad.
-          </Typography>
-        </Container>
-      </Box>
-
-      <Divider sx={{ borderColor: 'rgba(255,255,255,0.07)' }} />
-
-      {/* 3-column grid */}
-      <Box sx={{ py: 6 }}>
-        <Container maxWidth="lg">
+      {/* Main grid */}
+      <Box sx={{ py: 8 }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 } }}>
           <Grid container spacing={6}>
+            {/* Logo + tagline */}
+            <Grid size={{ xs: 12, md: 3 }}>
+              <Box sx={{ mb: 2 }}>
+                <img
+                  src={logoWhite}
+                  alt="Integrity Towing Solutions"
+                  style={{ height: '56px', width: 'auto', display: 'block' }}
+                />
+              </Box>
+              <Typography sx={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.82rem', fontFamily: "'Saira', sans-serif", lineHeight: 1.7 }}>
+                Professional towing &amp; parking management across the Triangle and Triad.
+              </Typography>
+            </Grid>
+
             {/* Locations */}
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 3 }}>
               <Typography sx={headingSx}>Locations</Typography>
               {locations.map((loc) => (
                 <Box key={loc.city} sx={{ mb: 2.5 }}>
-                  <Typography sx={{ color: '#ffffff', fontWeight: 600, fontSize: '0.875rem', fontFamily: "'Saira', sans-serif", mb: 0.25 }}>
+                  <Typography sx={{ color: '#ffffff', fontWeight: 700, fontSize: '0.875rem', fontFamily: "'Saira', sans-serif", mb: 0.25 }}>
                     {loc.city}
                   </Typography>
                   <Typography sx={{ fontSize: '0.85rem', lineHeight: 1.6, fontFamily: "'Saira', sans-serif" }}>
@@ -82,15 +81,15 @@ function Footer() {
             </Grid>
 
             {/* Hours & Contact */}
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 3 }}>
               <Typography sx={headingSx}>Hours &amp; Contact</Typography>
-              <Typography sx={{ color: '#ffffff', fontWeight: 600, fontSize: '0.875rem', mb: 0.5, fontFamily: "'Saira', sans-serif" }}>
+              <Typography sx={{ color: '#ffffff', fontWeight: 700, fontSize: '0.875rem', mb: 0.5, fontFamily: "'Saira', sans-serif" }}>
                 Business Hours
               </Typography>
               <Typography sx={{ fontSize: '0.85rem', mb: 3, lineHeight: 1.7, fontFamily: "'Saira', sans-serif" }}>
                 Monday – Sunday<br />24 Hours / 7 Days a Week
               </Typography>
-              <Typography sx={{ color: '#ffffff', fontWeight: 600, fontSize: '0.875rem', mb: 0.75, fontFamily: "'Saira', sans-serif" }}>
+              <Typography sx={{ color: '#ffffff', fontWeight: 700, fontSize: '0.875rem', mb: 0.75, fontFamily: "'Saira', sans-serif" }}>
                 Contact Us
               </Typography>
               <Link href="tel:9197909393" sx={{ ...linkSx, display: 'block', mb: 0.5 }}>
@@ -102,7 +101,7 @@ function Footer() {
             </Grid>
 
             {/* Quick Links */}
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 3 }}>
               <Typography sx={headingSx}>Quick Links</Typography>
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
                 {footerLinks.map((link) =>
@@ -125,7 +124,7 @@ function Footer() {
       <Divider sx={{ borderColor: 'rgba(255,255,255,0.07)' }} />
 
       <Box sx={{ py: 3 }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 } }}>
           <Typography sx={{ textAlign: 'center', fontSize: '0.78rem', color: 'rgba(255,255,255,0.28)', fontFamily: "'Saira', sans-serif" }}>
             &copy; {new Date().getFullYear()} Integrity Towing Solutions. All rights reserved.
           </Typography>

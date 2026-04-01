@@ -2,6 +2,17 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import { AlarmClock, IdCard, Layers, LayoutDashboard, ParkingCircleOff, PhoneCall } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
+  const width = height * (117 / 60)
+  return (
+    <svg viewBox="0 0 117 60" width={width} height={height} style={{ opacity, display: 'block' }} xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 23,0 35,30 23,60 0,60 12,30" fill={color} />
+      <polygon points="41,0 64,0 76,30 64,60 41,60 53,30" fill={color} />
+      <polygon points="82,0 105,0 117,30 105,60 82,60 94,30" fill={color} />
+    </svg>
+  )
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
@@ -62,16 +73,19 @@ function PrivatePropertyTowing() {
           py: { xs: 10, md: 14 },
           textAlign: 'center',
           overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            background:
-              'repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 120px)',
-            pointerEvents: 'none',
-          },
         }}
       >
+        {/* Dot grid texture */}
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+
+        {/* Decorative triple arrows */}
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '7%', top: '50%', transform: 'translateY(-50%)', zIndex: 0, pointerEvents: 'none' }}>
+          <TripleArrows color="#E1AD00" height={180} opacity={0.07} />
+        </Box>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '5%', bottom: '15%', zIndex: 0, pointerEvents: 'none' }}>
+          <TripleArrows color="#E1AD00" height={80} opacity={0.04} />
+        </Box>
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -123,14 +137,17 @@ function PrivatePropertyTowing() {
       </Box>
 
       {/* ── Intro ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#ffffff' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '-10px', bottom: '-20px', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#1D2B45" height={120} opacity={0.03} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
             <Grid size={{ xs: 12, md: 7 }}>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 variants={fadeUp}
               >
                 <Typography
@@ -169,7 +186,7 @@ function PrivatePropertyTowing() {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 variants={fadeUp}
               >
                 <Box sx={{ background: '#1D2B45', borderRadius: 2, p: { xs: 3.5, md: 4.5 } }}>
@@ -204,15 +221,18 @@ function PrivatePropertyTowing() {
       </Box>
 
       {/* ── What You Can Expect ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#F5F6F8' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#F5F6F8', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '-10px', bottom: '-20px', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#1D2B45" height={120} opacity={0.03} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography
                 sx={{
                   color: '#0057A5',
@@ -239,7 +259,7 @@ function PrivatePropertyTowing() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.15 }}
+            viewport={{ once: false, amount: 0.15 }}
             variants={stagger}
           >
             <Grid container spacing={3}>
@@ -285,14 +305,20 @@ function PrivatePropertyTowing() {
       </Box>
 
       {/* ── Why ITS ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#1D2B45' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#1D2B45', position: 'relative', overflow: 'hidden' }}>
+        {/* Dot grid */}
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+        {/* Watermark arrows */}
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#E1AD00" height={160} opacity={0.05} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: false, amount: 0.3 }}
                 variants={fadeUp}
               >
                 <Typography
@@ -334,7 +360,7 @@ function PrivatePropertyTowing() {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 variants={stagger}
               >
                 <Grid container spacing={2}>
@@ -349,18 +375,19 @@ function PrivatePropertyTowing() {
                         <Box
                           sx={{
                             p: 2.5,
-                            border: '1px solid rgba(255,255,255,0.1)',
+                            background: '#ffffff',
                             borderLeft: '3px solid #E1AD00',
                             borderRadius: 1,
                             height: '100%',
+                            boxShadow: '0 4px 20px rgba(0,0,0,0.18)',
                           }}
                         >
                           <Typography
-                            sx={{ fontWeight: 700, color: '#ffffff', mb: 0.5, fontSize: '0.9rem', fontFamily: "'Saira', sans-serif" }}
+                            sx={{ fontWeight: 700, color: '#1D2B45', mb: 0.5, fontSize: '0.9rem', fontFamily: "'Saira', sans-serif" }}
                           >
                             {label}
                           </Typography>
-                          <Typography sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.82rem', lineHeight: 1.65 }}>
+                          <Typography sx={{ color: '#6B7A8D', fontSize: '0.82rem', lineHeight: 1.65 }}>
                             {detail}
                           </Typography>
                         </Box>

@@ -4,6 +4,22 @@ import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+function scrollToServices() {
+  document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })
+}
+
+// ── Triple arrow brand motif ────────────────────────────────────────────────
+function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
+  const width = height * (117 / 60)
+  return (
+    <svg viewBox="0 0 117 60" width={width} height={height} style={{ opacity, display: 'block' }} xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,0 23,0 35,30 23,60 0,60 12,30" fill={color} />
+      <polygon points="41,0 64,0 76,30 64,60 41,60 53,30" fill={color} />
+      <polygon points="82,0 105,0 117,30 105,60 82,60 94,30" fill={color} />
+    </svg>
+  )
+}
+
 // ── Animation variants ──────────────────────────────────────────────────────
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -126,16 +142,26 @@ function Home() {
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            background:
-              'repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.012) 60px, rgba(255,255,255,0.012) 120px)',
-            pointerEvents: 'none',
-          },
         }}
       >
+        {/* Dot grid texture */}
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+
+        {/* Decorative triple arrows — right side */}
+        <Box
+          sx={{
+            display: { xs: 'none', md: 'block' },
+            position: 'absolute',
+            right: { md: '6%', lg: '10%' },
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 0,
+            pointerEvents: 'none',
+          }}
+        >
+          <TripleArrows color="#E1AD00" height={220} opacity={0.08} />
+        </Box>
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center', py: { xs: 8, md: 14 }, px: { xs: 3, md: 4 } }}>
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -175,7 +201,7 @@ function Home() {
               sx={{
                 color: 'rgba(255,255,255,0.72)',
                 mb: 5,
-                fontWeight: 400,
+                fontWeight: 500,
                 lineHeight: 1.85,
                 fontSize: { xs: '1rem', md: '1.15rem' },
                 maxWidth: 540,
@@ -204,7 +230,7 @@ function Home() {
               <Button
                 variant="contained"
                 size="large"
-                onClick={() => navigate('/services')}
+                onClick={scrollToServices}
                 sx={{
                   background: '#E1AD00',
                   color: '#1D2B45',
@@ -282,7 +308,7 @@ function Home() {
                     </Typography>
                     <Typography
                       sx={{
-                        fontWeight: 600,
+                        fontWeight: 700,
                         fontSize: { xs: '0.55rem', sm: '0.65rem', md: '0.75rem' },
                         color: 'rgba(29,43,69,0.7)',
                         mt: 0.75,
@@ -302,8 +328,11 @@ function Home() {
       </Box>
 
       {/* ── About ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#ffffff' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-40px', bottom: '-30px', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#E1AD00" height={200} opacity={0.04} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={{ xs: 6, md: 10 }} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
               <motion.div
@@ -392,7 +421,7 @@ function Home() {
       </Box>
 
       {/* ── Services ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#ffffff' }}>
+      <Box id="services-section" sx={{ py: { xs: 7, md: 10 }, background: '#F5F6F8' }}>
         <Container maxWidth="lg">
           <motion.div
             initial="hidden"
@@ -400,12 +429,12 @@ function Home() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#1D2B45', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
                 What We Do
               </Typography>
               <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
-              <Typography sx={{ color: '#6B7A8D', maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
+              <Typography sx={{ color: '#6B7A8D', maxWidth: 520, mx: 'auto', lineHeight: 1.8, fontWeight: 500 }}>
                 From routine private property enforcement to large-scale relocations, we provide
                 comprehensive towing and parking management solutions.
               </Typography>
@@ -441,19 +470,8 @@ function Home() {
                       }}
                     >
                       <CardContent sx={{ flex: 1, p: 4 }}>
-                        <Box
-                          sx={{
-                            width: 52,
-                            height: 52,
-                            borderRadius: '50%',
-                            background: '#0057A5',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            mb: 3,
-                          }}
-                        >
-                          <Icon size={22} color="#E1AD00" />
+                        <Box sx={{ mb: 3 }}>
+                          <Icon size={48} color="#0057A5" strokeWidth={1.25} />
                         </Box>
                         <Typography
                           variant="h6"
@@ -486,20 +504,26 @@ function Home() {
       </Box>
 
       {/* ── Why Choose Us ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#1D2B45' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#1D2B45', position: 'relative', overflow: 'hidden' }}>
+        {/* Dot grid */}
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+        {/* Watermark arrows */}
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#E1AD00" height={180} opacity={0.05} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#ffffff', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
                 Why Property Managers Choose Us
               </Typography>
               <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
-              <Typography sx={{ color: 'rgba(255,255,255,0.5)', maxWidth: 480, mx: 'auto', lineHeight: 1.8 }}>
+              <Typography sx={{ color: 'rgba(255,255,255,0.5)', maxWidth: 480, mx: 'auto', lineHeight: 1.8, fontWeight: 500 }}>
                 We don't just tow vehicles — we manage risk, reduce complaints, and keep your properties protected.
               </Typography>
             </Box>
@@ -516,21 +540,8 @@ function Home() {
                 <Grid key={title} size={{ xs: 12, sm: 6, md: 3 }}>
                   <motion.div variants={fadeUp}>
                     <Box sx={{ textAlign: 'center', px: { md: 1 } }}>
-                      <Box
-                        sx={{
-                          width: 62,
-                          height: 62,
-                          borderRadius: '50%',
-                          background: 'rgba(62,170,204,0.12)',
-                          border: '2px solid rgba(62,170,204,0.45)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          mx: 'auto',
-                          mb: 2.5,
-                        }}
-                      >
-                        <Icon size={24} color="#E1AD00" />
+                      <Box sx={{ mb: 2.5, display: 'flex', justifyContent: 'center' }}>
+                        <Icon size={44} color="#E1AD00" strokeWidth={1.25} />
                       </Box>
                       <Typography
                         sx={{
@@ -556,21 +567,23 @@ function Home() {
       </Box>
 
       {/* ── Testimonials ── */}
-      <Box sx={{ py: { xs: 10, md: 14 }, background: '#D9DADF' }}>
-        <Container maxWidth="lg">
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#D9DADF', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-30px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#1D2B45" height={160} opacity={0.04} />
+        </Box>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
           >
-
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#1D2B45', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
                 What Property Managers Say
               </Typography>
               <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
-              <Typography sx={{ color: '#6B7A8D', lineHeight: 1.7 }}>
+              <Typography sx={{ color: '#6B7A8D', lineHeight: 1.7, fontWeight: 500 }}>
                 Trusted by property management professionals across North Carolina
               </Typography>
             </Box>
@@ -605,7 +618,7 @@ function Home() {
                           fontSize: '3.5rem',
                           lineHeight: 0.8,
                           mb: 2,
-                          fontFamily: 'Georgia, serif',
+                          fontFamily: "'Saira', sans-serif",
                           opacity: 0.75,
                         }}
                       >
@@ -629,7 +642,7 @@ function Home() {
       </Box>
 
       {/* ── CTA ── */}
-      <Box sx={{ background: '#0057A5', py: { xs: 8, md: 12 }, textAlign: 'center' }}>
+      <Box sx={{ background: '#004A8F', py: { xs: 7, md: 9 }, textAlign: 'center' }}>
         <Container maxWidth="sm">
           <motion.div
             initial="hidden"
@@ -637,56 +650,27 @@ function Home() {
             viewport={{ once: false, amount: 0.4 }}
             variants={fadeUp}
           >
-            <Typography
-              variant="h5"
-              sx={{ fontWeight: 800, color: '#ffffff', mb: 1.5, fontSize: { xs: '1.4rem', md: '1.8rem' } }}
-            >
+            <Typography variant="h4" sx={{ fontWeight: 800, color: '#ffffff', mb: 2, fontSize: { xs: '1.6rem', md: '2.2rem' } }}>
               Ready to protect your property?
             </Typography>
-            <Typography sx={{ color: 'rgba(255,255,255,0.72)', mb: 4, lineHeight: 1.8 }}>
+            <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 3, borderRadius: 1 }} />
+            <Typography sx={{ color: 'rgba(255,255,255,0.72)', mb: 4.5, lineHeight: 1.85, fontWeight: 500 }}>
               Contact us today for a free consultation and learn how Integrity Towing Solutions can serve your community.
             </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 2,
-                justifyContent: 'center',
-                flexDirection: { xs: 'column', sm: 'row' },
-                alignItems: 'center',
-              }}
-            >
-              <Button
-                variant="outlined"
-                onClick={() => navigate('/services')}
-                sx={{
-                  borderColor: 'rgba(255,255,255,0.5)',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  px: 4,
-                  py: 1.5,
-                  width: { xs: '100%', sm: 'auto' },
-                  maxWidth: { xs: 320, sm: 'none' },
-                  '&:hover': { borderColor: '#ffffff', background: 'rgba(255,255,255,0.08)' },
-                }}
-              >
-                View Services
-              </Button>
+            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'center' }}>
               <Button
                 variant="contained"
                 href="tel:9197909393"
-                sx={{
-                  background: '#E1AD00',
-                  color: '#1D2B45',
-                  fontWeight: 700,
-                  px: 4,
-                  py: 1.5,
-                  boxShadow: 'none',
-                  width: { xs: '100%', sm: 'auto' },
-                  maxWidth: { xs: 320, sm: 'none' },
-                  '&:hover': { background: '#c99c00', boxShadow: 'none' },
-                }}
+                sx={{ background: '#E1AD00', color: '#1D2B45', fontWeight: 700, px: 4, py: 1.6, fontSize: '0.95rem', boxShadow: 'none', width: { xs: '100%', sm: 'auto' }, maxWidth: { xs: 320, sm: 'none' }, '&:hover': { background: '#c99c00', boxShadow: 'none' } }}
               >
                 (919) 790-9393
+              </Button>
+              <Button
+                variant="outlined"
+                onClick={scrollToServices}
+                sx={{ borderColor: 'rgba(255,255,255,0.45)', color: '#ffffff', fontWeight: 700, px: 4, py: 1.6, fontSize: '0.95rem', width: { xs: '100%', sm: 'auto' }, maxWidth: { xs: 320, sm: 'none' }, '&:hover': { borderColor: '#ffffff', background: 'rgba(255,255,255,0.08)' } }}
+              >
+                View Services
               </Button>
             </Box>
           </motion.div>
