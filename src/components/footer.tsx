@@ -17,6 +17,7 @@ const footerLinks = [
   { label: 'Emergency Response', path: '/services/emergency-response' },
   { label: 'Mass Relocation', path: '/services/mass-relocation' },
   { label: 'Find My Vehicle', path: '/find-my-vehicle' },
+  { label: 'Contact', path: '/contact' },
   { label: 'Employment', path: EMPLOYMENT_URL, external: true },
   { label: 'Privacy Policy', path: '/privacy-policy' },
   { label: 'Terms of Service', path: '/terms-of-service' },

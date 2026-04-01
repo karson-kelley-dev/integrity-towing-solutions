@@ -38,8 +38,8 @@ const auctionLinks = [
 const btnSx = {
   color: 'rgba(255,255,255,0.9)',
   fontWeight: 700,
-  fontSize: '0.9rem',
-  letterSpacing: '0.4px',
+  fontSize: '0.82rem',
+  letterSpacing: '0.3px',
   fontFamily: "'Saira', sans-serif",
   transition: 'color 0.2s ease',
   '&:hover': { color: '#E1AD00', background: 'transparent' },
@@ -109,6 +109,11 @@ function Navbar() {
             <ListItemText primary="Employment" />
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton onClick={() => handleNavClick('/contact')} sx={{ color: '#1D2B45' }}>
+            <ListItemText primary="Contact" />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   )
@@ -128,7 +133,7 @@ function Navbar() {
             <img src={logoWhite} alt="Integrity Towing Solutions" style={{ height: '52px', width: 'auto' }} />
           </Box>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1.5, alignItems: 'center' }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5, alignItems: 'center' }}>
             <Button onClick={() => navigate('/')} sx={btnSx}>About</Button>
 
             <Button endIcon={<KeyboardArrowDownIcon />} onClick={(e) => setServicesAnchor(e.currentTarget)} sx={btnSx}>
@@ -157,6 +162,7 @@ function Navbar() {
             <Button component="a" href={EMPLOYMENT_URL} target="_blank" rel="noopener noreferrer" sx={btnSx}>
               Employment
             </Button>
+            <Button onClick={() => navigate('/contact')} sx={btnSx}>Contact</Button>
             <Button
               component="a"
               href="tel:9197909393"
