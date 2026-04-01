@@ -13,6 +13,19 @@ function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?:
   )
 }
 
+function WaveSeparator({ from, to, flip = false }: { from: string; to: string; flip?: boolean }) {
+  const path = flip
+    ? 'M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z'
+    : 'M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z'
+  return (
+    <Box sx={{ display: 'block', lineHeight: 0, background: to, mt: '-1px', pointerEvents: 'none' }}>
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '72px' }}>
+        <path d={path} fill={from} />
+      </svg>
+    </Box>
+  )
+}
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
@@ -89,71 +102,108 @@ function EmergencyResponse() {
         sx={{
           position: 'relative',
           background: 'linear-gradient(150deg, #1D2B45 0%, #253654 55%, #2E4168 100%)',
-          py: { xs: 10, md: 14 },
-          textAlign: 'center',
+          pt: { xs: 13, md: 17 },
+          pb: { xs: 8, md: 12 },
           overflow: 'hidden',
+          minHeight: { xs: '50vh', md: 'auto' },
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
         {/* Dot grid texture */}
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
 
-        {/* Decorative triple arrows */}
-        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '7%', top: '50%', transform: 'translateY(-50%)', zIndex: 0, pointerEvents: 'none' }}>
-          <TripleArrows color="#E1AD00" height={180} opacity={0.07} />
-        </Box>
-        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '5%', bottom: '15%', zIndex: 0, pointerEvents: 'none' }}>
-          <TripleArrows color="#E1AD00" height={80} opacity={0.04} />
-        </Box>
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, px: { xs: 2, sm: 4 } }}>
+          <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
+            <Grid size={{ xs: 12, md: 7 }}>
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              >
+                <Typography
+                  sx={{
+                    color: '#E1AD00',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '2px',
+                    mb: 1.5,
+                    fontFamily: "'Saira', sans-serif",
+                  }}
+                >
+                  Services
+                </Typography>
+                <Typography
+                  component="h1"
+                  sx={{
+                    fontWeight: 900,
+                    fontSize: { xs: '2rem', sm: '2.8rem', md: '3.8rem' },
+                    color: '#ffffff',
+                    lineHeight: 1.08,
+                    mb: 2,
+                    fontFamily: "'Saira', sans-serif",
+                    letterSpacing: { xs: '-0.5px', md: '-1.5px' },
+                  }}
+                >
+                  Emergency Response &<br />Accident Scene Management
+                </Typography>
+                <Box sx={{ width: 60, height: 4, background: '#E1AD00', mb: 3, borderRadius: 2 }} />
+                <Typography
+                  sx={{
+                    color: 'rgba(255,255,255,0.72)',
+                    fontSize: { xs: '1rem', md: '1.1rem' },
+                    lineHeight: 1.85,
+                    maxWidth: 500,
+                  }}
+                >
+                  Fast, coordinated response for incidents and disabled vehicles — helping restore access,
+                  reduce risk, and keep traffic and cities moving.
+                </Typography>
+              </motion.div>
+            </Grid>
 
-        <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          >
-            <Typography
-              sx={{
-                color: '#E1AD00',
-                fontWeight: 700,
-                fontSize: '0.75rem',
-                textTransform: 'uppercase',
-                letterSpacing: '2px',
-                mb: 1.5,
-                fontFamily: "'Saira', sans-serif",
-              }}
-            >
-              Services
-            </Typography>
-            <Typography
-              component="h1"
-              sx={{
-                fontWeight: 900,
-                fontSize: { xs: '2rem', sm: '2.8rem', md: '3.4rem' },
-                color: '#ffffff',
-                lineHeight: 1.1,
-                mb: 2,
-                fontFamily: "'Saira', sans-serif",
-                letterSpacing: { xs: '-0.5px', md: '-1px' },
-              }}
-            >
-              Emergency Response &<br />Accident Scene Management
-            </Typography>
-            <Box sx={{ width: 60, height: 4, background: '#E1AD00', mx: 'auto', mb: 3, borderRadius: 2 }} />
-            <Typography
-              sx={{
-                color: 'rgba(255,255,255,0.72)',
-                fontSize: { xs: '1rem', md: '1.1rem' },
-                lineHeight: 1.85,
-                maxWidth: 580,
-                mx: 'auto',
-              }}
-            >
-              Fast, coordinated response for incidents and disabled vehicles — helping restore access,
-              reduce risk, and keep traffic and cities moving.
-            </Typography>
-          </motion.div>
+            <Grid size={{ xs: 12, md: 5 }} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center' }}>
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              >
+                <Box sx={{ position: 'relative' }}>
+                  <Box sx={{ position: 'absolute', right: -40, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
+                    <TripleArrows color="#E1AD00" height={260} opacity={0.07} />
+                  </Box>
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      zIndex: 1,
+                      p: 3.5,
+                      background: 'rgba(255,255,255,0.07)',
+                      border: '1px solid rgba(255,255,255,0.12)',
+                      borderLeft: '3px solid #E1AD00',
+                      borderRadius: 2,
+                      maxWidth: 320,
+                    }}
+                  >
+                    <Typography sx={{ color: '#E1AD00', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', mb: 1.5, fontFamily: "'Saira', sans-serif" }}>
+                      Response Capabilities
+                    </Typography>
+                    {['Emergency Towing', 'Accident Scene Clearing', 'Impound Services', 'Abandoned Vehicle Removal', 'Evidence Towing', 'Secure Vehicle Transport', 'First Responder Coordination'].map((item) => (
+                      <Box key={item} sx={{ display: 'flex', alignItems: 'center', gap: 1.25, py: 0.6, borderBottom: '1px solid rgba(255,255,255,0.07)', '&:last-child': { borderBottom: 'none' } }}>
+                        <Box sx={{ width: 5, height: 5, borderRadius: '50%', background: '#E1AD00', flexShrink: 0 }} />
+                        <Typography sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.85rem', fontFamily: "'Saira', sans-serif" }}>{item}</Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Box>
+              </motion.div>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
+
+      {/* ── Wave: hero → intro ── */}
+      <WaveSeparator from="#1D2B45" to="#ffffff" />
 
       {/* ── Intro + Sidebar ── */}
       <Box sx={{ py: { xs: 7, md: 10 }, background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
@@ -305,6 +355,9 @@ function EmergencyResponse() {
         </Container>
       </Box>
 
+      {/* ── Wave: intro → services grid ── */}
+      <WaveSeparator from="#ffffff" to="#1D2B45" flip />
+
       {/* ── Services Grid ── */}
       <Box sx={{ py: { xs: 7, md: 10 }, background: '#1D2B45', position: 'relative', overflow: 'hidden' }}>
         {/* Dot grid */}
@@ -390,6 +443,56 @@ function EmergencyResponse() {
           </motion.div>
         </Container>
       </Box>
+
+      {/* ── Wave: services grid → CTA ── */}
+      <WaveSeparator from="#1D2B45" to="#004A8F" flip />
+
+      {/* ── CTA ── */}
+      <Box sx={{ background: '#004A8F', py: { xs: 7, md: 9 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+        <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
+          <TripleArrows color="#E1AD00" height={200} opacity={0.05} />
+        </Box>
+        <Container maxWidth="sm" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.4 }}
+            variants={fadeUp}
+          >
+            <Typography variant="h4" sx={{ fontWeight: 800, color: '#ffffff', mb: 2, fontSize: { xs: '1.6rem', md: '2rem' }, fontFamily: "'Saira', sans-serif" }}>
+              Need emergency response?
+            </Typography>
+            <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 3, borderRadius: 1 }} />
+            <Typography sx={{ color: 'rgba(255,255,255,0.72)', mb: 4, lineHeight: 1.85, fontWeight: 500 }}>
+              Our dispatch team is available 24/7. Call us now for immediate assistance.
+            </Typography>
+            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'center' }}>
+              <Box
+                component="a"
+                href="tel:9197909393"
+                sx={{
+                  display: 'inline-block',
+                  background: '#E1AD00',
+                  color: '#1D2B45',
+                  fontWeight: 700,
+                  px: 4,
+                  py: 1.6,
+                  fontSize: '0.95rem',
+                  borderRadius: 1,
+                  textDecoration: 'none',
+                  fontFamily: "'Saira', sans-serif",
+                  transition: 'background 0.2s',
+                  '&:hover': { background: '#c99c00' },
+                }}
+              >
+                (919) 790-9393
+              </Box>
+            </Box>
+          </motion.div>
+        </Container>
+      </Box>
+
     </Box>
   )
 }

@@ -8,7 +8,7 @@ function scrollToServices() {
   document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })
 }
 
-// ── Triple arrow brand motif ────────────────────────────────────────────────
+// ── Brand motif ──────────────────────────────────────────────────────────────
 function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
   const width = height * (117 / 60)
   return (
@@ -20,7 +20,32 @@ function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?:
   )
 }
 
-// ── Animation variants ──────────────────────────────────────────────────────
+// ── Wave separator between sections ─────────────────────────────────────────
+function WaveSeparator({ from, to, flip = false }: { from: string; to: string; flip?: boolean }) {
+  const path = flip
+    ? 'M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z'
+    : 'M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z'
+  return (
+    <Box sx={{ display: 'block', lineHeight: 0, background: to, mt: '-1px', pointerEvents: 'none' }}>
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '72px' }}>
+        <path d={path} fill={from} />
+      </svg>
+    </Box>
+  )
+}
+
+// ── Angle separator (subtle, for near-identical colors) ──────────────────────
+function AngleSeparator({ from, to }: { from: string; to: string }) {
+  return (
+    <Box sx={{ display: 'block', lineHeight: 0, background: to, mt: '-1px', pointerEvents: 'none' }}>
+      <svg viewBox="0 0 1440 50" preserveAspectRatio="none" style={{ display: 'block', width: '100%', height: '50px' }}>
+        <polygon points="0,0 1440,0 1440,50 0,10" fill={from} />
+      </svg>
+    </Box>
+  )
+}
+
+// ── Animation variants ───────────────────────────────────────────────────────
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
@@ -31,7 +56,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.13 } },
 }
 
-// ── Animated counter (resets and re-runs each time it enters view) ───────────
+// ── Animated counter ─────────────────────────────────────────────────────────
 function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: false, amount: 0.8 })
@@ -60,7 +85,7 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
   )
 }
 
-// ── Data ────────────────────────────────────────────────────────────────────
+// ── Data ─────────────────────────────────────────────────────────────────────
 const services = [
   {
     Icon: Building2,
@@ -126,151 +151,214 @@ const quotes = [
   },
 ]
 
-// ── Component ───────────────────────────────────────────────────────────────
+// ── Component ────────────────────────────────────────────────────────────────
 function Home() {
   const navigate = useNavigate()
 
   return (
     <Box>
-      {/* ── Hero ── */}
+
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <Box
         sx={{
           position: 'relative',
           background: 'linear-gradient(150deg, #1D2B45 0%, #253654 55%, #2E4168 100%)',
           color: '#ffffff',
-          minHeight: { xs: '72vh', md: '80vh' },
+          pt: { xs: 14, md: 18 },
+          pb: { xs: 8, md: 12 },
+          overflow: 'hidden',
+          minHeight: { xs: '62vh', md: 'auto' },
           display: 'flex',
           alignItems: 'center',
-          overflow: 'hidden',
         }}
       >
         {/* Dot grid texture */}
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
 
-        {/* Decorative triple arrows — right side */}
-        <Box
-          sx={{
-            display: { xs: 'none', md: 'block' },
-            position: 'absolute',
-            right: { md: '6%', lg: '10%' },
-            top: '50%',
-            transform: 'translateY(-50%)',
-            zIndex: 0,
-            pointerEvents: 'none',
-          }}
-        >
-          <TripleArrows color="#E1AD00" height={220} opacity={0.08} />
-        </Box>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 }, position: 'relative', zIndex: 1, width: '100%' }}>
+          <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
 
-        <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, textAlign: 'center', py: { xs: 8, md: 14 }, px: { xs: 3, md: 4 } }}>
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          >
-            <Typography
-              component="h1"
-              sx={{
-                fontWeight: 900,
-                fontSize: { xs: '2rem', sm: '3rem', md: '4.2rem' },
-                letterSpacing: { xs: '-0.5px', sm: '-1px', md: '-2px' },
-                lineHeight: 1.08,
-                mb: 3,
-                fontFamily: "'Saira', sans-serif",
-              }}
-            >
-              Parking Management<br />Done Right.
-            </Typography>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.5, delay: 0.35, ease: 'easeOut' }}
-            style={{ transformOrigin: 'center' }}
-          >
-            <Box sx={{ width: 60, height: 4, background: '#E1AD00', mx: 'auto', mb: 3, borderRadius: 2 }} />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          >
-            <Typography
-              sx={{
-                color: 'rgba(255,255,255,0.72)',
-                mb: 5,
-                fontWeight: 500,
-                lineHeight: 1.85,
-                fontSize: { xs: '1rem', md: '1.15rem' },
-                maxWidth: 540,
-                mx: 'auto',
-              }}
-            >
-              Serving property owners and managers across Raleigh, Durham, Chapel Hill, and
-              Greensboro with integrity, professionalism, and around-the-clock availability.
-            </Typography>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                gap: 2,
-                justifyContent: 'center',
-                flexDirection: { xs: 'column', sm: 'row' },
-                alignItems: 'center',
-              }}
-            >
-              <Button
-                variant="contained"
-                size="large"
-                onClick={scrollToServices}
-                sx={{
-                  background: '#E1AD00',
-                  color: '#1D2B45',
-                  fontWeight: 700,
-                  px: 4,
-                  py: 1.6,
-                  fontSize: '0.95rem',
-                  letterSpacing: '0.3px',
-                  boxShadow: 'none',
-                  width: { xs: '100%', sm: 'auto' },
-                  maxWidth: { xs: 320, sm: 'none' },
-                  '&:hover': { background: '#c99c00', boxShadow: 'none' },
-                }}
+            {/* Left: text content */}
+            <Grid size={{ xs: 12, md: 7 }}>
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
-                Our Services
-              </Button>
-              <Button
-                variant="outlined"
-                size="large"
-                href="tel:9197909393"
-                sx={{
-                  borderColor: 'rgba(255,255,255,0.35)',
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  px: 4,
-                  py: 1.6,
-                  fontSize: '0.95rem',
-                  width: { xs: '100%', sm: 'auto' },
-                  maxWidth: { xs: 320, sm: 'none' },
-                  '&:hover': { borderColor: '#E1AD00', color: '#E1AD00', background: 'transparent' },
-                }}
+                <Typography
+                  sx={{
+                    color: '#E1AD00',
+                    fontWeight: 700,
+                    fontSize: '0.75rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '2px',
+                    mb: 2,
+                    fontFamily: "'Saira', sans-serif",
+                  }}
+                >
+                  Serving the Triangle &amp; Triad
+                </Typography>
+                <Typography
+                  component="h1"
+                  sx={{
+                    fontWeight: 900,
+                    fontSize: { xs: '2.4rem', sm: '3.2rem', md: '4.4rem' },
+                    letterSpacing: { xs: '-0.5px', md: '-2px' },
+                    lineHeight: 1.05,
+                    mb: 3,
+                    fontFamily: "'Saira', sans-serif",
+                  }}
+                >
+                  Parking Management<br />Done Right.
+                </Typography>
+
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
+                  style={{ transformOrigin: 'left' }}
+                >
+                  <Box sx={{ width: 60, height: 4, background: '#E1AD00', mb: 3.5, borderRadius: 2 }} />
+                </motion.div>
+
+                <Typography
+                  sx={{
+                    color: 'rgba(255,255,255,0.72)',
+                    mb: 5,
+                    fontWeight: 500,
+                    lineHeight: 1.85,
+                    fontSize: { xs: '1rem', md: '1.1rem' },
+                    maxWidth: 500,
+                  }}
+                >
+                  Serving property owners and managers across Raleigh, Durham, Chapel Hill, and
+                  Greensboro with integrity, professionalism, and around-the-clock availability.
+                </Typography>
+
+                <Box
+                  sx={{
+                    display: 'flex',
+                    gap: 2,
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    alignItems: { xs: 'stretch', sm: 'center' },
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    size="large"
+                    onClick={scrollToServices}
+                    sx={{
+                      background: '#E1AD00',
+                      color: '#1D2B45',
+                      fontWeight: 700,
+                      px: 4,
+                      py: 1.6,
+                      fontSize: '0.95rem',
+                      letterSpacing: '0.3px',
+                      boxShadow: 'none',
+                      '&:hover': { background: '#c99c00', boxShadow: 'none' },
+                    }}
+                  >
+                    Our Services
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    href="tel:9197909393"
+                    sx={{
+                      borderColor: 'rgba(255,255,255,0.35)',
+                      color: '#ffffff',
+                      fontWeight: 700,
+                      px: 4,
+                      py: 1.6,
+                      fontSize: '0.95rem',
+                      '&:hover': { borderColor: '#E1AD00', color: '#E1AD00', background: 'transparent' },
+                    }}
+                  >
+                    (919) 790-9393
+                  </Button>
+                </Box>
+              </motion.div>
+            </Grid>
+
+            {/* Right: stat panel */}
+            <Grid size={{ xs: 12, md: 5 }} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
-                (919) 790-9393
-              </Button>
-            </Box>
-          </motion.div>
+                <Box sx={{ position: 'relative', width: 360 }}>
+                  {/* Background arrows */}
+                  <Box sx={{ position: 'absolute', right: -50, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
+                    <TripleArrows color="#E1AD00" height={300} opacity={0.06} />
+                  </Box>
+
+                  {/* Stat cards */}
+                  <Box sx={{ position: 'relative', zIndex: 1 }}>
+                    {[
+                      { value: '24/7', label: 'Always Available', sub: 'No holidays, no exceptions' },
+                      { value: '1,100+', label: 'Programs Managed', sub: 'Across the Triangle & Triad' },
+                      { value: '3', label: 'NC Locations', sub: 'Raleigh · Durham · Greensboro' },
+                    ].map(({ value, label, sub }, i) => (
+                      <motion.div
+                        key={label}
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 + i * 0.15 }}
+                      >
+                        <Box
+                          sx={{
+                            mb: i < 2 ? 2 : 0,
+                            p: 3,
+                            background: 'rgba(255,255,255,0.06)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            borderLeft: '3px solid #E1AD00',
+                            borderRadius: 2,
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontWeight: 900,
+                              fontSize: '2.5rem',
+                              color: '#ffffff',
+                              fontFamily: "'Saira', sans-serif",
+                              lineHeight: 1,
+                              mb: 0.5,
+                            }}
+                          >
+                            {value}
+                          </Typography>
+                          <Typography
+                            sx={{
+                              color: 'rgba(255,255,255,0.85)',
+                              fontWeight: 700,
+                              fontSize: '0.85rem',
+                              fontFamily: "'Saira', sans-serif",
+                              mb: 0.25,
+                            }}
+                          >
+                            {label}
+                          </Typography>
+                          <Typography sx={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.74rem', fontFamily: "'Saira', sans-serif" }}>
+                            {sub}
+                          </Typography>
+                        </Box>
+                      </motion.div>
+                    ))}
+                  </Box>
+                </Box>
+              </motion.div>
+            </Grid>
+
+          </Grid>
         </Container>
       </Box>
 
-      {/* ── Stats Strip ── */}
+      {/* ── Wave: hero → stats ─────────────────────────────────────────────── */}
+      <WaveSeparator from="#1D2B45" to="#E1AD00" />
+
+      {/* ── Stats Strip ───────────────────────────────────────────────────── */}
       <Box sx={{ background: '#E1AD00', py: { xs: 3.5, md: 4.5 } }}>
         <Container maxWidth="md">
           <motion.div
@@ -327,7 +415,10 @@ function Home() {
         </Container>
       </Box>
 
-      {/* ── About ── */}
+      {/* ── Wave: stats → about ────────────────────────────────────────────── */}
+      <WaveSeparator from="#E1AD00" to="#ffffff" flip />
+
+      {/* ── About ─────────────────────────────────────────────────────────── */}
       <Box sx={{ py: { xs: 7, md: 10 }, background: '#ffffff', position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-40px', bottom: '-30px', pointerEvents: 'none', zIndex: 0 }}>
           <TripleArrows color="#E1AD00" height={200} opacity={0.04} />
@@ -420,7 +511,10 @@ function Home() {
         </Container>
       </Box>
 
-      {/* ── Services ── */}
+      {/* ── Angle: about → services (near-identical colors) ───────────────── */}
+      <AngleSeparator from="#ffffff" to="#F5F6F8" />
+
+      {/* ── Services ──────────────────────────────────────────────────────── */}
       <Box id="services-section" sx={{ py: { xs: 7, md: 10 }, background: '#F5F6F8' }}>
         <Container maxWidth="lg">
           <motion.div
@@ -429,12 +523,25 @@ function Home() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 6 }}>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#1D2B45', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
+            <Box sx={{ mb: 6 }}>
+              <Typography
+                sx={{
+                  color: '#0057A5',
+                  fontWeight: 700,
+                  fontSize: '0.75rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '2px',
+                  mb: 1.5,
+                  fontFamily: "'Saira', sans-serif",
+                }}
+              >
                 What We Do
               </Typography>
-              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
-              <Typography sx={{ color: '#6B7A8D', maxWidth: 520, mx: 'auto', lineHeight: 1.8, fontWeight: 500 }}>
+              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#1D2B45', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
+                Three Core Services
+              </Typography>
+              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mb: 2.5, borderRadius: 1 }} />
+              <Typography sx={{ color: '#6B7A8D', maxWidth: 520, lineHeight: 1.8, fontWeight: 500 }}>
                 From routine private property enforcement to large-scale relocations, we provide
                 comprehensive towing and parking management solutions.
               </Typography>
@@ -503,7 +610,10 @@ function Home() {
         </Container>
       </Box>
 
-      {/* ── Why Choose Us ── */}
+      {/* ── Wave: services → why choose us ────────────────────────────────── */}
+      <WaveSeparator from="#F5F6F8" to="#1D2B45" flip />
+
+      {/* ── Why Choose Us ─────────────────────────────────────────────────── */}
       <Box sx={{ py: { xs: 7, md: 10 }, background: '#1D2B45', position: 'relative', overflow: 'hidden' }}>
         {/* Dot grid */}
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
@@ -518,12 +628,25 @@ function Home() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 6 }}>
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#ffffff', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
+            <Box sx={{ mb: 6 }}>
+              <Typography
+                sx={{
+                  color: '#E1AD00',
+                  fontWeight: 700,
+                  fontSize: '0.75rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '2px',
+                  mb: 1.5,
+                  fontFamily: "'Saira', sans-serif",
+                }}
+              >
                 Why Property Managers Choose Us
               </Typography>
-              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
-              <Typography sx={{ color: 'rgba(255,255,255,0.5)', maxWidth: 480, mx: 'auto', lineHeight: 1.8, fontWeight: 500 }}>
+              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#ffffff', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
+                More Than Just a Tow Truck
+              </Typography>
+              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mb: 2.5, borderRadius: 1 }} />
+              <Typography sx={{ color: 'rgba(255,255,255,0.5)', maxWidth: 480, lineHeight: 1.8, fontWeight: 500 }}>
                 We don't just tow vehicles — we manage risk, reduce complaints, and keep your properties protected.
               </Typography>
             </Box>
@@ -539,8 +662,8 @@ function Home() {
               {pillars.map(({ Icon, title, description }) => (
                 <Grid key={title} size={{ xs: 12, sm: 6, md: 3 }}>
                   <motion.div variants={fadeUp}>
-                    <Box sx={{ textAlign: 'center', px: { md: 1 } }}>
-                      <Box sx={{ mb: 2.5, display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ px: { md: 1 } }}>
+                      <Box sx={{ mb: 2.5 }}>
                         <Icon size={44} color="#E1AD00" strokeWidth={1.25} />
                       </Box>
                       <Typography
@@ -566,7 +689,10 @@ function Home() {
         </Container>
       </Box>
 
-      {/* ── Testimonials ── */}
+      {/* ── Wave: why → testimonials ───────────────────────────────────────── */}
+      <WaveSeparator from="#1D2B45" to="#D9DADF" />
+
+      {/* ── Testimonials ──────────────────────────────────────────────────── */}
       <Box sx={{ py: { xs: 7, md: 10 }, background: '#D9DADF', position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-30px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
           <TripleArrows color="#1D2B45" height={160} opacity={0.04} />
@@ -578,11 +704,24 @@ function Home() {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
           >
-            <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <Box sx={{ mb: 6 }}>
+              <Typography
+                sx={{
+                  color: '#0057A5',
+                  fontWeight: 700,
+                  fontSize: '0.75rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '2px',
+                  mb: 1.5,
+                  fontFamily: "'Saira', sans-serif",
+                }}
+              >
+                Client Feedback
+              </Typography>
               <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#1D2B45', fontSize: { xs: '1.8rem', md: '2.2rem' } }}>
                 What Property Managers Say
               </Typography>
-              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
+              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mb: 2.5, borderRadius: 1 }} />
               <Typography sx={{ color: '#6B7A8D', lineHeight: 1.7, fontWeight: 500 }}>
                 Trusted by property management professionals across North Carolina
               </Typography>
@@ -641,9 +780,14 @@ function Home() {
         </Container>
       </Box>
 
-      {/* ── CTA ── */}
-      <Box sx={{ background: '#004A8F', py: { xs: 7, md: 9 }, textAlign: 'center' }}>
-        <Container maxWidth="sm">
+      {/* ── Wave: testimonials → CTA ───────────────────────────────────────── */}
+      <WaveSeparator from="#D9DADF" to="#004A8F" flip />
+
+      {/* ── CTA ───────────────────────────────────────────────────────────── */}
+      <Box sx={{ background: '#004A8F', py: { xs: 7, md: 9 }, position: 'relative', overflow: 'hidden' }}>
+        {/* Dot grid */}
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
+        <Container maxWidth="sm" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -676,6 +820,7 @@ function Home() {
           </motion.div>
         </Container>
       </Box>
+
     </Box>
   )
 }
