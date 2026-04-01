@@ -50,21 +50,21 @@ const services = [
     Icon: Building2,
     title: 'Private Property Towing',
     description:
-      'Professional and compliant towing for apartment communities, commercial properties, and HOAs across the Triangle and Triad.',
+      'Parking enforcement built for property managers — written authorization, clear documentation, and consistent processes that protect your property and residents.',
     path: '/services/private-property',
   },
   {
     Icon: Zap,
     title: 'Emergency Response & Accident Scene',
     description:
-      'Rapid deployment for accident scene management, coordinating with first responders to clear roadways safely and efficiently.',
+      'Fast, coordinated response for incidents and disabled vehicles — helping restore access, reduce risk, and keep traffic and cities moving.',
     path: '/services/emergency-response',
   },
   {
     Icon: Truck,
     title: 'Mass Relocation Towing',
     description:
-      'Large-scale vehicle relocation for events, construction projects, and property management operations — handled end-to-end.',
+      'Efficient, organized towing support for large-scale moves and repositioning — planned logistics, clear communication, and minimal disruption for your site.',
     path: '/services/mass-relocation',
   },
 ]
@@ -182,8 +182,8 @@ function Home() {
                 mx: 'auto',
               }}
             >
-              Serving property owners and managers across Raleigh, Durham, and Greensboro
-              with integrity, professionalism, and around-the-clock availability.
+              Serving property owners and managers across Raleigh, Durham, Chapel Hill, and
+              Greensboro with integrity, professionalism, and around-the-clock availability.
             </Typography>
           </motion.div>
 
@@ -257,7 +257,7 @@ function Home() {
               {[
                 { label: 'Always Available', node: <span>24 / 7</span> },
                 { label: 'Locations Across NC', node: <AnimatedCounter target={3} /> },
-                { label: 'Properties Managed', node: <AnimatedCounter target={500} suffix="+" /> },
+                { label: 'Programs Managed', node: <AnimatedCounter target={1100} suffix="+" /> },
               ].map(({ label, node }, i) => (
                 <Grid
                   key={label}
@@ -333,15 +333,18 @@ function Home() {
                 </Typography>
                 <Box sx={{ width: 48, height: 3, background: '#E1AD00', mb: 3, borderRadius: 1 }} />
                 <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, mb: 2.5, fontSize: '0.95rem' }}>
-                  Integrity Towing Solutions is a North Carolina–based private property towing and
-                  parking management company serving the Triangle and Triad regions. We partner
-                  directly with property managers, apartment communities, HOAs, and commercial
-                  property owners to enforce parking rules fairly and professionally.
+                  Integrity Towing Solutions is a private property impound partner built to bring
+                  professionalism, compliance, and clear accountability to parking enforcement. We
+                  exist to raise the standard for private property impound — giving property managers
+                  a towing partner they can rely on.
                 </Typography>
                 <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, fontSize: '0.95rem' }}>
-                  Every tow we perform is fully documented, legally compliant, and handled with the
-                  professionalism your residents and tenants expect. We're not just a towing company
-                  — we're a long-term partner in protecting your property.
+                  Every tow is grounded in written authorization, proper signage, and compliance with
+                  North Carolina statutes, backed by documentation that stands up to questions and
+                  reviews. We focus exclusively on private property impound and use data-driven
+                  operations to improve enforcement over time. Today, ITS manages over 1,100 parking
+                  enforcement programs across Raleigh, Durham, Chapel Hill, and Greensboro —
+                  delivering a consistent standard in every market.
                 </Typography>
               </motion.div>
             </Grid>
@@ -357,7 +360,7 @@ function Home() {
                   {[
                     { label: 'Licensed & Insured', detail: 'Fully licensed in North Carolina with comprehensive liability coverage.' },
                     { label: '24 / 7 Availability', detail: 'Around-the-clock dispatch — no holidays, no exceptions.' },
-                    { label: 'Triangle & Triad', detail: 'Serving Raleigh, Durham, and Greensboro from three dedicated locations.' },
+                    { label: 'Triangle & Triad', detail: 'Serving Raleigh, Durham, Chapel Hill, and Greensboro across four markets.' },
                     { label: 'Compliance First', detail: 'Every tow meets NC statutory requirements, protecting you from liability.' },
                   ].map(({ label, detail }) => (
                     <Grid key={label} size={{ xs: 12, sm: 6 }}>
