@@ -1,201 +1,169 @@
-import CloseIcon from '@mui/icons-material/Close'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import MenuIcon from '@mui/icons-material/Menu'
-import {
-  AppBar,
-  Box,
-  Button,
-  Container,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Toolbar,
-} from '@mui/material'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import logoWhite from '../assets/logo-white.png'
+import { useNavigate, useLocation } from 'react-router-dom'
+import logoDark from '../assets/logo.svg'
 
 const EMPLOYMENT_URL =
   'https://recruiting.paylocity.com/recruiting/jobs/All/c1bb61df-a5f3-4474-8acd-c589dceb0778/Integrity-Towing-Solutions?source=Indeed_Feed'
 
-const serviceLinks = [
-  { label: 'Private Property Towing', path: '/services/private-property' },
-  { label: 'Emergency Response & Accident Scene', path: '/services/emergency-response' },
-  { label: 'Mass Relocation', path: '/services/mass-relocation' },
-]
-
-const auctionLinks = [
-  { label: 'Raleigh', path: '/auction/raleigh' },
-  { label: 'Durham', path: '/auction/durham' },
-  { label: 'Greensboro', path: '/auction/greensboro' },
-]
-
-const btnSx = {
-  color: 'rgba(255,255,255,0.9)',
-  fontWeight: 700,
-  fontSize: '0.82rem',
-  letterSpacing: '0.3px',
-  fontFamily: "'Saira', sans-serif",
-  transition: 'color 0.2s ease',
-  '&:hover': { color: 'rgba(255,255,255,0.7)', background: 'transparent' },
-}
-
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [servicesAnchor, setServicesAnchor] = useState<null | HTMLElement>(null)
-  const [auctionAnchor, setAuctionAnchor] = useState<null | HTMLElement>(null)
+  const [servicesOpen, setServicesOpen] = useState(false)
+  const [auctionOpen, setAuctionOpen] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
 
-  const handleNavClick = (path: string) => {
+  const isHome = location.pathname === '/'
+
+  const go = (path: string) => {
     navigate(path)
     setMobileOpen(false)
-    setServicesAnchor(null)
-    setAuctionAnchor(null)
+    setServicesOpen(false)
+    setAuctionOpen(false)
   }
 
-  const drawer = (
-    <Box sx={{ width: 280 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-        <IconButton onClick={() => setMobileOpen(false)}>
-          <CloseIcon />
-        </IconButton>
-      </Box>
-      <List>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavClick('/')} sx={{ color: '#1D2B45' }}>
-            <ListItemText primary="About" />
-          </ListItemButton>
-        </ListItem>
-        {serviceLinks.map((link) => (
-          <ListItem key={link.path} disablePadding>
-            <ListItemButton
-              onClick={() => handleNavClick(link.path)}
-              sx={{ color: '#1D2B45', pl: link.path === '/services' ? 2 : 4 }}
-            >
-              <ListItemText primary={link.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-        <ListItem disablePadding>
-          <ListItemButton sx={{ color: '#1D2B45' }}>
-            <ListItemText primary="Auction" primaryTypographyProps={{ fontWeight: 700 }} />
-          </ListItemButton>
-        </ListItem>
-        {auctionLinks.map((link) => (
-          <ListItem key={link.path} disablePadding>
-            <ListItemButton onClick={() => handleNavClick(link.path)} sx={{ color: '#1D2B45', pl: 4 }}>
-              <ListItemText primary={link.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavClick('/find-my-vehicle')} sx={{ color: '#1D2B45' }}>
-            <ListItemText primary="Find My Vehicle" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton
-            component="a"
-            href={EMPLOYMENT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{ color: '#1D2B45' }}
-          >
-            <ListItemText primary="Employment" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavClick('/contact')} sx={{ color: '#1D2B45' }}>
-            <ListItemText primary="Contact" />
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </Box>
-  )
-
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        background: '#1D2B45',
-        boxShadow: '0 2px 16px rgba(29, 43, 69, 0.3)',
-        zIndex: 1100,
-      }}
-    >
-      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 4 } }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', py: '0.4rem', px: '0 !important' }}>
-          <Box onClick={() => navigate('/')} sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
-            <img src={logoWhite} alt="Integrity Towing Solutions" style={{ height: '52px', width: 'auto' }} />
-          </Box>
+    <>
+      <header className={`container-vms header-container${isHome ? '' : ' inner-header'}`}>
+        <div className="header-area">
+          <div className="logo">
+            <a href="/" onClick={(e) => { e.preventDefault(); go('/') }}>
+              <img src={logoDark} alt="Integrity Towing Solutions" />
+            </a>
+          </div>
+          <div className="header-right">
+            {/* Desktop menu */}
+            <div className="main-menu d-none d-lg-block">
+              <ul className="menu">
+                <li className={location.pathname === '/' ? 'current-menu-item' : ''}>
+                  <a href="/" onClick={(e) => { e.preventDefault(); go('/') }}>About</a>
+                </li>
+                <li className={`menu-item-has-children${location.pathname.startsWith('/services') ? ' current-page-ancestor' : ''}`}>
+                  <a href="#" onClick={(e) => e.preventDefault()}>Services</a>
+                  <ul className="sub-menu">
+                    <li className={location.pathname === '/services/private-property' ? 'current-menu-item' : ''}>
+                      <a href="/services/private-property" onClick={(e) => { e.preventDefault(); go('/services/private-property') }}>Private Property Towing</a>
+                    </li>
+                    <li className={location.pathname === '/services/emergency-response' ? 'current-menu-item' : ''}>
+                      <a href="/services/emergency-response" onClick={(e) => { e.preventDefault(); go('/services/emergency-response') }}>Emergency Response</a>
+                    </li>
+                    <li className={location.pathname === '/services/mass-relocation' ? 'current-menu-item' : ''}>
+                      <a href="/services/mass-relocation" onClick={(e) => { e.preventDefault(); go('/services/mass-relocation') }}>Mass Relocation</a>
+                    </li>
+                  </ul>
+                </li>
+                <li className={`menu-item-has-children${location.pathname.startsWith('/auction') ? ' current-page-ancestor' : ''}`}>
+                  <a href="#" onClick={(e) => e.preventDefault()}>Auction</a>
+                  <ul className="sub-menu">
+                    <li className={location.pathname === '/auction/raleigh' ? 'current-menu-item' : ''}>
+                      <a href="/auction/raleigh" onClick={(e) => { e.preventDefault(); go('/auction/raleigh') }}>Raleigh</a>
+                    </li>
+                    <li className={location.pathname === '/auction/durham' ? 'current-menu-item' : ''}>
+                      <a href="/auction/durham" onClick={(e) => { e.preventDefault(); go('/auction/durham') }}>Durham</a>
+                    </li>
+                    <li className={location.pathname === '/auction/greensboro' ? 'current-menu-item' : ''}>
+                      <a href="/auction/greensboro" onClick={(e) => { e.preventDefault(); go('/auction/greensboro') }}>Greensboro</a>
+                    </li>
+                  </ul>
+                </li>
+                <li className={location.pathname === '/find-my-vehicle' ? 'current-menu-item' : ''}>
+                  <a href="/find-my-vehicle" onClick={(e) => { e.preventDefault(); go('/find-my-vehicle') }}>Find My Vehicle</a>
+                </li>
+                <li>
+                  <a href={EMPLOYMENT_URL} target="_blank" rel="noopener noreferrer">Employment</a>
+                </li>
+                <li className={location.pathname === '/contact' ? 'current-menu-item' : ''}>
+                  <a href="/contact" onClick={(e) => { e.preventDefault(); go('/contact') }}>Contact</a>
+                </li>
+                <li className="menu-contact">
+                  <a href="tel:9197909393">(919) 790-9393</a>
+                </li>
+              </ul>
+            </div>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5, alignItems: 'center' }}>
-            <Button onClick={() => navigate('/')} sx={btnSx}>About</Button>
-
-            <Button endIcon={<KeyboardArrowDownIcon />} onClick={(e) => setServicesAnchor(e.currentTarget)} sx={btnSx}>
-              Services
-            </Button>
-            <Menu anchorEl={servicesAnchor} open={Boolean(servicesAnchor)} onClose={() => setServicesAnchor(null)} slotProps={{ paper: { sx: { mt: 1 } } }}>
-              {serviceLinks.map((link) => (
-                <MenuItem key={link.path} onClick={() => handleNavClick(link.path)} sx={{ fontFamily: "'Saira', sans-serif", fontSize: '0.9rem' }}>
-                  {link.label}
-                </MenuItem>
-              ))}
-            </Menu>
-
-            <Button endIcon={<KeyboardArrowDownIcon />} onClick={(e) => setAuctionAnchor(e.currentTarget)} sx={btnSx}>
-              Auction
-            </Button>
-            <Menu anchorEl={auctionAnchor} open={Boolean(auctionAnchor)} onClose={() => setAuctionAnchor(null)} slotProps={{ paper: { sx: { mt: 1 } } }}>
-              {auctionLinks.map((link) => (
-                <MenuItem key={link.path} onClick={() => handleNavClick(link.path)} sx={{ fontFamily: "'Saira', sans-serif", fontSize: '0.9rem' }}>
-                  {link.label}
-                </MenuItem>
-              ))}
-            </Menu>
-
-            <Button onClick={() => navigate('/find-my-vehicle')} sx={btnSx}>Find My Vehicle</Button>
-            <Button component="a" href={EMPLOYMENT_URL} target="_blank" rel="noopener noreferrer" sx={btnSx}>
-              Employment
-            </Button>
-            <Button onClick={() => navigate('/contact')} sx={btnSx}>Contact</Button>
-            <Button
-              component="a"
-              href="tel:9197909393"
-              sx={{
-                ...btnSx,
-                ml: 1,
-                background: '#ffffff',
-                color: '#1D2B45',
-                px: 2.5,
-                py: 0.9,
-                fontSize: '0.85rem',
-                borderRadius: 1,
-                '&:hover': { background: 'rgba(255,255,255,0.88)', color: '#1D2B45' },
-              }}
+            {/* Mobile hamburger */}
+            <button
+              className="d-lg-none hamburger-btn"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '8px' }}
+              aria-label="Open menu"
             >
-              (919) 790-9393
-            </Button>
-          </Box>
+              <span style={{ display: 'block', width: 24, height: 2, background: '#fff', marginBottom: 5 }} />
+              <span style={{ display: 'block', width: 24, height: 2, background: '#fff', marginBottom: 5 }} />
+              <span style={{ display: 'block', width: 24, height: 2, background: '#fff' }} />
+            </button>
+          </div>
+        </div>
+      </header>
 
-          <IconButton
-            color="inherit"
-            onClick={() => setMobileOpen(true)}
-            sx={{ display: { xs: 'flex', md: 'none' }, color: 'rgba(255,255,255,0.9)' }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </Container>
-
-      <Drawer anchor="right" open={mobileOpen} onClose={() => setMobileOpen(false)} sx={{ display: { xs: 'block', md: 'none' } }}>
-        {drawer}
-      </Drawer>
-    </AppBar>
+      {/* Mobile drawer */}
+      {mobileOpen && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 9999, display: 'flex' }}>
+          <div style={{ flex: 1, background: 'rgba(0,0,0,0.5)' }} onClick={() => setMobileOpen(false)} />
+          <div style={{ width: 280, background: '#fff', overflowY: 'auto', padding: '20px 0' }}>
+            <button onClick={() => setMobileOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'block', marginLeft: 'auto', padding: '0 20px 16px', fontSize: 22, color: '#1D2B45' }}>✕</button>
+            <nav>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                {[{ label: 'About', path: '/' }].map(({ label, path }) => (
+                  <li key={path} style={{ borderBottom: '1px solid #eee' }}>
+                    <a href={path} onClick={(e) => { e.preventDefault(); go(path) }} style={{ display: 'block', padding: '14px 20px', color: '#1D2B45', fontFamily: 'Saira, sans-serif', fontWeight: 600 }}>{label}</a>
+                  </li>
+                ))}
+                <li style={{ borderBottom: '1px solid #eee' }}>
+                  <button onClick={() => setServicesOpen(!servicesOpen)} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: '14px 20px', color: '#1D2B45', fontFamily: 'Saira, sans-serif', fontWeight: 600, fontSize: 18, cursor: 'pointer' }}>
+                    Services {servicesOpen ? '▲' : '▼'}
+                  </button>
+                  {servicesOpen && (
+                    <ul style={{ listStyle: 'none', padding: '0 0 0 20px', margin: 0, background: '#f9f9f9' }}>
+                      {[
+                        { label: 'Private Property Towing', path: '/services/private-property' },
+                        { label: 'Emergency Response', path: '/services/emergency-response' },
+                        { label: 'Mass Relocation', path: '/services/mass-relocation' },
+                      ].map(({ label, path }) => (
+                        <li key={path}>
+                          <a href={path} onClick={(e) => { e.preventDefault(); go(path) }} style={{ display: 'block', padding: '10px 20px', color: '#1D2B45', fontFamily: 'Saira, sans-serif' }}>{label}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+                <li style={{ borderBottom: '1px solid #eee' }}>
+                  <button onClick={() => setAuctionOpen(!auctionOpen)} style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', padding: '14px 20px', color: '#1D2B45', fontFamily: 'Saira, sans-serif', fontWeight: 600, fontSize: 18, cursor: 'pointer' }}>
+                    Auction {auctionOpen ? '▲' : '▼'}
+                  </button>
+                  {auctionOpen && (
+                    <ul style={{ listStyle: 'none', padding: '0 0 0 20px', margin: 0, background: '#f9f9f9' }}>
+                      {[
+                        { label: 'Raleigh', path: '/auction/raleigh' },
+                        { label: 'Durham', path: '/auction/durham' },
+                        { label: 'Greensboro', path: '/auction/greensboro' },
+                      ].map(({ label, path }) => (
+                        <li key={path}>
+                          <a href={path} onClick={(e) => { e.preventDefault(); go(path) }} style={{ display: 'block', padding: '10px 20px', color: '#1D2B45', fontFamily: 'Saira, sans-serif' }}>{label}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+                {[
+                  { label: 'Find My Vehicle', path: '/find-my-vehicle' },
+                  { label: 'Contact', path: '/contact' },
+                ].map(({ label, path }) => (
+                  <li key={path} style={{ borderBottom: '1px solid #eee' }}>
+                    <a href={path} onClick={(e) => { e.preventDefault(); go(path) }} style={{ display: 'block', padding: '14px 20px', color: '#1D2B45', fontFamily: 'Saira, sans-serif', fontWeight: 600 }}>{label}</a>
+                  </li>
+                ))}
+                <li style={{ borderBottom: '1px solid #eee' }}>
+                  <a href={EMPLOYMENT_URL} target="_blank" rel="noopener noreferrer" style={{ display: 'block', padding: '14px 20px', color: '#1D2B45', fontFamily: 'Saira, sans-serif', fontWeight: 600 }}>Employment</a>
+                </li>
+                <li>
+                  <a href="tel:9197909393" style={{ display: 'block', padding: '14px 20px', color: '#0057A5', fontFamily: 'Saira, sans-serif', fontWeight: 700 }}>(919) 790-9393</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

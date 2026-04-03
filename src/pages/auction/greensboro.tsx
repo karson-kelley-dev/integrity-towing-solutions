@@ -1,36 +1,74 @@
-import { Box, Container, Typography } from '@mui/material'
-
 function GreensboroAuction() {
   return (
-    <Box>
-      <Box
-        sx={{
-          background: 'linear-gradient(135deg, #1D2B45 0%, #2E4168 100%)',
-          py: { xs: 8, md: 10 },
-          textAlign: 'center',
-        }}
-      >
-        <Container maxWidth="md">
-          <Typography variant="h3" sx={{ color: '#ffffff', fontWeight: 800, mb: 2 }}>
-            Vehicle Auction — Greensboro
-          </Typography>
-          <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 2.5, borderRadius: 1 }} />
-          <Typography sx={{ color: '#3EAACC', fontSize: '1rem', fontWeight: 700, mb: 1 }}>
-            2040 Fairview Street, Greensboro, NC 27405
-          </Typography>
-          <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '1rem', lineHeight: 1.7 }}>
-            Upcoming auctions at our Greensboro location
-          </Typography>
-        </Container>
-      </Box>
-      <Box sx={{ py: { xs: 8, md: 10 } }}>
-        <Container maxWidth="lg">
-          <Typography sx={{ color: '#6B7A8D', lineHeight: 1.8 }}>
-            Auction schedule, upcoming listings, and bidding information coming soon.
-          </Typography>
-        </Container>
-      </Box>
-    </Box>
+    <>
+      {/* ── Hero Banner ── */}
+      <div className="home-banner-section">
+        <div
+          className="home-banner-container inner-banner"
+          style={{ backgroundImage: 'url(/theme-assets/bgr-home-banner.jpg)' }}
+        >
+          <div className="center-content">
+            <div className="banner-content">
+              <h3>Vehicle Auctions</h3>
+              <h1>Greensboro Auction</h1>
+              <p>
+                Bid on impounded and recovered vehicles at our Greensboro location. Auctions are held
+                regularly — call or check back for upcoming dates and listings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Content ── */}
+      <div className="center-content" style={{ padding: '80px 20px' }}>
+        <div className="row">
+          <div className="col-md-8">
+            <h2>Greensboro Vehicle Auction</h2>
+            <p>
+              <strong>Location:</strong> 2040 Fairview Street, Greensboro, NC 27405
+            </p>
+            <p>
+              ITS holds regular public auctions of impounded and unclaimed vehicles at our Greensboro
+              facility. Vehicles are sold as-is. All winning bidders must provide a valid photo ID and
+              payment at time of sale.
+            </p>
+
+            <h3>Auction Details</h3>
+            <ul>
+              <li>Auctions are open to the public</li>
+              <li>Valid government-issued photo ID required to bid</li>
+              <li>Payment due in full at time of purchase</li>
+              <li>Vehicles sold as-is, no warranties expressed or implied</li>
+              <li>Buyer responsible for towing or transport of purchased vehicle</li>
+            </ul>
+
+            <h3>Upcoming Auction Dates</h3>
+            <p>
+              Auction schedule and vehicle listings are updated regularly. Call us at{' '}
+              <a href="tel:9197909393">(919) 790-9393</a> for the current schedule and available
+              inventory.
+            </p>
+          </div>
+
+          <div className="col-md-4">
+            <div className="bg-light p-3" style={{ borderRadius: 8 }}>
+              <h3>Auction Info</h3>
+              <ul>
+                <li><strong>Location:</strong> 2040 Fairview Street, Greensboro, NC 27405</li>
+                <li><strong>Hours:</strong> By appointment / scheduled auction dates</li>
+                <li><strong>Phone:</strong> <a href="tel:9197909393">(919) 790-9393</a></li>
+              </ul>
+              <p style={{ marginTop: 16 }}>
+                <a href="tel:9197909393" className="lmore-btn-dark" style={{ display: 'block', textAlign: 'center' }}>
+                  Call for Schedule
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
