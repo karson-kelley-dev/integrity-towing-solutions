@@ -42,7 +42,7 @@ const btnSx = {
   letterSpacing: '0.3px',
   fontFamily: "'Saira', sans-serif",
   transition: 'color 0.2s ease',
-  '&:hover': { color: '#E1AD00', background: 'transparent' },
+  '&:hover': { color: 'rgba(255,255,255,0.7)', background: 'transparent' },
 }
 
 function Navbar() {
@@ -169,13 +169,13 @@ function Navbar() {
               sx={{
                 ...btnSx,
                 ml: 1,
-                background: '#E1AD00',
+                background: '#ffffff',
                 color: '#1D2B45',
                 px: 2.5,
                 py: 0.9,
                 fontSize: '0.85rem',
                 borderRadius: 1,
-                '&:hover': { background: '#c99c00', color: '#1D2B45' },
+                '&:hover': { background: 'rgba(255,255,255,0.88)', color: '#1D2B45' },
               }}
             >
               (919) 790-9393

@@ -40,7 +40,7 @@ const linkSx = {
   cursor: 'pointer',
   fontFamily: "'Saira', sans-serif",
   transition: 'color 0.2s ease',
-  '&:hover': { color: '#E1AD00' },
+  '&:hover': { color: '#3EAACC' },
 }
 
 function Footer() {

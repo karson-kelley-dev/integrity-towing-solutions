@@ -2,7 +2,7 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import { BarChart2, Calendar, Clock, Eye, MessageSquare, Settings, ShieldCheck, TrendingUp, Truck, UserCheck } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
+function TripleArrows({ color = '#0057A5', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
   const width = height * (117 / 60)
   return (
     <svg viewBox="0 0 117 60" width={width} height={height} style={{ opacity, display: 'block' }} xmlns="http://www.w3.org/2000/svg">
@@ -117,7 +117,7 @@ const benefits = [
 
 const tips = [
   { Icon: Calendar, title: 'Plan Ahead', description: 'Confirm volume, timeline, towing windows, and approved drop locations early to keep the move smooth.' },
-  { Icon: MessageSquare, title: 'Communicate Clearly', description: 'Align stakeholders on where vehicles go, when towing occurs, and what signage and notifications are required.' },
+  { Icon: MessageSquare, title: 'Communicate Clearly', description: 'Align stakeholders on where vehicles go, when towing occurs, and what signage/notifications are required.' },
   { Icon: BarChart2, title: 'Coordinate Logistics', description: 'Define access points, staging areas, sequencing, and any permitting needs before execution begins.' },
   { Icon: Eye, title: 'Monitor Progress', description: 'Stay aligned during the move with updates and a clear point of contact for adjustments.' },
   { Icon: ShieldCheck, title: 'Prioritize Safety', description: 'Ensure safe work zones, proper routing, and disciplined procedures throughout the project.' },
@@ -151,19 +151,6 @@ function MassRelocation() {
                 transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
                 <Typography
-                  sx={{
-                    color: '#E1AD00',
-                    fontWeight: 700,
-                    fontSize: '0.75rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    mb: 1.5,
-                    fontFamily: "'Saira', sans-serif",
-                  }}
-                >
-                  Services
-                </Typography>
-                <Typography
                   component="h1"
                   sx={{
                     fontWeight: 900,
@@ -177,7 +164,7 @@ function MassRelocation() {
                 >
                   Mass Relocation<br />Towing Services
                 </Typography>
-                <Box sx={{ width: 60, height: 4, background: '#E1AD00', mb: 3, borderRadius: 2 }} />
+                <Box sx={{ width: 60, height: 4, background: '#0057A5', mb: 3, borderRadius: 2 }} />
                 <Typography
                   sx={{
                     color: 'rgba(255,255,255,0.72)',
@@ -200,7 +187,7 @@ function MassRelocation() {
               >
                 <Box sx={{ position: 'relative' }}>
                   <Box sx={{ position: 'absolute', right: -40, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
-                    <TripleArrows color="#E1AD00" height={260} opacity={0.07} />
+                    <TripleArrows color="#0057A5" height={260} opacity={0.15} />
                   </Box>
                   <Box
                     sx={{
@@ -209,17 +196,14 @@ function MassRelocation() {
                       p: 3.5,
                       background: 'rgba(255,255,255,0.07)',
                       border: '1px solid rgba(255,255,255,0.12)',
-                      borderLeft: '3px solid #E1AD00',
+                      borderLeft: '3px solid #0057A5',
                       borderRadius: 2,
                       maxWidth: 320,
                     }}
                   >
-                    <Typography sx={{ color: '#E1AD00', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', mb: 1.5, fontFamily: "'Saira', sans-serif" }}>
-                      Who We Serve
-                    </Typography>
-                    {['Construction Projects', 'Real Estate Developments', 'Festivals & Events', 'Municipal Projects', 'Corporate Relocations', 'Universities & Schools'].map((item) => (
+                    {['Construction Projects', 'Real Estate Developments', 'Event Planning', 'Municipal Projects', 'Corporate Relocations', 'University & School Projects'].map((item) => (
                       <Box key={item} sx={{ display: 'flex', alignItems: 'center', gap: 1.25, py: 0.6, borderBottom: '1px solid rgba(255,255,255,0.07)', '&:last-child': { borderBottom: 'none' } }}>
-                        <Box sx={{ width: 5, height: 5, borderRadius: '50%', background: '#E1AD00', flexShrink: 0 }} />
+                        <Box sx={{ width: 5, height: 5, borderRadius: '50%', background: '#D9DADF', flexShrink: 0 }} />
                         <Typography sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.85rem', fontFamily: "'Saira', sans-serif" }}>{item}</Typography>
                       </Box>
                     ))}
@@ -249,26 +233,7 @@ function MassRelocation() {
                 viewport={{ once: false, amount: 0.2 }}
                 variants={fadeUp}
               >
-                <Typography
-                  sx={{
-                    color: '#0057A5',
-                    fontWeight: 700,
-                    fontSize: '0.75rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    mb: 1.5,
-                    fontFamily: "'Saira', sans-serif",
-                  }}
-                >
-                  Large-Scale Vehicle Moves
-                </Typography>
-                <Typography
-                  variant="h4"
-                  sx={{ fontWeight: 800, color: '#1D2B45', mb: 2, lineHeight: 1.2, fontSize: { xs: '1.7rem', md: '2rem' } }}
-                >
-                  Moving high volumes efficiently,<br />safely, and on schedule.
-                </Typography>
-                <Box sx={{ width: 48, height: 3, background: '#E1AD00', mb: 3, borderRadius: 1 }} />
+                <Box sx={{ width: 48, height: 3, background: '#0057A5', mb: 3, borderRadius: 1 }} />
                 <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, mb: 2.5, fontSize: '0.95rem' }}>
                   Need to relocate a large number of vehicles for a construction project, major event, or
                   property transition? ITS provides organized mass relocation towing services designed to move
@@ -281,7 +246,7 @@ function MassRelocation() {
                     fontWeight: 700,
                     fontSize: '1rem',
                     fontFamily: "'Saira', sans-serif",
-                    borderLeft: '3px solid #E1AD00',
+                    borderLeft: '3px solid #0057A5',
                     pl: 2,
                     lineHeight: 1.6,
                     mb: 3.5,
@@ -290,15 +255,16 @@ function MassRelocation() {
                   Efficient planning. Coordinated execution. Minimal disruption.
                 </Typography>
                 <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, mb: 2.5, fontSize: '0.95rem' }}>
+                  From staging and sequencing to safe drop locations and documentation, our team manages
+                  the details that keep large-scale moves on track. Whether you're relocating vehicles
+                  across a site or off-site for a defined window, ITS helps you protect timelines, reduce
+                  risk, and keep operations moving.
+                </Typography>
+                <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, mb: 2.5, fontSize: '0.95rem' }}>
                   When it comes to large-scale projects requiring the relocation of multiple vehicles, the
                   right partner is the difference between an orderly move and a logistical headache. ITS
                   supports property teams, contractors, and event stakeholders with experienced operators,
                   the right equipment, and a process built for high-volume coordination.
-                </Typography>
-                <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, fontSize: '0.95rem' }}>
-                  From staging and sequencing to safe drop locations and documentation, our team manages
-                  the details that keep large-scale moves on track — whether you're relocating vehicles
-                  across a site or off-site for a defined window.
                 </Typography>
               </motion.div>
             </Grid>
@@ -322,19 +288,6 @@ function MassRelocation() {
                 >
                   <Typography
                     sx={{
-                      color: '#E1AD00',
-                      fontWeight: 700,
-                      fontSize: '0.7rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '2px',
-                      mb: 1.25,
-                      fontFamily: "'Saira', sans-serif",
-                    }}
-                  >
-                    Who We Serve
-                  </Typography>
-                  <Typography
-                    sx={{
                       color: '#ffffff',
                       fontWeight: 800,
                       fontSize: '1.15rem',
@@ -345,7 +298,7 @@ function MassRelocation() {
                   >
                     Project Types
                   </Typography>
-                  <Box sx={{ width: 36, height: 3, background: '#E1AD00', mb: 2.5, borderRadius: 1 }} />
+                  <Box sx={{ width: 36, height: 3, background: '#0057A5', mb: 2.5, borderRadius: 1 }} />
 
                   {projectTypes.map(({ category, items }) => (
                     <Box key={category} sx={{ mb: 2.5 }}>
@@ -377,7 +330,7 @@ function MassRelocation() {
                                 width: 5,
                                 height: 5,
                                 borderRadius: '50%',
-                                background: 'rgba(225,173,0,0.6)',
+                                background: 'rgba(217,218,223,0.5)',
                                 flexShrink: 0,
                                 mt: '7px',
                               }}
@@ -398,10 +351,10 @@ function MassRelocation() {
       </Box>
 
       {/* ── Angle: intro → features ── */}
-      <AngleSeparator from="#ffffff" to="#F5F6F8" />
+      <AngleSeparator from="#ffffff" to="#D9DADF" />
 
       {/* ── Features ── */}
-      <Box sx={{ py: { xs: 7, md: 10 }, background: '#F5F6F8', position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ py: { xs: 7, md: 10 }, background: '#D9DADF', position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', left: '-10px', bottom: '-20px', pointerEvents: 'none', zIndex: 0 }}>
           <TripleArrows color="#1D2B45" height={120} opacity={0.03} />
         </Box>
@@ -414,26 +367,27 @@ function MassRelocation() {
           >
             <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography
-                sx={{
-                  color: '#0057A5',
-                  fontWeight: 700,
-                  fontSize: '0.75rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '2px',
-                  mb: 1.5,
-                  fontFamily: "'Saira', sans-serif",
-                }}
-              >
-                What We Bring
-              </Typography>
-              <Typography
                 variant="h4"
                 sx={{ fontWeight: 800, color: '#1D2B45', mb: 2, fontSize: { xs: '1.8rem', md: '2.2rem' } }}
               >
                 Features of Our Vehicle<br />Relocation Services
               </Typography>
-              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', borderRadius: 1 }} />
+              <Box sx={{ width: 48, height: 3, background: '#0057A5', mx: 'auto', borderRadius: 1 }} />
             </Box>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            variants={fadeUp}
+          >
+            <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, mb: 5, fontSize: '0.95rem', maxWidth: 760, mx: 'auto', textAlign: 'center' }}>
+              When it comes to large-scale projects requiring the relocation of multiple vehicles, the
+              right partner is the difference between an orderly move and a logistical headache. ITS
+              supports property teams, contractors, and event stakeholders with experienced operators,
+              the right equipment, and a process built for high-volume coordination.
+            </Typography>
           </motion.div>
 
           <motion.div
@@ -450,7 +404,7 @@ function MassRelocation() {
                       sx={{
                         background: '#ffffff',
                         border: '1px solid rgba(29,43,69,0.08)',
-                        borderTop: '3px solid #E1AD00',
+                        borderTop: '3px solid #0057A5',
                         borderRadius: 2,
                         p: 3.5,
                         height: '100%',
@@ -484,7 +438,7 @@ function MassRelocation() {
       </Box>
 
       {/* ── Wave: features → benefits ── */}
-      <WaveSeparator from="#F5F6F8" to="#1D2B45" flip />
+      <WaveSeparator from="#D9DADF" to="#1D2B45" flip />
 
       {/* ── Benefits ── */}
       <Box sx={{ py: { xs: 7, md: 10 }, background: '#1D2B45', position: 'relative', overflow: 'hidden' }}>
@@ -492,7 +446,7 @@ function MassRelocation() {
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
         {/* Watermark arrows */}
         <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
-          <TripleArrows color="#E1AD00" height={160} opacity={0.05} />
+          <TripleArrows color="#ffffff" height={160} opacity={0.04} />
         </Box>
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <motion.div
@@ -503,25 +457,12 @@ function MassRelocation() {
           >
             <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography
-                sx={{
-                  color: '#E1AD00',
-                  fontWeight: 700,
-                  fontSize: '0.75rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '2px',
-                  mb: 1.5,
-                  fontFamily: "'Saira', sans-serif",
-                }}
-              >
-                Why ITS
-              </Typography>
-              <Typography
                 variant="h4"
                 sx={{ fontWeight: 800, color: '#ffffff', mb: 2, fontSize: { xs: '1.8rem', md: '2.2rem' } }}
               >
                 Benefits of Choosing ITS
               </Typography>
-              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', borderRadius: 1 }} />
+              <Box sx={{ width: 48, height: 3, background: '#0057A5', mx: 'auto', borderRadius: 1 }} />
             </Box>
           </motion.div>
 
@@ -537,7 +478,7 @@ function MassRelocation() {
                   <motion.div variants={fadeUp} style={{ height: '100%' }}>
                     <Box sx={{ textAlign: 'center', px: 2 }}>
                       <Box sx={{ mb: 2.5, display: 'flex', justifyContent: 'center' }}>
-                        <Icon size={44} color="#E1AD00" strokeWidth={1.25} />
+                        <Icon size={44} color="#D9DADF" strokeWidth={1.25} />
                       </Box>
                       <Typography
                         sx={{
@@ -550,7 +491,7 @@ function MassRelocation() {
                       >
                         {title}
                       </Typography>
-                      <Typography sx={{ color: 'rgba(255,255,255,0.48)', fontSize: '0.875rem', lineHeight: 1.75 }}>
+                      <Typography sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.875rem', lineHeight: 1.75 }}>
                         {description}
                       </Typography>
                     </Box>
@@ -579,25 +520,12 @@ function MassRelocation() {
           >
             <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Typography
-                sx={{
-                  color: '#0057A5',
-                  fontWeight: 700,
-                  fontSize: '0.75rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '2px',
-                  mb: 1.5,
-                  fontFamily: "'Saira', sans-serif",
-                }}
-              >
-                Best Practices
-              </Typography>
-              <Typography
                 variant="h4"
                 sx={{ fontWeight: 800, color: '#1D2B45', mb: 2, fontSize: { xs: '1.8rem', md: '2.2rem' } }}
               >
                 Tips for a Successful Project Move
               </Typography>
-              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', borderRadius: 1 }} />
+              <Box sx={{ width: 48, height: 3, background: '#0057A5', mx: 'auto', borderRadius: 1 }} />
             </Box>
           </motion.div>
 
@@ -617,7 +545,7 @@ function MassRelocation() {
                         gap: 2.5,
                         p: 3,
                         border: '1px solid rgba(29,43,69,0.1)',
-                        borderLeft: '3px solid #E1AD00',
+                        borderLeft: '3px solid #0057A5',
                         borderRadius: 1,
                         height: '100%',
                       }}
@@ -627,7 +555,7 @@ function MassRelocation() {
                           width: 40,
                           height: 40,
                           borderRadius: '50%',
-                          background: '#0057A5',
+                          background: '#1D2B45',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
@@ -635,7 +563,7 @@ function MassRelocation() {
                           mt: 0.25,
                         }}
                       >
-                        <Icon size={17} color="#E1AD00" />
+                        <Icon size={17} color="#ffffff" />
                       </Box>
                       <Box>
                         <Typography
@@ -663,13 +591,13 @@ function MassRelocation() {
       </Box>
 
       {/* ── Wave: tips → CTA ── */}
-      <WaveSeparator from="#ffffff" to="#004A8F" flip />
+      <WaveSeparator from="#ffffff" to="#0057A5" flip />
 
       {/* ── CTA ── */}
-      <Box sx={{ background: '#004A8F', py: { xs: 7, md: 9 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ background: '#0057A5', py: { xs: 7, md: 9 }, position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
         <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
-          <TripleArrows color="#E1AD00" height={200} opacity={0.05} />
+          <TripleArrows color="#ffffff" height={200} opacity={0.06} />
         </Box>
         <Container maxWidth="sm" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
@@ -678,32 +606,55 @@ function MassRelocation() {
             viewport={{ once: false, amount: 0.4 }}
             variants={fadeUp}
           >
-            <Typography variant="h4" sx={{ fontWeight: 800, color: '#ffffff', mb: 2, fontSize: { xs: '1.6rem', md: '2rem' }, fontFamily: "'Saira', sans-serif" }}>
-              Planning a large-scale move?
+            <Typography variant="h4" sx={{ fontWeight: 800, color: '#ffffff', mb: 3, fontSize: { xs: '1.6rem', md: '2rem' }, fontFamily: "'Saira', sans-serif" }}>
+              Get In Touch
             </Typography>
-            <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 3, borderRadius: 1 }} />
-            <Typography sx={{ color: 'rgba(255,255,255,0.72)', mb: 4, lineHeight: 1.85, fontWeight: 500 }}>
-              Let's talk through the logistics. Our team is available 24/7 to help you plan and execute.
-            </Typography>
-            <Box
-              component="a"
-              href="tel:9197909393"
-              sx={{
-                display: 'inline-block',
-                background: '#E1AD00',
-                color: '#1D2B45',
-                fontWeight: 700,
-                px: 4,
-                py: 1.6,
-                fontSize: '0.95rem',
-                borderRadius: 1,
-                textDecoration: 'none',
-                fontFamily: "'Saira', sans-serif",
-                transition: 'background 0.2s',
-                '&:hover': { background: '#c99c00' },
-              }}
-            >
-              (919) 790-9393
+            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'center' }}>
+              <Box
+                component="a"
+                href="tel:9197909393"
+                sx={{
+                  display: 'inline-block',
+                  background: '#ffffff',
+                  color: '#1D2B45',
+                  fontWeight: 700,
+                  px: 4,
+                  py: 1.6,
+                  fontSize: '0.95rem',
+                  borderRadius: 1,
+                  textDecoration: 'none',
+                  fontFamily: "'Saira', sans-serif",
+                  transition: 'background 0.2s',
+                  width: { xs: '100%', sm: 'auto' },
+                  maxWidth: { xs: 320, sm: 'none' },
+                  '&:hover': { background: 'rgba(255,255,255,0.9)' },
+                }}
+              >
+                (919) 790-9393
+              </Box>
+              <Box
+                component="a"
+                href="/contact"
+                sx={{
+                  display: 'inline-block',
+                  background: 'transparent',
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  px: 4,
+                  py: 1.6,
+                  fontSize: '0.95rem',
+                  borderRadius: 1,
+                  textDecoration: 'none',
+                  fontFamily: "'Saira', sans-serif",
+                  border: '1px solid rgba(255,255,255,0.45)',
+                  transition: 'border-color 0.2s, background 0.2s',
+                  width: { xs: '100%', sm: 'auto' },
+                  maxWidth: { xs: 320, sm: 'none' },
+                  '&:hover': { borderColor: '#ffffff', background: 'rgba(255,255,255,0.08)' },
+                }}
+              >
+                Contact Us
+              </Box>
             </Box>
           </motion.div>
         </Container>

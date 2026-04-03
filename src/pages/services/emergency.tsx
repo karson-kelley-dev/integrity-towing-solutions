@@ -1,8 +1,8 @@
 import { Box, Container, Grid, Typography } from '@mui/material'
-import { AlertTriangle, Ban, Calendar, Car, FileText, Lock, Shield, Truck } from 'lucide-react'
+import { AlertTriangle, Ban, Car, Calendar, FileText, Lock, Shield, Truck } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-function TripleArrows({ color = '#E1AD00', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
+function TripleArrows({ color = '#0057A5', height = 60, opacity = 1 }: { color?: string; height?: number; opacity?: number }) {
   const width = height * (117 / 60)
   return (
     <svg viewBox="0 0 117 60" width={width} height={height} style={{ opacity, display: 'block' }} xmlns="http://www.w3.org/2000/svg">
@@ -69,7 +69,7 @@ const services = [
   },
   {
     Icon: Calendar,
-    title: 'Relocation for Public Events & Construction Projects',
+    title: 'Relocation of Vehicles for Public Events & Construction Projects',
     description: 'Organized relocations to support event operations and construction access with minimal disruption.',
   },
   {
@@ -81,17 +81,13 @@ const services = [
 
 const sidebarServices = [
   'Emergency Response Towing',
-  'Accident Scene Management',
-  'Vehicle Removal',
+  'Accident Scene Management & Vehicle Removal',
   'Impound Services',
   'Illegal Parking Enforcement',
   'Abandoned Vehicle Removal',
-  'Evidence Towing',
-  'Secure Storage',
-  'Relocation for Public Events',
-  'Construction Project Support',
+  'Evidence Towing & Secure Storage',
+  'Relocation of Vehicles for Public Events & Construction Projects',
   'Secure Transport of Seized Vehicles',
-  'First Responder Coordination',
 ]
 
 function EmergencyResponse() {
@@ -122,19 +118,6 @@ function EmergencyResponse() {
                 transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
                 <Typography
-                  sx={{
-                    color: '#E1AD00',
-                    fontWeight: 700,
-                    fontSize: '0.75rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    mb: 1.5,
-                    fontFamily: "'Saira', sans-serif",
-                  }}
-                >
-                  Services
-                </Typography>
-                <Typography
                   component="h1"
                   sx={{
                     fontWeight: 900,
@@ -148,7 +131,7 @@ function EmergencyResponse() {
                 >
                   Emergency Response &<br />Accident Scene Management
                 </Typography>
-                <Box sx={{ width: 60, height: 4, background: '#E1AD00', mb: 3, borderRadius: 2 }} />
+                <Box sx={{ width: 60, height: 4, background: '#0057A5', mb: 3, borderRadius: 2 }} />
                 <Typography
                   sx={{
                     color: 'rgba(255,255,255,0.72)',
@@ -171,7 +154,7 @@ function EmergencyResponse() {
               >
                 <Box sx={{ position: 'relative' }}>
                   <Box sx={{ position: 'absolute', right: -40, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
-                    <TripleArrows color="#E1AD00" height={260} opacity={0.07} />
+                    <TripleArrows color="#0057A5" height={260} opacity={0.07} />
                   </Box>
                   <Box
                     sx={{
@@ -180,17 +163,14 @@ function EmergencyResponse() {
                       p: 3.5,
                       background: 'rgba(255,255,255,0.07)',
                       border: '1px solid rgba(255,255,255,0.12)',
-                      borderLeft: '3px solid #E1AD00',
+                      borderLeft: '3px solid #0057A5',
                       borderRadius: 2,
                       maxWidth: 320,
                     }}
                   >
-                    <Typography sx={{ color: '#E1AD00', fontWeight: 700, fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '2px', mb: 1.5, fontFamily: "'Saira', sans-serif" }}>
-                      Response Capabilities
-                    </Typography>
-                    {['Emergency Towing', 'Accident Scene Clearing', 'Impound Services', 'Abandoned Vehicle Removal', 'Evidence Towing', 'Secure Vehicle Transport', 'First Responder Coordination'].map((item) => (
+                    {sidebarServices.map((item) => (
                       <Box key={item} sx={{ display: 'flex', alignItems: 'center', gap: 1.25, py: 0.6, borderBottom: '1px solid rgba(255,255,255,0.07)', '&:last-child': { borderBottom: 'none' } }}>
-                        <Box sx={{ width: 5, height: 5, borderRadius: '50%', background: '#E1AD00', flexShrink: 0 }} />
+                        <Box sx={{ width: 5, height: 5, borderRadius: '50%', background: '#0057A5', flexShrink: 0 }} />
                         <Typography sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.85rem', fontFamily: "'Saira', sans-serif" }}>{item}</Typography>
                       </Box>
                     ))}
@@ -220,26 +200,7 @@ function EmergencyResponse() {
                 viewport={{ once: false, amount: 0.2 }}
                 variants={fadeUp}
               >
-                <Typography
-                  sx={{
-                    color: '#0057A5',
-                    fontWeight: 700,
-                    fontSize: '0.75rem',
-                    textTransform: 'uppercase',
-                    letterSpacing: '2px',
-                    mb: 1.5,
-                    fontFamily: "'Saira', sans-serif",
-                  }}
-                >
-                  When Seconds Count
-                </Typography>
-                <Typography
-                  variant="h4"
-                  sx={{ fontWeight: 800, color: '#1D2B45', mb: 2, lineHeight: 1.2, fontSize: { xs: '1.7rem', md: '2rem' } }}
-                >
-                  When an incident blocks access,<br />response time and coordination matter.
-                </Typography>
-                <Box sx={{ width: 48, height: 3, background: '#E1AD00', mb: 3, borderRadius: 1 }} />
+                <Box sx={{ width: 48, height: 3, background: '#0057A5', mb: 3, borderRadius: 1 }} />
                 <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, mb: 2.5, fontSize: '0.95rem' }}>
                   When an incident blocks access, disrupts traffic flow, or creates a safety risk, response time
                   and coordination matter. ITS provides emergency response towing and accident scene support to
@@ -252,7 +213,7 @@ function EmergencyResponse() {
                     fontWeight: 700,
                     fontSize: '1rem',
                     fontFamily: "'Saira', sans-serif",
-                    borderLeft: '3px solid #E1AD00',
+                    borderLeft: '3px solid #0057A5',
                     pl: 2,
                     lineHeight: 1.6,
                     mb: 3.5,
@@ -266,6 +227,14 @@ function EmergencyResponse() {
                   our team follows disciplined procedures and uses the right equipment to remove vehicles
                   with care and precision.
                 </Typography>
+
+                <Typography
+                  variant="h4"
+                  sx={{ fontWeight: 800, color: '#1D2B45', mb: 2, mt: 1, lineHeight: 1.2, fontSize: { xs: '1.4rem', md: '1.6rem' } }}
+                >
+                  Supporting Public Safety Partners Across North Carolina
+                </Typography>
+                <Box sx={{ width: 40, height: 3, background: '#0057A5', mb: 2.5, borderRadius: 1 }} />
                 <Typography sx={{ color: '#6B7A8D', lineHeight: 1.85, fontSize: '0.95rem' }}>
                   Emergency work leaves no margin for error. ITS brings trained operators, coordinated
                   dispatch, and the resources to handle complex removals and recoveries — without creating
@@ -294,19 +263,6 @@ function EmergencyResponse() {
                 >
                   <Typography
                     sx={{
-                      color: '#E1AD00',
-                      fontWeight: 700,
-                      fontSize: '0.7rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '2px',
-                      mb: 1.25,
-                      fontFamily: "'Saira', sans-serif",
-                    }}
-                  >
-                    What We Handle
-                  </Typography>
-                  <Typography
-                    sx={{
                       color: '#ffffff',
                       fontWeight: 800,
                       fontSize: '1.15rem',
@@ -317,7 +273,7 @@ function EmergencyResponse() {
                   >
                     Emergency Response Services
                   </Typography>
-                  <Box sx={{ width: 36, height: 3, background: '#E1AD00', mb: 2.5, borderRadius: 1 }} />
+                  <Box sx={{ width: 36, height: 3, background: '#0057A5', mb: 2.5, borderRadius: 1 }} />
                   <Box component="ul" sx={{ m: 0, pl: 0, listStyle: 'none' }}>
                     {sidebarServices.map((item) => (
                       <Box
@@ -337,7 +293,7 @@ function EmergencyResponse() {
                             width: 6,
                             height: 6,
                             borderRadius: '50%',
-                            background: '#E1AD00',
+                            background: '#0057A5',
                             flexShrink: 0,
                             mt: '7px',
                           }}
@@ -364,39 +320,9 @@ function EmergencyResponse() {
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.055) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
         {/* Watermark arrows */}
         <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
-          <TripleArrows color="#E1AD00" height={160} opacity={0.05} />
+          <TripleArrows color="#0057A5" height={160} opacity={0.05} />
         </Box>
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-            variants={fadeUp}
-          >
-            <Box sx={{ textAlign: 'center', mb: 6 }}>
-              <Typography
-                sx={{
-                  color: '#E1AD00',
-                  fontWeight: 700,
-                  fontSize: '0.75rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '2px',
-                  mb: 1.5,
-                  fontFamily: "'Saira', sans-serif",
-                }}
-              >
-                Supporting Public Safety Partners
-              </Typography>
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: 800, color: '#ffffff', mb: 2, fontSize: { xs: '1.8rem', md: '2.2rem' } }}
-              >
-                Our Emergency Response Capabilities
-              </Typography>
-              <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', borderRadius: 1 }} />
-            </Box>
-          </motion.div>
-
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -410,7 +336,7 @@ function EmergencyResponse() {
                     <Box
                       sx={{
                         background: '#ffffff',
-                        borderTop: '3px solid #E1AD00',
+                        borderTop: '3px solid #0057A5',
                         borderRadius: 2,
                         p: 3,
                         height: '100%',
@@ -445,13 +371,13 @@ function EmergencyResponse() {
       </Box>
 
       {/* ── Wave: services grid → CTA ── */}
-      <WaveSeparator from="#1D2B45" to="#004A8F" flip />
+      <WaveSeparator from="#1D2B45" to="#0057A5" flip />
 
       {/* ── CTA ── */}
-      <Box sx={{ background: '#004A8F', py: { xs: 7, md: 9 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ background: '#0057A5', py: { xs: 7, md: 9 }, position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none', zIndex: 0 }} />
         <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', zIndex: 0 }}>
-          <TripleArrows color="#E1AD00" height={200} opacity={0.05} />
+          <TripleArrows color="#0057A5" height={200} opacity={0.08} />
         </Box>
         <Container maxWidth="sm" sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
           <motion.div
@@ -460,12 +386,8 @@ function EmergencyResponse() {
             viewport={{ once: false, amount: 0.4 }}
             variants={fadeUp}
           >
-            <Typography variant="h4" sx={{ fontWeight: 800, color: '#ffffff', mb: 2, fontSize: { xs: '1.6rem', md: '2rem' }, fontFamily: "'Saira', sans-serif" }}>
-              Need emergency response?
-            </Typography>
-            <Box sx={{ width: 48, height: 3, background: '#E1AD00', mx: 'auto', mb: 3, borderRadius: 1 }} />
-            <Typography sx={{ color: 'rgba(255,255,255,0.72)', mb: 4, lineHeight: 1.85, fontWeight: 500 }}>
-              Our dispatch team is available 24/7. Call us now for immediate assistance.
+            <Typography variant="h4" sx={{ fontWeight: 800, color: '#ffffff', mb: 3, fontSize: { xs: '1.6rem', md: '2rem' }, fontFamily: "'Saira', sans-serif" }}>
+              Get In Touch
             </Typography>
             <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexDirection: { xs: 'column', sm: 'row' }, alignItems: 'center' }}>
               <Box
@@ -473,7 +395,7 @@ function EmergencyResponse() {
                 href="tel:9197909393"
                 sx={{
                   display: 'inline-block',
-                  background: '#E1AD00',
+                  background: '#ffffff',
                   color: '#1D2B45',
                   fontWeight: 700,
                   px: 4,
@@ -483,10 +405,35 @@ function EmergencyResponse() {
                   textDecoration: 'none',
                   fontFamily: "'Saira', sans-serif",
                   transition: 'background 0.2s',
-                  '&:hover': { background: '#c99c00' },
+                  width: { xs: '100%', sm: 'auto' },
+                  maxWidth: { xs: 320, sm: 'none' },
+                  '&:hover': { background: 'rgba(255,255,255,0.9)' },
                 }}
               >
                 (919) 790-9393
+              </Box>
+              <Box
+                component="a"
+                href="/contact"
+                sx={{
+                  display: 'inline-block',
+                  background: 'transparent',
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  px: 4,
+                  py: 1.6,
+                  fontSize: '0.95rem',
+                  borderRadius: 1,
+                  textDecoration: 'none',
+                  fontFamily: "'Saira', sans-serif",
+                  border: '1px solid rgba(255,255,255,0.45)',
+                  transition: 'border-color 0.2s, background 0.2s',
+                  width: { xs: '100%', sm: 'auto' },
+                  maxWidth: { xs: 320, sm: 'none' },
+                  '&:hover': { borderColor: '#ffffff', background: 'rgba(255,255,255,0.08)' },
+                }}
+              >
+                Contact Us
               </Box>
             </Box>
           </motion.div>
