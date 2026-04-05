@@ -1,9 +1,9 @@
 import QuoteForm from '../../components/QuoteForm'
 
 const serviceCards = [
-  { icon: '/images/icon-ppi.png', title: 'Property Manager Portal', description: 'Real-time visibility into parking trends, issues, and violations — plus a centralized place to track and manage every parking enforcement request.' },
+  { icon: '/images/icon-its-white.png', title: 'Property Manager Portal', description: 'Real-time visibility into parking trends, issues, and violations — plus a centralized place to track and manage every parking enforcement request.', imgStyle: { transform: 'scale(1.6)', transformOrigin: 'left center', marginLeft: '-22px' } },
   { icon: '/images/icon-custom-policies.png', title: 'Custom Program Tailored for Your Community', description: 'A parking enforcement plan built around your property type, resident flow, and problem areas — not a one-size-fits-all template.' },
-  { icon: '/images/icon-roadside.png', title: 'Signage & Install', description: 'Professional, compliant signage — assessed for your layout and installed so expectations are clear and enforcement is defensible.' },
+  { icon: '/images/icon-sign.svg', title: 'Signage & Install', description: 'Professional, compliant signage — assessed for your layout and installed so expectations are clear and enforcement is defensible.' },
   { icon: '/images/icon-account-manager.png', title: 'Account Manager', description: 'A dedicated point of contact who knows your property, helps manage updates, and keeps the program running smoothly.' },
   { icon: '/images/icon-immediate-towing.png', title: 'Immediate Towing', description: 'When violations impact safety, access, or operations, we respond quickly to remove unauthorized vehicles and restore order.' },
   { icon: '/images/icon-parking-permits.png', title: 'Parking Permits', description: 'A structured permit process that helps residents and guests park correctly and reduces confusion, disputes, and unnecessary escalations.' },
@@ -64,10 +64,10 @@ function PrivatePropertyTowing() {
               </p>
             </div>
             <div className="our-services-col-area">
-              {serviceCards.map(({ icon, title, description }) => (
+              {serviceCards.map(({ icon, title, description, imgStyle }) => (
                 <div className="our-services-col" key={title}>
                   <div className="svs-icon">
-                    <img src={icon} alt={title} />
+                    <img src={icon} alt={title} style={imgStyle} />
                   </div>
                   <h5>{title}</h5>
                   <p>{description}</p>

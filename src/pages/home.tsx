@@ -1,5 +1,5 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import QuoteForm from '../components/QuoteForm'
 
 const services = [
   {
@@ -32,35 +32,34 @@ const testimonials = [
 
 function Home() {
   const navigate = useNavigate()
+  const [tstIndex, setTstIndex] = useState(0)
+
+  const prev = () => setTstIndex((i) => (i - 1 + testimonials.length) % testimonials.length)
+  const next = () => setTstIndex((i) => (i + 1) % testimonials.length)
+
+  const { quote, name, source } = testimonials[tstIndex]
 
   return (
     <>
       {/* ── Hero Banner ── */}
       <div className="home-banner-section">
         <div
-          className="home-banner-container home-banner has-form"
+          className="home-banner-container home-banner"
           style={{ backgroundImage: 'url(/theme-assets/bgr-home-banner.jpg)' }}
         >
           <div className="center-content">
-            <div className="row">
-              <div className="banner-content mb-5 col-md-6">
-                <div className="me-md-4">
-                  <h3>Parking Management &amp; Towing Services</h3>
-                  <h1>Parking Management<br />Done Right.</h1>
-                  <p>
-                    Serving the Triangle and Triad of North Carolina. When you choose ITS, you're choosing
-                    a towing partner where <strong>reliability, compliance, and documentation</strong> are
-                    the standard — not the exception.
-                  </p>
-                </div>
-              </div>
-              <div className="banner-form col-md-6 p-5">
-                <h4 style={{ textAlign: 'center' }}>For 24 Hour Immediate Service:</h4>
-                <p style={{ textAlign: 'center' }}>
-                  <a className="lmore-btn-dark" href="tel:9197909393">Call: (919) 790-9393</a>
-                </p>
-                <QuoteForm heading="Request a Quote:" defaultSubject="General Inquiry" />
-              </div>
+            <div className="banner-content">
+              <h3>Parking Management &amp; Towing Services</h3>
+              <h1>Parking Management<br />Done Right.</h1>
+              <p>
+                ITS is committed to being your preferred towing and parking enforcement partner across the
+                Triangle and Triad of North Carolina. With trained professionals, compliant processes, and
+                data-driven operations, our mission is to bring accountability and reliability to parking
+                enforcement — consistently, across every property we manage.
+              </p>
+              <p style={{ marginTop: 24 }}>
+                <a className="lmore-btn-dark" href="tel:9197909393">Call: (919) 790-9393</a>
+              </p>
             </div>
           </div>
         </div>
@@ -70,15 +69,6 @@ function Home() {
       <div className="container-vms our-services-container">
         <div className="center-content">
           <div className="our-services-area">
-            <div className="our-services-top-cont">
-              <h2>About Integrity Towing Solutions</h2>
-              <p>
-                ITS is committed to being your preferred towing and parking enforcement partner across the
-                Triangle and Triad of North Carolina. With trained professionals, compliant processes, and
-                data-driven operations, our mission is to bring accountability and reliability to parking
-                enforcement — consistently, across every property we manage.
-              </p>
-            </div>
             <div className="our-services-col-area">
               {services.map(({ icon, title, description, path, btnLabel }) => (
                 <div className="our-services-col" key={title}>
@@ -105,23 +95,56 @@ function Home() {
 
       {/* ── Testimonials ── */}
       <div className="container testimonial-container">
-        <div className="testimonial-slider-area">
-          <div className="row">
-            {testimonials.map(({ quote, name, source }, i) => (
-              <div key={i} className="col-md-6">
-                <div className="tst-item-cont">
-                  <div className="tst-item-cont-info">
-                    <div className="qut" />
-                    <p>{quote}</p>
-                    <div className="author">
-                      <strong>{name}</strong>
-                      <small>{source}</small>
-                    </div>
-                  </div>
-                </div>
+        <div className="testimonial-slider-area" style={{ position: 'relative' }}>
+          {/* Prev arrow */}
+          <button
+            onClick={prev}
+            aria-label="Previous testimonial"
+            style={{
+              background: `#fff url(/theme-assets/bgr-testimonial-prev.png) no-repeat center center / 19px 16px`,
+              width: 50,
+              height: 50,
+              border: '2px solid #1D2B45',
+              borderRadius: '50%',
+              position: 'absolute',
+              left: -10,
+              top: '55%',
+              transform: 'translateY(-55%)',
+              cursor: 'pointer',
+              zIndex: 10,
+            }}
+          />
+
+          {/* Single testimonial card */}
+          <div className="tst-item-cont">
+            <div className="tst-item-cont-info">
+              <div className="qut" />
+              <p>{quote}</p>
+              <div className="author">
+                <strong>{name}</strong>
+                <small>{source}</small>
               </div>
-            ))}
+            </div>
           </div>
+
+          {/* Next arrow */}
+          <button
+            onClick={next}
+            aria-label="Next testimonial"
+            style={{
+              background: `#fff url(/theme-assets/bgr-testimonial-prev.png) no-repeat center center / 19px 16px`,
+              width: 50,
+              height: 50,
+              border: '2px solid #1D2B45',
+              borderRadius: '50%',
+              position: 'absolute',
+              right: -10,
+              top: '55%',
+              transform: 'translateY(-55%) rotate(180deg)',
+              cursor: 'pointer',
+              zIndex: 10,
+            }}
+          />
         </div>
       </div>
     </>

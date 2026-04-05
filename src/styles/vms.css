@@ -249,7 +249,7 @@ img {
 .main-menu ul li.current-page-ancestor > a,
 .main-menu ul li:hover > a,
 .main-menu ul li a:hover {
-	color: #1D2B45;
+	color: #0057A5;
 }
 .main-menu ul li.menu-item-has-children a {
 	position: relative;
@@ -329,7 +329,8 @@ img {
 .main-menu ul li a:hover,
 .main-menu ul li:hover > a,
 .main-menu ul li.current-menu-item > a:after,
-.main-menu ul li.current-menu-item > a {
+.main-menu ul li.current-menu-item > a,
+.main-menu ul li.current-page-ancestor > a {
 	color: #0057A5;
 }
 .main-menu ul li:hover > a:after,
@@ -368,15 +369,6 @@ img {
 .main-menu ul li.menu-contact a:hover {
 	background: #0057A5;
 	color: #fff;
-}
-.inner-header .main-menu ul li a {
-	color: #1D2B45;
-}
-.inner-header .main-menu ul li.current-menu-item > a,
-.inner-header .main-menu ul li.current-page-ancestor > a,
-.inner-header .main-menu ul li:hover > a,
-.inner-header .main-menu ul li a:hover {
-	color: #1D2B45;
 }
 
 /*-----------------------*/
