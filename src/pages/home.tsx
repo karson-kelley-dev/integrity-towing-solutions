@@ -11,7 +11,6 @@ import CheckIcon from '@mui/icons-material/Check'
 import BusinessIcon from '@mui/icons-material/Business'
 import MapIcon from '@mui/icons-material/Map'
 import VerifiedIcon from '@mui/icons-material/Verified'
-import QuoteForm from '../components/QuoteForm'
 
 // ─── Brand constants ───────────────────────────────────────────────────────
 const NAVY = '#1D2B45'
@@ -95,8 +94,8 @@ export default function Home() {
         sx={{
           bgcolor: NAVY,
           ...DOT_GRID,
-          pt: { xs: 10, md: 14 },
-          pb: { xs: 8, md: 12 },
+          pt: { xs: 9, md: 11 },
+          pb: { xs: 7, md: 9 },
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -115,47 +114,45 @@ export default function Home() {
           }}
         />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Grid container spacing={{ xs: 6, md: 8 }} alignItems="center">
-            {/* Left: copy */}
-            <Grid size={{ xs: 12, md: 7 }}>
-              <Typography
-                variant="overline"
-                sx={{
-                  color: TEAL,
-                  fontWeight: 700,
-                  letterSpacing: '0.12em',
-                  fontSize: '0.8rem',
-                  display: 'block',
-                  mb: 1.5,
-                }}
-              >
-                Parking Management &amp; Towing Services
-              </Typography>
+          {/* Overline above both columns */}
+          <Typography
+            variant="overline"
+            sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 2 }}
+          >
+            Parking Management &amp; Towing Services
+          </Typography>
 
+          {/* Two-column split: headline left, copy + CTAs right */}
+          <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
+            {/* Left: big headline */}
+            <Grid size={{ xs: 12, md: 6 }}>
               <Typography
                 component="h1"
                 sx={{
                   fontFamily: "'Saira', sans-serif",
                   fontWeight: 800,
-                  fontSize: { xs: '2.6rem', sm: '3.2rem', md: '3.8rem', lg: '4.25rem' },
+                  fontSize: { xs: '2.8rem', sm: '3.4rem', md: '4rem', lg: '4.5rem' },
                   color: '#fff',
-                  lineHeight: 1.08,
+                  lineHeight: 1.05,
                   letterSpacing: '-0.02em',
-                  mb: 3,
                 }}
               >
                 Parking Management
                 <Box component="span" sx={{ color: TEAL, display: 'block' }}>Done Right.</Box>
               </Typography>
+            </Grid>
 
+            {/* Right: body copy + CTAs */}
+            <Grid size={{ xs: 12, md: 6 }}>
+              {/* Thin teal rule to visually connect to the headline */}
+              <Box sx={{ width: 40, height: 3, bgcolor: TEAL, borderRadius: 2, mb: 2.5, display: { xs: 'none', md: 'block' } }} />
               <Typography
                 variant="body1"
                 sx={{
                   color: 'rgba(255,255,255,0.72)',
-                  fontSize: { xs: '1rem', md: '1.125rem' },
+                  fontSize: { xs: '1rem', md: '1.0625rem' },
                   lineHeight: 1.8,
-                  maxWidth: 560,
-                  mb: 4,
+                  mb: 3.5,
                 }}
               >
                 ITS is committed to being your preferred towing and parking enforcement partner across the
@@ -202,30 +199,6 @@ export default function Home() {
                   Our Services
                 </Button>
               </Box>
-            </Grid>
-
-            {/* Right: quote form card */}
-            <Grid size={{ xs: 12, md: 5 }}>
-              <Paper
-                elevation={0}
-                sx={{
-                  bgcolor: '#fff',
-                  borderRadius: 3,
-                  p: { xs: 3, md: 4 },
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  boxShadow: '0 24px 64px rgba(0,0,0,0.28)',
-                }}
-              >
-                <Box sx={{ borderLeft: `4px solid ${TEAL}`, pl: 2, mb: 3 }}>
-                  <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700, mb: 0.25 }}>
-                    Request a Free Quote
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: '#6b7a8d' }}>
-                    We typically respond within 1 business hour.
-                  </Typography>
-                </Box>
-                <QuoteForm heading="" defaultSubject="Homepage Quote Request" />
-              </Paper>
             </Grid>
           </Grid>
         </Container>
@@ -309,11 +282,20 @@ export default function Home() {
                   }}
                 >
                   <Box
-                    component="img"
-                    src={icon}
-                    alt={title}
-                    sx={{ height: 52, width: 'auto', objectFit: 'contain', objectPosition: 'left', mb: 2.5 }}
-                  />
+                    sx={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: 2,
+                      bgcolor: NAVY,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mb: 2.5,
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Box component="img" src={icon} alt={title} sx={{ height: 30, width: 'auto' }} />
+                  </Box>
                   <Typography variant="h5" sx={{ color: NAVY, mb: 1.5, fontSize: '1.2rem' }}>
                     {title}
                   </Typography>

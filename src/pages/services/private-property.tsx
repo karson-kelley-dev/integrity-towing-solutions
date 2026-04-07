@@ -118,7 +118,9 @@ export default function PrivatePropertyTowing() {
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }, gap: 3 }}>
             {SERVICE_CARDS.map(({ icon, title, description }) => (
               <Paper key={title} elevation={0} sx={{ p: 3.5, border: '1px solid #e8ecf0', borderTop: `4px solid ${TEAL}`, borderRadius: 2, display: 'flex', flexDirection: 'column', gap: 2, transition: 'box-shadow 0.2s', '&:hover': { boxShadow: '0 8px 32px rgba(0,0,0,0.08)' } }}>
-                <Box component="img" src={icon} alt={title} sx={{ height: 44, width: 'auto', objectFit: 'contain', objectPosition: 'left' }} />
+                <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Box component="img" src={icon} alt={title} sx={{ height: 28, width: 'auto' }} />
+                </Box>
                 <Typography variant="h6" sx={{ color: NAVY, fontSize: '1.05rem' }}>{title}</Typography>
                 <Typography variant="body2" sx={{ color: '#4a5568', lineHeight: 1.75 }}>{description}</Typography>
               </Paper>

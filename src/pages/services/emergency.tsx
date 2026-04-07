@@ -137,7 +137,9 @@ export default function EmergencyResponse() {
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(4, 1fr)' }, gap: 3 }}>
             {SERVICE_CARDS.map(({ icon, title, description }) => (
               <Paper key={title} elevation={0} sx={{ p: 3, border: '1px solid #e8ecf0', borderTop: `4px solid ${TEAL}`, borderRadius: 2, display: 'flex', flexDirection: 'column', gap: 1.5, transition: 'box-shadow 0.2s', '&:hover': { boxShadow: '0 8px 32px rgba(0,0,0,0.08)' } }}>
-                <Box component="img" src={icon} alt={title} sx={{ height: 40, width: 'auto', objectFit: 'contain', objectPosition: 'left' }} />
+                <Box sx={{ width: 48, height: 48, borderRadius: 2, bgcolor: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Box component="img" src={icon} alt={title} sx={{ height: 26, width: 'auto' }} />
+                </Box>
                 <Typography variant="h6" sx={{ color: NAVY, fontSize: '0.975rem' }}>{title}</Typography>
                 <Typography variant="body2" sx={{ color: '#4a5568', lineHeight: 1.7 }}>{description}</Typography>
               </Paper>

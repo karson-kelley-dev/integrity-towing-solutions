@@ -23,7 +23,11 @@ import CloseIcon from '@mui/icons-material/Close'
 import PhoneIcon from '@mui/icons-material/Phone'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import logoDark from '../assets/logo.svg'
+import itsIcon from '../assets/its-icon.png'
+
+const PORTAL_URL = 'https://portal.integritytow.com/login'
 
 const EMPLOYMENT_URL =
   'https://recruiting.paylocity.com/recruiting/jobs/All/c1bb61df-a5f3-4474-8acd-c589dceb0778/Integrity-Towing-Solutions?source=Indeed_Feed'
@@ -207,8 +211,44 @@ export default function Navbar() {
               </Button>
             </Box>
 
-            {/* Desktop right: phone + CTA */}
+            {/* Desktop right: portal + phone + CTA */}
             <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 2, ml: 'auto', flexShrink: 0 }}>
+              {/* Client Portal button */}
+              <Box
+                component="a"
+                href={PORTAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  bgcolor: '#fff',
+                  borderRadius: '6px',
+                  px: 1.5,
+                  py: 0.75,
+                  textDecoration: 'none',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+                  transition: 'box-shadow 0.15s, transform 0.15s',
+                  '&:hover': { boxShadow: '0 4px 16px rgba(0,0,0,0.3)', transform: 'translateY(-1px)', textDecoration: 'none' },
+                }}
+              >
+                <Box
+                  component="img"
+                  src={itsIcon}
+                  alt="ITS Client Portal"
+                  sx={{ height: 28, width: 'auto' }}
+                />
+                <Box sx={{ borderLeft: '1px solid rgba(29,43,69,0.15)', pl: 1 }}>
+                  <Typography sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 700, fontSize: '0.7rem', color: '#1D2B45', lineHeight: 1.1, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    Client
+                  </Typography>
+                  <Typography sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 700, fontSize: '0.7rem', color: '#3EAACC', lineHeight: 1.1, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    Portal
+                  </Typography>
+                </Box>
+              </Box>
+
               <Box
                 component="a"
                 href="tel:9197909393"
@@ -340,7 +380,31 @@ export default function Navbar() {
           <Divider />
         </List>
 
-        <Box sx={{ p: 3, mt: 'auto' }}>
+        <Box sx={{ px: 3, pt: 3 }}>
+          <Button
+            fullWidth
+            variant="outlined"
+            size="large"
+            component="a"
+            href={PORTAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            startIcon={<Box component="img" src={itsIcon} alt="ITS" sx={{ height: 22, width: 'auto' }} />}
+            endIcon={<OpenInNewIcon sx={{ fontSize: '1rem !important' }} />}
+            sx={{
+              borderColor: '#1D2B45',
+              color: '#1D2B45',
+              fontWeight: 700,
+              mb: 2,
+              justifyContent: 'space-between',
+              '&:hover': { bgcolor: '#f0f4fa', borderColor: '#1D2B45' },
+            }}
+          >
+            Client Portal
+          </Button>
+        </Box>
+
+        <Box sx={{ px: 3, pb: 3 }}>
           <Button
             fullWidth
             variant="contained"
