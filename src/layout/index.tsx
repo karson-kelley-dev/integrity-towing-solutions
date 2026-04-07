@@ -1,21 +1,13 @@
 import type { ReactNode } from 'react'
-import Footer from '../components/footer'
 import Navbar from '../components/navbar'
+import Footer from '../components/footer'
 
-interface LayoutProps {
-  children?: ReactNode
-}
-
-function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div id="wrapper">
+    <>
       <Navbar />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
       <Footer />
-    </div>
+    </>
   )
 }
-
-export default Layout
