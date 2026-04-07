@@ -190,7 +190,7 @@ export default function PrivatePropertyTowing() {
 
             {/* Sidebar */}
             <Grid size={{ xs: 12, md: 4 }}>
-              <Box sx={{ position: 'sticky', top: 24 }}>
+              <Box sx={{ position: 'sticky', top: 90 }}>
                 <Paper elevation={0} sx={{ p: 3, border: '1px solid #e8ecf0', borderTop: `4px solid ${TEAL}`, borderRadius: 2, mb: 3 }}>
                   <Typography variant="h6" sx={{ color: NAVY, mb: 2, fontSize: '1rem', fontWeight: 700 }}>Private Property Services</Typography>
                   <List dense disablePadding>
