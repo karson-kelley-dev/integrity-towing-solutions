@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
@@ -11,6 +12,25 @@ import CheckIcon from '@mui/icons-material/Check'
 import BusinessIcon from '@mui/icons-material/Business'
 import MapIcon from '@mui/icons-material/Map'
 import VerifiedIcon from '@mui/icons-material/Verified'
+import FadeInBox from '../components/FadeInBox'
+
+// ─── CountUp hook ──────────────────────────────────────────────────────────
+function useCountUp(target: number, duration = 1600, triggered = false) {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (!triggered) return
+    const startTime = Date.now()
+    const frame = () => {
+      const elapsed = Date.now() - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.round(target * eased))
+      if (progress < 1) requestAnimationFrame(frame)
+    }
+    requestAnimationFrame(frame)
+  }, [target, duration, triggered])
+  return count
+}
 
 // ─── Brand constants ───────────────────────────────────────────────────────
 const NAVY = '#1D2B45'
@@ -48,10 +68,10 @@ const SERVICES = [
 ]
 
 const STATS = [
-  { icon: <BusinessIcon sx={{ fontSize: 32, color: TEAL }} />, value: '3', label: 'NC Locations' },
-  { icon: <MapIcon sx={{ fontSize: 32, color: TEAL }} />, value: 'Triangle & Triad', label: 'Service Areas' },
-  { icon: <VerifiedIcon sx={{ fontSize: 32, color: TEAL }} />, value: '24/7', label: 'Always Available' },
-  { icon: <CheckIcon sx={{ fontSize: 32, color: TEAL }} />, value: '100%', label: 'Documented & Compliant' },
+  { icon: <BusinessIcon sx={{ fontSize: 32, color: TEAL }} />, target: 3, suffix: '', display: null, label: 'NC Locations' },
+  { icon: <MapIcon sx={{ fontSize: 32, color: TEAL }} />, target: null, suffix: '', display: 'Triangle & Triad', label: 'Service Areas' },
+  { icon: <VerifiedIcon sx={{ fontSize: 32, color: TEAL }} />, target: null, suffix: '', display: '24/7', label: 'Always Available' },
+  { icon: <CheckIcon sx={{ fontSize: 32, color: TEAL }} />, target: 100, suffix: '%', display: null, label: 'Documented & Compliant' },
 ]
 
 const WHY_US = [
@@ -80,6 +100,56 @@ const WHY_US = [
     body: 'Emergencies and last-minute changes can occur at any time. We offer flexible scheduling and around-the-clock availability.',
   },
 ]
+
+// ─── Stats bar with CountUp ────────────────────────────────────────────────
+function StatItem({ icon, target, suffix, display, label }: typeof STATS[0]) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [triggered, setTriggered] = useState(false)
+  const count = useCountUp(target ?? 0, 1600, triggered)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setTriggered(true); observer.disconnect() } },
+      { threshold: 0.5 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <Box
+      ref={ref}
+      sx={{
+        textAlign: 'center',
+        px: { md: 3 },
+        borderRight: { md: '1px solid rgba(255,255,255,0.15)' },
+        '&:last-child': { borderRight: 'none' },
+      }}
+    >
+      <Box sx={{ mb: 0.75 }}>{icon}</Box>
+      <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: { xs: '1.5rem', md: '1.75rem' }, fontFamily: "'Saira', sans-serif", lineHeight: 1.1 }}>
+        {display ?? `${count}${suffix}`}
+      </Typography>
+      <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', fontFamily: "'Saira', sans-serif", mt: 0.25 }}>
+        {label}
+      </Typography>
+    </Box>
+  )
+}
+
+function StatsBar() {
+  return (
+    <Box sx={{ bgcolor: BLUE, py: { xs: 4, md: 5 } }}>
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, gap: { xs: 3, md: 0 } }}>
+          {STATS.map((stat) => <StatItem key={stat.label} {...stat} />)}
+        </Box>
+      </Container>
+    </Box>
+  )
+}
 
 // ─── Component ─────────────────────────────────────────────────────────────
 export default function Home() {
@@ -184,7 +254,7 @@ export default function Home() {
                 <Button
                   variant="outlined"
                   size="large"
-                  onClick={() => navigate('/services/private-property')}
+                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                   endIcon={<ArrowForwardIcon />}
                   sx={{
                     borderColor: 'rgba(255,255,255,0.35)',
@@ -207,43 +277,12 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           STATS BAR
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: BLUE, py: { xs: 4, md: 5 } }}>
-        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
-              gap: { xs: 3, md: 0 },
-              divideX: '1px solid rgba(255,255,255,0.15)',
-            }}
-          >
-            {STATS.map(({ icon, value, label }) => (
-              <Box
-                key={label}
-                sx={{
-                  textAlign: 'center',
-                  px: { md: 3 },
-                  borderRight: { md: '1px solid rgba(255,255,255,0.15)' },
-                  '&:last-child': { borderRight: 'none' },
-                }}
-              >
-                <Box sx={{ mb: 0.75 }}>{icon}</Box>
-                <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: { xs: '1.5rem', md: '1.75rem' }, fontFamily: "'Saira', sans-serif", lineHeight: 1.1 }}>
-                  {value}
-                </Typography>
-                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', fontFamily: "'Saira', sans-serif", mt: 0.25 }}>
-                  {label}
-                </Typography>
-              </Box>
-            ))}
-          </Box>
-        </Container>
-      </Box>
+      <StatsBar />
 
       {/* ══════════════════════════════════════════════════════════════════
           SERVICES
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: '#fff', py: { xs: 8, md: 12 } }}>
+      <Box id="services" sx={{ bgcolor: '#fff', py: { xs: 8, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
             <Typography
@@ -262,8 +301,9 @@ export default function Home() {
           </Box>
 
           <Grid container spacing={3}>
-            {SERVICES.map(({ icon, title, description, path }) => (
+            {SERVICES.map(({ icon, title, description, path }, i) => (
               <Grid key={title} size={{ xs: 12, md: 4 }}>
+                <FadeInBox delay={i * 100} sx={{ height: '100%' }}>
                 <Paper
                   elevation={0}
                   sx={{
@@ -274,9 +314,9 @@ export default function Home() {
                     border: '1px solid #e8ecf0',
                     borderTop: `4px solid ${TEAL}`,
                     borderRadius: 2,
-                    transition: 'box-shadow 0.2s, transform 0.2s',
+                    transition: 'box-shadow 0.25s, transform 0.25s',
                     '&:hover': {
-                      boxShadow: '0 12px 40px rgba(0,0,0,0.1)',
+                      boxShadow: `0 12px 40px rgba(0,0,0,0.08), 0 0 0 2px ${TEAL}`,
                       transform: 'translateY(-4px)',
                     },
                   }}
@@ -317,6 +357,7 @@ export default function Home() {
                     Learn More
                   </Button>
                 </Paper>
+                </FadeInBox>
               </Grid>
             ))}
           </Grid>
@@ -326,6 +367,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           WHY CHOOSE ITS
       ══════════════════════════════════════════════════════════════════ */}
+      <FadeInBox>
       <Box sx={{ bgcolor: LIGHT, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container spacing={{ xs: 6, md: 10 }} alignItems="flex-start">
@@ -386,10 +428,12 @@ export default function Home() {
           </Grid>
         </Container>
       </Box>
+      </FadeInBox>
 
       {/* ══════════════════════════════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════════════════════════════ */}
+      <FadeInBox>
       <Box sx={{ bgcolor: NAVY, ...DOT_GRID, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 7 } }}>
@@ -465,10 +509,12 @@ export default function Home() {
           </Grid>
         </Container>
       </Box>
+      </FadeInBox>
 
       {/* ══════════════════════════════════════════════════════════════════
           BOTTOM CTA
       ══════════════════════════════════════════════════════════════════ */}
+      <FadeInBox>
       <Box sx={{ bgcolor: BLUE, py: { xs: 7, md: 9 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container spacing={4} alignItems="center">
@@ -531,6 +577,7 @@ export default function Home() {
           </Grid>
         </Container>
       </Box>
+      </FadeInBox>
     </>
   )
 }
