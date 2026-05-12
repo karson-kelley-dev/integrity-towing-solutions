@@ -314,7 +314,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           LOCATION STRIP — thin glass bar floating over section boundary
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: DARK, pt: { xs: 5, md: 3 }, pb: { xs: 4, md: 8 } }}>
+      <Box sx={{ bgcolor: DARK, pt: { xs: 5, md: 3 }, pb: 0 }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <FadeInBox>
             <Box sx={{
@@ -364,7 +364,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           ABOUT
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: NAVY, py: { xs: 7, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ bgcolor: DARK, pt: { xs: 4, md: 5 }, pb: { xs: 7, md: 10 }, position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, rgba(102,153,187,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
           <FadeInBox>
@@ -388,10 +388,11 @@ export default function Home() {
         </Container>
       </Box>
 
+
       {/* ══════════════════════════════════════════════════════════════════
           SERVICES — cinematic full-width panels
       ══════════════════════════════════════════════════════════════════ */}
-      <Box id="services" sx={{ bgcolor: DARK }}>
+      <Box id="services" sx={{ bgcolor: NAVY }}>
         {/* Section label */}
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, pt: { xs: 6, md: 8 }, pb: { xs: 4, md: 6 } }}>
           <FadeInBox>
@@ -481,7 +482,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: DARK, ...DOT_GRID, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <FadeInBox>
             <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 7 } }}>

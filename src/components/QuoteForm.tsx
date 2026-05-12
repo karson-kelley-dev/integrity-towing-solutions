@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import emailjs from '@emailjs/browser'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 import CircularProgress from '@mui/material/CircularProgress'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import Select from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import SendIcon from '@mui/icons-material/Send'
-
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
+import { sendEmail, SUBJECT_ROUTES } from '../services/emailService'
 
 const INPUT_SX = {
   '& .MuiOutlinedInput-root': {
@@ -40,6 +40,9 @@ export default function QuoteForm({
   defaultSubject = 'General Inquiry',
   dark = false,
 }: QuoteFormProps) {
+  const initialRoute =
+    SUBJECT_ROUTES.find(r => r.value === defaultSubject) ?? SUBJECT_ROUTES[0]
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -48,6 +51,7 @@ export default function QuoteForm({
     address: '',
     message: '',
   })
+  const [selectedRoute, setSelectedRoute] = useState(initialRoute)
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
   const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
@@ -58,20 +62,13 @@ export default function QuoteForm({
     if (!form.firstName || !form.email || !form.message) return
     setStatus('sending')
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: `${form.firstName} ${form.lastName}`.trim(),
-          from_email: form.email,
-          phone: form.phone || 'Not provided',
-          address: form.address || 'Not provided',
-          subject: defaultSubject,
-          message: form.message,
-          to_email: 'impound@integritytow.com',
-        },
-        EMAILJS_PUBLIC_KEY,
-      )
+      await sendEmail(selectedRoute, {
+        from_name: `${form.firstName} ${form.lastName}`.trim(),
+        from_email: form.email,
+        phone: form.phone || 'Not provided',
+        address: form.address || 'Not provided',
+        message: form.message,
+      })
       setStatus('success')
       setForm({ firstName: '', lastName: '', phone: '', email: '', address: '', message: '' })
     } catch {
@@ -146,6 +143,27 @@ export default function QuoteForm({
             required
             sx={INPUT_SX}
           />
+        </Grid>
+        <Grid size={{ xs: 12 }}>
+          <FormControl fullWidth sx={INPUT_SX}>
+            <InputLabel>Subject *</InputLabel>
+            <Select
+              label="Subject *"
+              value={selectedRoute.value}
+              onChange={e => {
+                const route = SUBJECT_ROUTES.find(r => r.value === e.target.value)
+                if (route) setSelectedRoute(route)
+              }}
+              required
+              sx={{ fontFamily: "'Saira', sans-serif", fontSize: '0.9375rem' }}
+            >
+              {SUBJECT_ROUTES.map(route => (
+                <MenuItem key={route.value} value={route.value} sx={{ fontFamily: "'Saira', sans-serif" }}>
+                  {route.label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </Grid>
         <Grid size={{ xs: 12 }}>
           <TextField
