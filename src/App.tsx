@@ -1,5 +1,5 @@
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -8,16 +8,17 @@ function ScrollToTop() {
 }
 
 import Layout from './layout/index'
-import Home from './pages/home'
-import PrivateProperty from './pages/services/private-property'
-import Emergency from './pages/services/emergency'
-import MassRelocation from './pages/services/mass-relocation'
-import RaleighAuction from './pages/auction/raleigh'
 import DurhamAuction from './pages/auction/durham'
 import GreensboroAuction from './pages/auction/greensboro'
-import FindMyVehicle from './pages/find-my-vehicle'
+import RaleighAuction from './pages/auction/raleigh'
 import Contact from './pages/contact'
 import Employment from './pages/employment'
+import Home from './pages/home'
+import Emergency from './pages/services/emergency'
+import MassRelocation from './pages/services/mass-relocation'
+import PrivateProperty from './pages/services/private-property'
+
+// <Route path="/find-my-vehicle" element={<FindMyVehicle />} />
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/auction/raleigh" element={<RaleighAuction />} />
           <Route path="/auction/durham" element={<DurhamAuction />} />
           <Route path="/auction/greensboro" element={<GreensboroAuction />} />
-          <Route path="/find-my-vehicle" element={<FindMyVehicle />} />
+         
           <Route path="/contact" element={<Contact />} />
           <Route path="/employment" element={<Employment />} />
         </Routes>

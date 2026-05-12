@@ -2,19 +2,17 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
 import PhoneIcon from '@mui/icons-material/Phone'
+import { useNavigate } from 'react-router-dom'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import QuoteForm from '../../components/QuoteForm'
+import FadeInBox from '../../components/FadeInBox'
 
 const NAVY = '#1D2B45'
-const TEAL = '#3EAACC'
-const LIGHT = '#F5F7FA'
+const DARK = '#0d1929'
+const TEAL = '#6699BB'
+const BLUE = '#0057A5'
 const DOT_GRID = {
   backgroundImage: 'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)',
   backgroundSize: '28px 28px',
@@ -30,194 +28,204 @@ const SERVICE_CARDS = [
 ]
 
 const SIDEBAR_SERVICES = [
-  'Private Property Impound',
-  'Signage & Install',
-  'Custom Enforcement Programs',
-  'Parking Permits',
-  'Property Manager Portal',
-  'Account Manager Support',
-  'Immediate Towing (24/7)',
-  'Multi-Property Portfolios',
-]
-
-const WHY = [
-  { title: 'Partner, Not Vendor', bullets: ['We take time to understand your property and build an enforcement program that fits.', 'Consistent communication with your team — not just when problems arise.'] },
-  { title: 'Defensible Process', bullets: ['Every tow is grounded in written authorization, proper signage, and NC statutory compliance.', 'Documentation that stands up to questions, disputes, and reviews.'] },
-  { title: 'Consistent Execution', bullets: ['Same process, same standards, week after week across every property we manage.', 'Predictable enforcement that residents and guests come to understand.'] },
-  { title: 'Multi-Market Scale', bullets: ['Infrastructure across Raleigh, Durham, Chapel Hill, and Greensboro.', 'One consistent approach across multi-property portfolios.'] },
-  { title: 'Transparent Operations', bullets: ['Clients always know what is happening on their properties.', 'Nothing falls through the cracks — every action is documented.'] },
-  { title: 'Dedicated to Private Property', bullets: ['ITS focuses exclusively on private property impound.', 'Data-driven operations that improve enforcement effectiveness over time.'] },
-]
-
-const PROPERTY_TYPES = [
-  'Apartment Communities', 'HOA Communities', 'Commercial Properties', 'Retail Shopping Centers',
-  'Office Parks', 'Mixed-Use Developments', 'Medical / Healthcare Facilities', 'Hotels & Hospitality',
-  'Student Housing', 'Storage Facilities', 'Industrial Properties', 'Restaurant & Dining Complexes',
-  'Sports & Entertainment Venues', 'Government Properties', 'Educational Campuses',
-  'Senior Living Communities', 'Condominium Complexes', 'Parking Decks & Garages',
+  'Private Property Impound', 'Signage & Install', 'Custom Enforcement Programs',
+  'Parking Permits', 'Property Manager Portal', 'Account Manager Support',
+  'Immediate Towing', 'Multi-Property Portfolios',
 ]
 
 export default function PrivatePropertyTowing() {
+  const navigate = useNavigate()
   return (
     <>
       {/* ── Hero ── */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 10 } }}>
-        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', top: -80, right: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
           <Grid container spacing={{ xs: 5, md: 8 }} alignItems="flex-start">
             <Grid size={{ xs: 12, md: 6 }}>
-              <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1.5 }}>
-                HOAs, Apartment Buildings, Commercial &amp; More
-              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
+                <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
+                <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.75rem' }}>
+                  HOAs, Apartment Buildings, Commercial &amp; More
+                </Typography>
+              </Box>
               <Typography component="h1" sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em', mb: 2.5 }}>
-                Private Property Towing<br />in North Carolina
+                Private Property Towing
+                <Box component="span" sx={{ color: TEAL, display: 'block' }}>in North Carolina</Box>
               </Typography>
-              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.8, mb: 4 }}>
-                When unauthorized vehicles park on your property, ITS will remove them with written
-                authorization, proper documentation, and consistent processes. Our mission is to keep
-                your property clear while <Box component="strong" sx={{ color: '#fff' }}>putting you in control.</Box>
+              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
+                When parking violations become the norm, your property pays the price—lost spaces for residents
+                and guests, increased frustration, and avoidable safety and access issues. ITS provides private
+                property towing built for property managers who need consistent enforcement without unnecessary
+                drama. We combine clear communication, compliant processes, and disciplined operations to keep
+                your lots, lanes, and fire zones clear.
               </Typography>
               <Button
-                variant="contained"
-                size="large"
-                component="a"
-                href="tel:9197909393"
-                startIcon={<PhoneIcon />}
-                sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: 'none', '&:hover': { bgcolor: '#34919e' } }}
+                variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
+                sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 20px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
               >
                 (919) 790-9393
               </Button>
             </Grid>
-
             <Grid size={{ xs: 12, md: 6 }}>
-              <Paper elevation={0} sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}>
-                <Box sx={{ borderLeft: `4px solid ${TEAL}`, pl: 2, mb: 3 }}>
+              <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
+                <Box sx={{ mb: 3 }}>
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Interested in us servicing your property?</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>We'll get back to you within 1 business hour.</Typography>
                 </Box>
                 <QuoteForm heading="" defaultSubject="Private Property Towing" />
-              </Paper>
+              </Box>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
       {/* ── Service Cards ── */}
-      <Box sx={{ bgcolor: '#fff', py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: DARK, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
-            <Typography variant="h2" sx={{ color: NAVY, fontSize: { xs: '1.9rem', md: '2.4rem' }, mb: 2 }}>
-              Built for Property Managers (Not Just Tows)
-            </Typography>
-            <Typography variant="body1" sx={{ color: '#4a5568', maxWidth: 640, mx: 'auto', fontSize: '1.0625rem', lineHeight: 1.8 }}>
-              When parking violations become the norm, your property pays the price — lost spaces for residents and guests,
-              increased frustration, and avoidable safety and access issues. ITS provides private property towing built for
-              property managers who need consistent enforcement without unnecessary drama.
-            </Typography>
-          </Box>
-
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }, gap: 3 }}>
-            {SERVICE_CARDS.map(({ icon, title, description }) => (
-              <Paper key={title} elevation={0} sx={{ p: 3.5, border: '1px solid #e8ecf0', borderTop: `4px solid ${TEAL}`, borderRadius: 2, display: 'flex', flexDirection: 'column', gap: 2, transition: 'box-shadow 0.25s, transform 0.25s', '&:hover': { boxShadow: '0 8px 32px rgba(0,0,0,0.06), 0 0 0 2px #3EAACC', transform: 'translateY(-3px)' } }}>
-                <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <Box component="img" src={icon} alt={title} sx={{ height: 28, width: 'auto' }} />
+          <FadeInBox>
+            <Box sx={{ mb: { xs: 6, md: 8 } }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
+                <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
+                <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>What You Can Expect</Typography>
+              </Box>
+              <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.4rem' }, mb: 2, maxWidth: 600 }}>
+                Built for Property Managers (Not Just Tows)
+              </Typography>
+              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', maxWidth: 640, fontSize: '1.0625rem', lineHeight: 1.8 }}>
+                Private property towing works best when it's structured like a program—not a random call when things
+                get bad. ITS designs parking enforcement programs around your property type, layout, and resident
+                flow, then executes with consistency. The result is predictable enforcement, better resident
+                understanding of the rules, and fewer escalations for your team.
+              </Typography>
+            </Box>
+          </FadeInBox>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', lg: 'repeat(3,1fr)' }, gap: 2.5 }}>
+            {SERVICE_CARDS.map(({ icon, title, description }, i) => (
+              <FadeInBox key={title} delay={i * 80}>
+                <Box sx={{
+                  p: 3.5, height: '100%',
+                  bgcolor: 'rgba(255,255,255,0.04)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderTop: `3px solid ${TEAL}`,
+                  borderRadius: 2.5,
+                  display: 'flex', flexDirection: 'column', gap: 2,
+                  transition: 'background 0.2s, border-color 0.2s',
+                  '&:hover': { bgcolor: 'rgba(102,153,187,0.05)', borderColor: 'rgba(102,153,187,0.3)' },
+                }}>
+                  <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Box component="img" src={icon} alt={title} sx={{ height: 28, width: 'auto' }} />
+                  </Box>
+                  <Typography variant="h6" sx={{ color: '#fff', fontSize: '1.0rem' }}>{title}</Typography>
+                  <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.75 }}>{description}</Typography>
                 </Box>
-                <Typography variant="h6" sx={{ color: NAVY, fontSize: '1.05rem' }}>{title}</Typography>
-                <Typography variant="body2" sx={{ color: '#4a5568', lineHeight: 1.75 }}>{description}</Typography>
-              </Paper>
+              </FadeInBox>
             ))}
           </Box>
         </Container>
       </Box>
 
       {/* ── Content + Sidebar ── */}
-      <Box sx={{ bgcolor: LIGHT, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: NAVY, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container spacing={{ xs: 5, md: 7 }}>
-            {/* Main content */}
             <Grid size={{ xs: 12, md: 8 }}>
-              <Typography variant="h2" sx={{ color: NAVY, fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 2 }}>
-                Why ITS for Private Property Towing in North Carolina
-              </Typography>
-              <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, mb: 4 }}>
-                When it comes to reliable private property towing services across the Triangle and Triad,
-                ITS is your go-to partner. We specialize in delivering towing solutions that prioritize
-                compliance, consistency, and clear communication for property owners and managers.
-              </Typography>
-
-              {WHY.map(({ title, bullets }) => (
-                <Box key={title} sx={{ mb: 3.5 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                    <Box sx={{ width: 28, height: 3, bgcolor: TEAL, borderRadius: 2, flexShrink: 0 }} />
-                    <Typography variant="h5" sx={{ color: NAVY, fontSize: '1.125rem' }}>{title}</Typography>
-                  </Box>
-                  <List dense disablePadding sx={{ pl: 0.5 }}>
-                    {bullets.map((b) => (
-                      <ListItem key={b} disablePadding sx={{ mb: 0.5 }}>
-                        <ListItemIcon sx={{ minWidth: 28 }}><CheckCircleIcon sx={{ fontSize: 16, color: TEAL }} /></ListItemIcon>
-                        <ListItemText primary={b} primaryTypographyProps={{ fontSize: '0.9375rem', color: '#4a5568', lineHeight: 1.7 }} />
-                      </ListItem>
-                    ))}
-                  </List>
+              <FadeInBox direction="right">
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
+                  <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
+                  <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Why ITS</Typography>
                 </Box>
-              ))}
-
-              <Typography variant="h3" sx={{ color: NAVY, fontSize: { xs: '1.5rem', md: '1.8rem' }, mt: 5, mb: 2 }}>
-                Types of Properties We Serve
-              </Typography>
-              <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, mb: 3 }}>
-                ITS serves a wide range of private property types across the Triangle and Triad.
-                Whether you manage a single complex or a large portfolio, we bring consistent standards
-                and clear processes to every site.
-              </Typography>
-              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 1 }}>
-                {PROPERTY_TYPES.map((t) => (
-                  <Box key={t} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <CheckCircleIcon sx={{ fontSize: 15, color: TEAL, flexShrink: 0 }} />
-                    <Typography variant="body2" sx={{ color: '#4a5568', fontSize: '0.875rem' }}>{t}</Typography>
-                  </Box>
-                ))}
-              </Box>
-
-              <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, mt: 4 }}>
-                Property managers choose ITS because we operate like a partner, not a vendor. We take the
-                time to understand your property and set up an enforcement program that is clear to
-                residents, defensible when challenged, and consistent week after week.
-                Contact us at{' '}
-                <Box component="a" href="tel:9197909393" sx={{ color: '#0057A5', fontWeight: 600 }}>(919) 790-9393</Box>
-                {' '}to get started.
-              </Typography>
+                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 2 }}>
+                  Why ITS for Private Property Towing in North Carolina
+                </Typography>
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.9, mb: 3 }}>
+                  Property Managers choose ITS because we operate like a partner, not a vendor. We take the time
+                  to understand your property and set up an enforcement program that is clear to residents,
+                  defensible when challenged, and consistent week after week. Our processes prioritize
+                  transparency and accountability—so you always know what happened, why it happened, and how
+                  it was documented.
+                </Typography>
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.9 }}>
+                  ITS also brings scale without sacrificing standards. With infrastructure across Raleigh,
+                  Durham, Chapel Hill, and Greensboro, we deliver one consistent approach across
+                  multi-property portfolios—helping Property Managers standardize enforcement, reduce
+                  administrative burden, and protect their reputation across every community they manage.
+                </Typography>
+              </FadeInBox>
             </Grid>
 
-            {/* Sidebar */}
             <Grid size={{ xs: 12, md: 4 }}>
-              <Box sx={{ position: 'sticky', top: 90 }}>
-                <Paper elevation={0} sx={{ p: 3, border: '1px solid #e8ecf0', borderTop: `4px solid ${TEAL}`, borderRadius: 2, mb: 3 }}>
-                  <Typography variant="h6" sx={{ color: NAVY, mb: 2, fontSize: '1rem', fontWeight: 700 }}>Private Property Services</Typography>
-                  <List dense disablePadding>
-                    {SIDEBAR_SERVICES.map((s) => (
-                      <ListItem key={s} disablePadding sx={{ mb: 0.75 }}>
-                        <ListItemIcon sx={{ minWidth: 26 }}><CheckCircleIcon sx={{ fontSize: 15, color: TEAL }} /></ListItemIcon>
-                        <ListItemText primary={s} primaryTypographyProps={{ fontSize: '0.875rem', color: '#4a5568' }} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Paper>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  size="large"
-                  component="a"
-                  href="tel:9197909393"
-                  startIcon={<PhoneIcon />}
-                  sx={{ bgcolor: NAVY, color: '#fff', fontWeight: 700, py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: '#2d4060' } }}
-                >
-                  (919) 790-9393
-                </Button>
-              </Box>
+              <FadeInBox direction="left">
+                <Box sx={{ position: 'sticky', top: 90 }}>
+                  <Box sx={{
+                    p: 3, mb: 2.5,
+                    background: 'rgba(255,255,255,0.04)',
+                    backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
+                    border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${TEAL}`,
+                    borderRadius: 2.5, boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+                  }}>
+                    <Typography variant="h6" sx={{ color: '#fff', mb: 2.5, fontSize: '1rem', fontWeight: 700, fontFamily: "'Saira', sans-serif" }}>
+                      Private Property Services
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
+                      {SIDEBAR_SERVICES.map((s) => (
+                        <Box key={s} sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
+                          <CheckCircleIcon sx={{ fontSize: 14, color: TEAL, flexShrink: 0 }} />
+                          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.875rem' }}>{s}</Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  </Box>
+                  <Button
+                    fullWidth variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
+                    sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, py: 1.75, boxShadow: '0 4px 16px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
+                  >
+                    (919) 790-9393
+                  </Button>
+                </Box>
+              </FadeInBox>
             </Grid>
           </Grid>
         </Container>
       </Box>
+
+      {/* ── CTA ── */}
+      <FadeInBox>
+        <Box sx={{ bgcolor: BLUE, py: { xs: 7, md: 9 } }}>
+          <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+            <Grid container spacing={4} alignItems="center">
+              <Grid size={{ xs: 12, md: 7 }}>
+                <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.65)', fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1 }}>
+                  Ready to Get Started?
+                </Typography>
+                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.5rem' }, mb: 2, lineHeight: 1.2 }}>
+                  Let's Build a Parking Enforcement Program for Your Property
+                </Typography>
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.75 }}>
+                  Serving the Triangle and Triad — Raleigh, Durham, Chapel Hill, Greensboro, and surrounding communities.
+                </Typography>
+              </Grid>
+              <Grid size={{ xs: 12, md: 5 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <Button
+                    variant="contained" size="large" component="a" href="tel:9197909393"
+                    startIcon={<PhoneIcon />} fullWidth
+                    sx={{ bgcolor: '#fff', color: BLUE, fontWeight: 700, fontSize: '1.0625rem', py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' } }}
+                  >
+                    Call (919) 790-9393
+                  </Button>
+                  <Button
+                    variant="outlined" size="large" onClick={() => navigate('/contact')} fullWidth
+                    sx={{ borderColor: 'rgba(255,255,255,0.5)', color: '#fff', fontWeight: 600, fontSize: '1rem', py: 1.75, '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.1)' } }}
+                  >
+                    Send a Message
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+      </FadeInBox>
     </>
   )
 }

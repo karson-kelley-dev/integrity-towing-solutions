@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           right: 0,
           zIndex: 1100,
           bgcolor: '#1D2B45',
-          borderTop: '2px solid #3EAACC',
+          borderTop: '2px solid #6699BB',
           boxShadow: '0 -4px 20px rgba(0,0,0,0.25)',
         }}
       >

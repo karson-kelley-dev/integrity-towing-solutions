@@ -19,7 +19,7 @@ const INPUT_SX = {
     fontSize: '0.9375rem',
     bgcolor: 'rgba(255,255,255,0.97)',
     '& fieldset': { borderColor: 'rgba(0,0,0,0.15)' },
-    '&:hover fieldset': { borderColor: '#3EAACC' },
+    '&:hover fieldset': { borderColor: '#6699BB' },
     '&.Mui-focused fieldset': { borderColor: '#1D2B45', borderWidth: 2 },
   },
   '& .MuiInputLabel-root': {
@@ -84,7 +84,7 @@ export default function QuoteForm({
   if (status === 'success') {
     return (
       <Box sx={{ py: 4, textAlign: 'center' }}>
-        <CheckCircleOutlineIcon sx={{ fontSize: 52, color: '#3EAACC', mb: 1.5 }} />
+        <CheckCircleOutlineIcon sx={{ fontSize: 52, color: '#6699BB', mb: 1.5 }} />
         <Typography variant="h6" sx={{ color: textColor, fontWeight: 700, mb: 1 }}>
           Message Sent!
         </Typography>

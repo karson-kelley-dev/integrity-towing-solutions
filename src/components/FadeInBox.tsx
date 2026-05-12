@@ -4,9 +4,19 @@ import Box, { type BoxProps } from '@mui/material/Box'
 interface FadeInBoxProps extends BoxProps {
   delay?: number
   distance?: number
+  direction?: 'up' | 'down' | 'left' | 'right'
 }
 
-export default function FadeInBox({ delay = 0, distance = 24, children, sx, ...props }: FadeInBoxProps) {
+function getInitialTransform(direction: 'up' | 'down' | 'left' | 'right', distance: number) {
+  switch (direction) {
+    case 'up':    return `translateY(${distance}px)`
+    case 'down':  return `translateY(-${distance}px)`
+    case 'left':  return `translateX(${distance}px)`
+    case 'right': return `translateX(-${distance}px)`
+  }
+}
+
+export default function FadeInBox({ delay = 0, distance = 24, direction = 'up', children, sx, ...props }: FadeInBoxProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -31,7 +41,7 @@ export default function FadeInBox({ delay = 0, distance = 24, children, sx, ...p
       ref={ref}
       sx={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : `translateY(${distance}px)`,
+        transform: visible ? 'translate(0,0)' : getInitialTransform(direction, distance),
         transition: `opacity 0.6s cubic-bezier(0.22,1,0.36,1) ${delay}ms, transform 0.6s cubic-bezier(0.22,1,0.36,1) ${delay}ms`,
         ...sx,
       }}

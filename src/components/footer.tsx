@@ -6,7 +6,6 @@ import Divider from '@mui/material/Divider'
 import PhoneIcon from '@mui/icons-material/Phone'
 import EmailIcon from '@mui/icons-material/Email'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import logoWhite from '../assets/logo-white.png'
 
 const EMPLOYMENT_URL =
@@ -26,7 +25,7 @@ const FooterLink = ({ label, path, navigate }: { label: string; path?: string; h
       textDecoration: 'none',
       cursor: 'pointer',
       transition: 'color 0.15s',
-      '&:hover': { color: '#3EAACC', textDecoration: 'none' },
+      '&:hover': { color: '#6699BB', textDecoration: 'none' },
     }}
   >
     {label}
@@ -57,24 +56,24 @@ export default function Footer() {
               sx={{ height: 50, width: 'auto', mb: 2.5, filter: 'brightness(0) invert(1)' }}
             />
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, maxWidth: 300, mb: 3 }}>
-              Professional towing and parking management for property managers across the Triangle and Triad of North Carolina. Available 24 hours a day, 7 days a week.
+              Professional towing and parking management for property managers across the Triangle and Triad of North Carolina.
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-              <PhoneIcon sx={{ fontSize: 16, color: '#3EAACC' }} />
+              <PhoneIcon sx={{ fontSize: 16, color: '#6699BB' }} />
               <Box
                 component="a"
                 href="tel:9197909393"
-                sx={{ color: 'rgba(255,255,255,0.8)', fontFamily: "'Saira', sans-serif", fontSize: '0.9rem', textDecoration: 'none', '&:hover': { color: '#3EAACC' } }}
+                sx={{ color: 'rgba(255,255,255,0.8)', fontFamily: "'Saira', sans-serif", fontSize: '0.9rem', textDecoration: 'none', '&:hover': { color: '#6699BB' } }}
               >
                 (919) 790-9393
               </Box>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <EmailIcon sx={{ fontSize: 16, color: '#3EAACC' }} />
+              <EmailIcon sx={{ fontSize: 16, color: '#6699BB' }} />
               <Box
                 component="a"
                 href="mailto:impound@integritytow.com"
-                sx={{ color: 'rgba(255,255,255,0.8)', fontFamily: "'Saira', sans-serif", fontSize: '0.9rem', textDecoration: 'none', '&:hover': { color: '#3EAACC' } }}
+                sx={{ color: 'rgba(255,255,255,0.8)', fontFamily: "'Saira', sans-serif", fontSize: '0.9rem', textDecoration: 'none', '&:hover': { color: '#6699BB' } }}
               >
                 impound@integritytow.com
               </Box>
@@ -98,7 +97,7 @@ export default function Footer() {
               Quick Links
             </Typography>
             <FooterLink label="Home" path="/" navigate={navigate} />
-            <FooterLink label="Find My Vehicle" path="/find-my-vehicle" navigate={navigate} />
+            {/* <FooterLink label="Find My Vehicle" path="/find-my-vehicle" navigate={navigate} /> */}
             <FooterLink label="Contact Us" path="/contact" navigate={navigate} />
             <Box
               component="a"
@@ -112,7 +111,7 @@ export default function Footer() {
                 fontSize: '0.9rem',
                 mb: 0.75,
                 textDecoration: 'none',
-                '&:hover': { color: '#3EAACC' },
+                '&:hover': { color: '#6699BB' },
               }}
             >
               Employment
@@ -130,13 +129,13 @@ export default function Footer() {
               { city: 'Greensboro', addr: '2040 Fairview Street, Greensboro, NC 27405', path: '/auction/greensboro' },
             ].map(({ city, addr, path }) => (
               <Box key={city} sx={{ mb: 2, display: 'flex', gap: 1, alignItems: 'flex-start' }}>
-                <LocationOnIcon sx={{ fontSize: 16, color: '#3EAACC', mt: 0.25, flexShrink: 0 }} />
+                <LocationOnIcon sx={{ fontSize: 16, color: '#6699BB', mt: 0.25, flexShrink: 0 }} />
                 <Box>
                   <Box
                     component="a"
                     href={path}
                     onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate(path) }}
-                    sx={{ display: 'block', color: '#fff', fontFamily: "'Saira', sans-serif", fontWeight: 600, fontSize: '0.9rem', mb: 0.25, textDecoration: 'none', '&:hover': { color: '#3EAACC' } }}
+                    sx={{ display: 'block', color: '#fff', fontFamily: "'Saira', sans-serif", fontWeight: 600, fontSize: '0.9rem', mb: 0.25, textDecoration: 'none', '&:hover': { color: '#6699BB' } }}
                   >
                     {city}
                   </Box>
@@ -146,12 +145,6 @@ export default function Footer() {
                 </Box>
               </Box>
             ))}
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}>
-              <AccessTimeIcon sx={{ fontSize: 16, color: '#3EAACC' }} />
-              <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.875rem' }}>
-                Monday – Sunday, 24/7
-              </Typography>
-            </Box>
           </Box>
         </Box>
 

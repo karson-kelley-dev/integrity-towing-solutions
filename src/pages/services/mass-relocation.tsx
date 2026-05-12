@@ -2,220 +2,251 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
-import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
 import PhoneIcon from '@mui/icons-material/Phone'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import { useNavigate } from 'react-router-dom'
 import QuoteForm from '../../components/QuoteForm'
+import FadeInBox from '../../components/FadeInBox'
 
 const NAVY = '#1D2B45'
-const TEAL = '#3EAACC'
-const LIGHT = '#F5F7FA'
+const DARK = '#0d1929'
+const TEAL = '#6699BB'
+const BLUE = '#0057A5'
 const DOT_GRID = {
   backgroundImage: 'radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px)',
   backgroundSize: '28px 28px',
 }
 
 const SIDEBAR_ITEMS = [
-  'Construction Projects',
-  'Real Estate Developments',
-  'Event Planning',
-  'Municipal Projects',
-  'Corporate Relocations',
-  'University & School Projects',
-  'Parking Lot Resurfacing',
-  'HOA Transitions & Renovations',
+  'Construction Projects', 'Real Estate Developments', 'Event Planning',
+  'Municipal Projects', 'Corporate Relocations', 'University & School Projects',
+  'Parking Lot Resurfacing', 'HOA Transitions & Renovations',
 ]
 
 const FEATURES = [
-  {
-    title: 'Advanced Equipment & Technology',
-    body: 'We utilize professional-grade towing equipment to ensure that every vehicle is handled with care. Our fleet allows us to manage various types of vehicles safely and efficiently, minimizing the risk of damage during transport.',
-  },
-  {
-    title: 'Highly Skilled & Certified Operators',
-    body: 'Our team of towing operators is trained and experienced. They execute large moves with care, precision, and professionalism — handling even the most challenging towing scenarios.',
-  },
-  {
-    title: '24/7 Availability',
-    body: 'Emergencies and last-minute changes can occur at any time. We offer flexible scheduling and around-the-clock availability, ensuring we are always ready when you need us.',
-  },
+  { title: 'Advanced Equipment & Technology', body: 'Professional-grade towing and relocation equipment to handle a wide range of vehicle types safely and efficiently.' },
+  { title: 'Highly Skilled & Certified Operators', body: 'Trained, experienced operators who execute large moves with care, precision, and professionalism.' },
+  { title: 'Flexible Scheduling', body: 'Flexible scheduling for time-sensitive relocations and last-minute changes.' },
 ]
 
 const BENEFITS = [
-  {
-    title: 'Efficiency & Reliability',
-    body: 'Coordinated teams and clear execution keep relocations on schedule and minimize downtime. We pride ourselves on quick response times and the ability to handle large volumes efficiently.',
-  },
-  {
-    title: 'Safety & Site Security',
-    body: 'Safety is our top priority. We adhere to stringent safety standards, protect both our team and your vehicles, and ensure optimal performance throughout every relocation.',
-  },
-  {
-    title: 'Customized Solutions',
-    body: 'We understand that each project has unique requirements. We offer solutions tailored to your site constraints, timeline, and stakeholder requirements — whether you need short-term storage, multi-stakeholder coordination, or specialized handling.',
-  },
+  { title: 'Efficiency & Reliability', body: 'Coordinated teams and clear execution that keep relocations on schedule and minimize downtime.' },
+  { title: 'Safety & Site Security', body: 'Disciplined procedures that protect vehicles, people, and property throughout the relocation.' },
+  { title: 'Customized Solutions', body: 'A relocation plan tailored to your site constraints, timeline, and stakeholder requirements.' },
 ]
 
 const TIPS = [
-  { title: 'Plan Ahead', body: 'Confirm volume, timeline, towing windows, and approved drop locations early to keep the move smooth. Early planning helps ensure a seamless and efficient operation.' },
-  { title: 'Communicate Clearly', body: 'Align stakeholders on where vehicles go, when towing occurs, and what signage/notifications are required. Clear communication helps prevent misunderstandings.' },
-  { title: 'Coordinate Logistics', body: 'Define access points, staging areas, sequencing, and any permitting needs before execution begins. Proper logistics planning keeps the site running efficiently.' },
-  { title: 'Monitor Progress', body: 'Stay aligned during the move with updates and a clear point of contact for adjustments. Real-time communication keeps the project on track.' },
-  { title: 'Prioritize Safety', body: 'Ensure safe work zones, proper routing, and disciplined procedures throughout the project. Our team follows safety protocols at every step.' },
+  { title: 'Plan Ahead', body: 'Confirm volume, timeline, towing windows, and approved drop locations early to keep the move smooth.' },
+  { title: 'Communicate Clearly', body: 'Align stakeholders on where vehicles go, when towing occurs, and what signage/notifications are required.' },
+  { title: 'Coordinate Logistics', body: 'Define access points, staging areas, sequencing, and any permitting needs before execution begins.' },
+  { title: 'Monitor Progress', body: 'Stay aligned during the move with updates and a clear point of contact for adjustments.' },
+  { title: 'Prioritize Safety', body: 'Ensure safe work zones, proper routing, and disciplined procedures throughout the project.' },
 ]
 
+function ContentGrid({ items }: { items: { title: string; body: string }[] }) {
+  return (
+    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', md: 'repeat(3,1fr)' }, gap: 2, mb: 2 }}>
+      {items.map(({ title, body }) => (
+        <Box key={title} sx={{
+          p: 3,
+          background: 'rgba(255,255,255,0.03)',
+          border: '1px solid rgba(255,255,255,0.07)',
+          borderLeft: `3px solid ${TEAL}`,
+          borderRadius: 2,
+        }}>
+          <Typography variant="h6" sx={{ color: '#fff', fontSize: '0.975rem', fontWeight: 700, mb: 1.25 }}>{title}</Typography>
+          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.75 }}>{body}</Typography>
+        </Box>
+      ))}
+    </Box>
+  )
+}
+
 export default function MassRelocation() {
+  const navigate = useNavigate()
   return (
     <>
       {/* ── Hero ── */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 10 } }}>
-        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', top: -80, right: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
           <Grid container spacing={{ xs: 5, md: 8 }} alignItems="flex-start">
             <Grid size={{ xs: 12, md: 6 }}>
-              <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1.5 }}>
-                Construction Projects, Events &amp; Relocations
-              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
+                <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
+                <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.75rem' }}>
+                  Construction Projects, Events &amp; Relocations
+                </Typography>
+              </Box>
               <Typography component="h1" sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em', mb: 2.5 }}>
-                Mass Relocation<br />Towing Services
+                Mass Relocation
+                <Box component="span" sx={{ color: TEAL, display: 'block' }}>Towing Services</Box>
               </Typography>
-              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.8, mb: 4 }}>
-                Need to relocate a large number of vehicles for a major project or event? ITS is a{' '}
-                <Box component="strong" sx={{ color: '#fff' }}>North Carolina Mass Relocation Towing Company</Box>{' '}
-                that offers efficient and reliable services to handle large-scale vehicle relocations for your project needs.
+              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
+                Need to relocate a large number of vehicles for a construction project, major event, or property
+                transition? ITS provides organized mass relocation towing services designed to move high volumes
+                efficiently, safely, and with minimal disruption. We plan the logistics up front, execute with
+                disciplined coordination, and keep stakeholders informed throughout the move.
               </Typography>
               <Button
-                variant="contained"
-                size="large"
-                component="a"
-                href="tel:9197909393"
-                startIcon={<PhoneIcon />}
-                sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: 'none', '&:hover': { bgcolor: '#34919e' } }}
+                variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
+                sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 20px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
               >
                 (919) 790-9393
               </Button>
             </Grid>
-
             <Grid size={{ xs: 12, md: 6 }}>
-              <Paper elevation={0} sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.3)' }}>
-                <Box sx={{ borderLeft: `4px solid ${TEAL}`, pl: 2, mb: 3 }}>
+              <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
+                <Box sx={{ mb: 3 }}>
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Let's Plan Your Project</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>Request a quote for your relocation needs.</Typography>
                 </Box>
                 <QuoteForm heading="" defaultSubject="Mass Relocation" />
-              </Paper>
+              </Box>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
       {/* ── About strip ── */}
-      <Box sx={{ bgcolor: '#fff', py: { xs: 7, md: 9 } }}>
-        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Box sx={{ maxWidth: 800, mx: 'auto', textAlign: 'center' }}>
-            <Typography variant="h3" sx={{ color: NAVY, fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2 }}>
-              The Right Partner for High-Volume Vehicle Moves
-            </Typography>
-            <Typography variant="body1" sx={{ color: '#4a5568', fontSize: '1.0625rem', lineHeight: 1.8 }}>
-              At ITS, our highly trained staff is dedicated to providing rapid and safe, damage-free services
-              for large-scale vehicle relocations. Our primary concern is the safety and efficiency of your
-              project operations. ITS helps you protect timelines, reduce risk, and keep operations moving.
-            </Typography>
-          </Box>
+      <Box sx={{ bgcolor: DARK, py: { xs: 6, md: 8 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(102,153,187,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
+          <FadeInBox>
+            <Box sx={{ maxWidth: 760, mx: 'auto', textAlign: 'center' }}>
+              <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2 }}>
+                Efficient planning. Coordinated execution. Minimal disruption.
+              </Typography>
+              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '1.0625rem', lineHeight: 1.85 }}>
+                From staging and sequencing to safe drop locations and documentation, our team manages the details
+                that keep large-scale moves on track. Whether you're relocating vehicles across a site or off-site
+                for a defined window, ITS helps you protect timelines, reduce risk, and keep operations moving.
+              </Typography>
+            </Box>
+          </FadeInBox>
         </Container>
       </Box>
 
       {/* ── Content + Sidebar ── */}
-      <Box sx={{ bgcolor: LIGHT, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: NAVY, py: { xs: 8, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container spacing={{ xs: 5, md: 7 }}>
             <Grid size={{ xs: 12, md: 8 }}>
-              <Typography variant="h2" sx={{ color: NAVY, fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 2 }}>
-                Features of Our Vehicle Relocation Services
-              </Typography>
-              <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, mb: 4 }}>
-                When it comes to large-scale projects requiring the relocation of multiple vehicles, the right
-                partner is the difference between an orderly move and a logistical headache. ITS supports
-                property teams, contractors, and event stakeholders with experienced operators, the right
-                equipment, and a process built for high-volume coordination.
-              </Typography>
-
-              {FEATURES.map(({ title, body }) => (
-                <Box key={title} sx={{ mb: 3 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                    <Box sx={{ width: 28, height: 3, bgcolor: TEAL, borderRadius: 2, flexShrink: 0 }} />
-                    <Typography variant="h5" sx={{ color: NAVY, fontSize: '1.125rem' }}>{title}</Typography>
-                  </Box>
-                  <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, pl: 4.5 }}>{body}</Typography>
+              <FadeInBox direction="right">
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
+                  <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
+                  <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Features</Typography>
                 </Box>
-              ))}
+                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 2 }}>
+                  Features of Our Vehicle Relocation Services
+                </Typography>
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.85, mb: 4 }}>
+                  When it comes to large-scale projects requiring the relocation of multiple vehicles, the right partner
+                  is the difference between an orderly move and a logistical headache. ITS supports property teams,
+                  contractors, and event stakeholders with experienced operators, the right equipment, and a process
+                  built for high-volume coordination.
+                </Typography>
 
-              <Typography variant="h3" sx={{ color: NAVY, fontSize: { xs: '1.5rem', md: '1.8rem' }, mt: 5, mb: 3 }}>
-                Benefits of Choosing ITS
-              </Typography>
-              {BENEFITS.map(({ title, body }) => (
-                <Box key={title} sx={{ mb: 3 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                    <Box sx={{ width: 28, height: 3, bgcolor: TEAL, borderRadius: 2, flexShrink: 0 }} />
-                    <Typography variant="h5" sx={{ color: NAVY, fontSize: '1.125rem' }}>{title}</Typography>
-                  </Box>
-                  <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, pl: 4.5 }}>{body}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                  <Box sx={{ width: 28, height: 2, bgcolor: TEAL }} />
+                  <Typography variant="h4" sx={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700 }}>What This Service Includes</Typography>
                 </Box>
-              ))}
+                <ContentGrid items={FEATURES} />
 
-              <Typography variant="h3" sx={{ color: NAVY, fontSize: { xs: '1.5rem', md: '1.8rem' }, mt: 5, mb: 3 }}>
-                Tips for a Successful Project Move
-              </Typography>
-              {TIPS.map(({ title, body }) => (
-                <Box key={title} sx={{ mb: 3 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                    <Box sx={{ width: 28, height: 3, bgcolor: TEAL, borderRadius: 2, flexShrink: 0 }} />
-                    <Typography variant="h5" sx={{ color: NAVY, fontSize: '1.125rem' }}>{title}</Typography>
-                  </Box>
-                  <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, pl: 4.5 }}>{body}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5, mt: 6 }}>
+                  <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
+                  <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Benefits</Typography>
                 </Box>
-              ))}
+                <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.5rem', md: '1.8rem' }, mb: 3 }}>
+                  Benefits of Choosing ITS
+                </Typography>
+                <ContentGrid items={BENEFITS} />
 
-              <Typography variant="body1" sx={{ color: '#4a5568', lineHeight: 1.8, mt: 3 }}>
-                Ready to plan your relocation project? Contact ITS at{' '}
-                <Box component="a" href="tel:9197909393" sx={{ color: '#0057A5', fontWeight: 600 }}>(919) 790-9393</Box>
-                {' '}to discuss your needs.
-              </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5, mt: 6 }}>
+                  <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
+                  <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Planning Tips</Typography>
+                </Box>
+                <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.5rem', md: '1.8rem' }, mb: 3 }}>
+                  Tips for a Successful Project Move
+                </Typography>
+                <ContentGrid items={TIPS} />
+
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.85, mt: 3 }}>
+                  Ready to plan your relocation project? Contact ITS at{' '}
+                  <Box component="a" href="tel:9197909393" sx={{ color: TEAL, fontWeight: 600, textDecoration: 'none', '&:hover': { color: '#fff' } }}>(919) 790-9393</Box>.
+                </Typography>
+              </FadeInBox>
             </Grid>
-
             <Grid size={{ xs: 12, md: 4 }}>
-              <Box sx={{ position: 'sticky', top: 90 }}>
-                <Paper elevation={0} sx={{ p: 3, border: '1px solid #e8ecf0', borderTop: `4px solid ${TEAL}`, borderRadius: 2, mb: 3 }}>
-                  <Typography variant="h6" sx={{ color: NAVY, mb: 2, fontSize: '1rem', fontWeight: 700 }}>Project Types</Typography>
-                  <List dense disablePadding>
-                    {SIDEBAR_ITEMS.map((s) => (
-                      <ListItem key={s} disablePadding sx={{ mb: 0.75 }}>
-                        <ListItemIcon sx={{ minWidth: 26 }}><CheckCircleIcon sx={{ fontSize: 15, color: TEAL }} /></ListItemIcon>
-                        <ListItemText primary={s} primaryTypographyProps={{ fontSize: '0.875rem', color: '#4a5568' }} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Paper>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  size="large"
-                  component="a"
-                  href="tel:9197909393"
-                  startIcon={<PhoneIcon />}
-                  sx={{ bgcolor: NAVY, color: '#fff', fontWeight: 700, py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: '#2d4060' } }}
-                >
-                  (919) 790-9393
-                </Button>
-              </Box>
+              <FadeInBox direction="left">
+                <Box sx={{ position: 'sticky', top: 90 }}>
+                  <Box sx={{
+                    p: 3, mb: 2.5,
+                    background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
+                    border: '1px solid rgba(255,255,255,0.1)', borderTop: `3px solid ${TEAL}`,
+                    borderRadius: 2.5, boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+                  }}>
+                    <Typography variant="h6" sx={{ color: '#fff', mb: 2.5, fontSize: '1rem', fontWeight: 700, fontFamily: "'Saira', sans-serif" }}>Project Types</Typography>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
+                      {SIDEBAR_ITEMS.map((s) => (
+                        <Box key={s} sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
+                          <CheckCircleIcon sx={{ fontSize: 14, color: TEAL, flexShrink: 0 }} />
+                          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.875rem' }}>{s}</Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  </Box>
+                  <Button
+                    fullWidth variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
+                    sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, py: 1.75, boxShadow: '0 4px 16px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
+                  >
+                    (919) 790-9393
+                  </Button>
+                </Box>
+              </FadeInBox>
             </Grid>
           </Grid>
         </Container>
       </Box>
+
+      {/* ── CTA ── */}
+      <FadeInBox>
+        <Box sx={{ bgcolor: BLUE, py: { xs: 7, md: 9 } }}>
+          <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+            <Grid container spacing={4} alignItems="center">
+              <Grid size={{ xs: 12, md: 7 }}>
+                <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.65)', fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1 }}>
+                  Ready to Get Started?
+                </Typography>
+                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.5rem' }, mb: 2, lineHeight: 1.2 }}>
+                  Let's Plan Your Relocation Project
+                </Typography>
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.75 }}>
+                  Serving the Triangle and Triad — Raleigh, Durham, Chapel Hill, Greensboro, and surrounding communities.
+                </Typography>
+              </Grid>
+              <Grid size={{ xs: 12, md: 5 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <Button
+                    variant="contained" size="large" component="a" href="tel:9197909393"
+                    startIcon={<PhoneIcon />} fullWidth
+                    sx={{ bgcolor: '#fff', color: BLUE, fontWeight: 700, fontSize: '1.0625rem', py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' } }}
+                  >
+                    Call (919) 790-9393
+                  </Button>
+                  <Button
+                    variant="outlined" size="large" onClick={() => navigate('/contact')} fullWidth
+                    sx={{ borderColor: 'rgba(255,255,255,0.5)', color: '#fff', fontWeight: 600, fontSize: '1rem', py: 1.75, '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.1)' } }}
+                  >
+                    Send a Message
+                  </Button>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+      </FadeInBox>
     </>
   )
 }

@@ -12,7 +12,7 @@ const theme = createTheme({
       dark: '#0057A5',
     },
     background: {
-      default: '#ffffff',
+      default: '#0d1929',
       paper: '#ffffff',
     },
     text: {
@@ -82,7 +82,7 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         '*': { boxSizing: 'border-box' },
-        body: { fontFamily: "'Saira', sans-serif" },
+        body: { fontFamily: "'Saira', sans-serif", backgroundColor: '#0d1929' },
         'a': { color: '#0057A5', textDecoration: 'none' },
         'a:hover': { textDecoration: 'underline' },
       },
