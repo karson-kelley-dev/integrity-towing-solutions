@@ -13,7 +13,7 @@ import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import heroBg from '../assets/grid-hero.png'
+import heroBg from '../assets/zoomed-out-grid.png'
 import FadeInBox from '../components/FadeInBox'
 
 // ─── Brand constants ───────────────────────────────────────────────────────
@@ -159,7 +159,7 @@ export default function Home() {
           sx={{
             position: 'relative',
             zIndex: 1,
-            width: { xs: '100%', md: '50%' },
+            width: { xs: '100%', md: '60%' },
             bgcolor: { xs: 'rgba(13,25,41,0.92)', md: 'rgba(13,25,41,0.78)' },
             ...DOT_GRID,
             borderRadius: { xs: 0, md: '0 0 72px 0' },
