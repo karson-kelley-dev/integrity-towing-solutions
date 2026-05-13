@@ -1,13 +1,15 @@
-import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import PhoneIcon from '@mui/icons-material/Phone'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import heroBg from '../../assets/grid-hero.png'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import PhoneIcon from '@mui/icons-material/Phone'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
-import QuoteForm from '../../components/QuoteForm'
 import FadeInBox from '../../components/FadeInBox'
+import QuoteForm from '../../components/QuoteForm'
 
 const NAVY = '#1D2B45'
 const DARK = '#0d1929'
@@ -46,10 +48,10 @@ const TIPS = [
 
 function ContentGrid({ items }: { items: { title: string; body: string }[] }) {
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', md: 'repeat(3,1fr)' }, gap: 2, mb: 2 }}>
+    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', md: 'repeat(3,1fr)' }, gap: { xs: 1.5, md: 2 }, mb: 2 }}>
       {items.map(({ title, body }) => (
         <Box key={title} sx={{
-          p: 3,
+          p: { xs: 2, md: 3 },
           background: 'rgba(255,255,255,0.03)',
           border: '1px solid rgba(255,255,255,0.07)',
           borderLeft: `3px solid ${TEAL}`,
@@ -68,10 +70,13 @@ export default function MassRelocation() {
   return (
     <>
       {/* ── Hero ── */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 4, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(13,25,41,0.78)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, ...DOT_GRID }} />
         <Box sx={{ position: 'absolute', top: -80, right: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={{ xs: 5, md: 8 }} alignItems="flex-start">
+          <Grid container spacing={{ xs: 4, md: 8 }} alignItems="flex-start">
             <Grid size={{ xs: 12, md: 6 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
                 <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
@@ -89,14 +94,22 @@ export default function MassRelocation() {
                 efficiently, safely, and with minimal disruption. We plan the logistics up front, execute with
                 disciplined coordination, and keep stakeholders informed throughout the move.
               </Typography>
-              <Button
-                variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
-                sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 20px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
-              >
-                (919) 790-9393
-              </Button>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Button
+                  variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
+                  sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 20px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
+                >
+                  (919) 790-9393
+                </Button>
+                <Button
+                  variant="outlined" size="large" onClick={() => navigate('/contact')} endIcon={<ArrowForwardIcon />}
+                  sx={{ display: { xs: 'inline-flex', md: 'none' }, borderColor: 'rgba(255,255,255,0.3)', color: '#fff', fontWeight: 600, '&:hover': { borderColor: TEAL, bgcolor: 'rgba(102,153,187,0.08)' }, transition: 'all 0.2s' }}
+                >
+                  Send a Message
+                </Button>
+              </Box>
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
                 <Box sx={{ mb: 3 }}>
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Let's Plan Your Project</Typography>
@@ -110,7 +123,7 @@ export default function MassRelocation() {
       </Box>
 
       {/* ── About strip ── */}
-      <Box sx={{ bgcolor: DARK, py: { xs: 6, md: 8 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ bgcolor: NAVY, py: { xs: 5, md: 8 }, position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(102,153,187,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
           <FadeInBox>
@@ -129,9 +142,9 @@ export default function MassRelocation() {
       </Box>
 
       {/* ── Content + Sidebar ── */}
-      <Box sx={{ bgcolor: NAVY, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: DARK, py: { xs: 6, md: 12 }, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Grid container spacing={{ xs: 5, md: 7 }}>
+          <Grid container spacing={{ xs: 4, md: 7 }}>
             <Grid size={{ xs: 12, md: 8 }}>
               <FadeInBox direction="right">
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
@@ -154,7 +167,7 @@ export default function MassRelocation() {
                 </Box>
                 <ContentGrid items={FEATURES} />
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5, mt: 6 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5, mt: { xs: 3, md: 4 } }}>
                   <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
                   <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Benefits</Typography>
                 </Box>
@@ -163,7 +176,7 @@ export default function MassRelocation() {
                 </Typography>
                 <ContentGrid items={BENEFITS} />
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5, mt: 6 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5, mt: { xs: 3, md: 4 } }}>
                   <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
                   <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Planning Tips</Typography>
                 </Box>
@@ -178,7 +191,7 @@ export default function MassRelocation() {
                 </Typography>
               </FadeInBox>
             </Grid>
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 4 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <FadeInBox direction="left">
                 <Box sx={{ position: 'sticky', top: 90 }}>
                   <Box sx={{
@@ -210,43 +223,6 @@ export default function MassRelocation() {
         </Container>
       </Box>
 
-      {/* ── CTA ── */}
-      <FadeInBox>
-        <Box sx={{ bgcolor: BLUE, py: { xs: 7, md: 9 } }}>
-          <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-            <Grid container spacing={4} alignItems="center">
-              <Grid size={{ xs: 12, md: 7 }}>
-                <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.65)', fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1 }}>
-                  Ready to Get Started?
-                </Typography>
-                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.5rem' }, mb: 2, lineHeight: 1.2 }}>
-                  Let's Plan Your Relocation Project
-                </Typography>
-                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.75 }}>
-                  Serving the Triangle and Triad — Raleigh, Durham, Chapel Hill, Greensboro, and surrounding communities.
-                </Typography>
-              </Grid>
-              <Grid size={{ xs: 12, md: 5 }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <Button
-                    variant="contained" size="large" component="a" href="tel:9197909393"
-                    startIcon={<PhoneIcon />} fullWidth
-                    sx={{ bgcolor: '#fff', color: BLUE, fontWeight: 700, fontSize: '1.0625rem', py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' } }}
-                  >
-                    Call (919) 790-9393
-                  </Button>
-                  <Button
-                    variant="outlined" size="large" onClick={() => navigate('/contact')} fullWidth
-                    sx={{ borderColor: 'rgba(255,255,255,0.5)', color: '#fff', fontWeight: 600, fontSize: '1rem', py: 1.75, '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.1)' } }}
-                  >
-                    Send a Message
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </FadeInBox>
     </>
   )
 }

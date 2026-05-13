@@ -5,6 +5,7 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
+import heroBg from '../assets/grid-hero.png'
 import FadeInBox from '../components/FadeInBox'
 import QuoteForm from '../components/QuoteForm'
 
@@ -30,7 +31,10 @@ export default function Contact() {
   return (
     <>
       {/* ── Hero ── */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 7, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 5, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(29,43,69,0.85)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, ...DOT_GRID }} />
         {/* Teal glow */}
         <Box sx={{ position: 'absolute', top: -80, right: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.09) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
@@ -72,11 +76,11 @@ export default function Contact() {
                     {label}
                   </Typography>
                   {href ? (
-                    <Box component="a" href={href} sx={{ color: '#fff', fontFamily: "'Saira', sans-serif", fontWeight: 600, fontSize: '0.95rem', textDecoration: 'none', '&:hover': { color: TEAL } }}>
+                    <Box component="a" href={href} sx={{ color: '#fff', fontFamily: "'Saira', sans-serif", fontWeight: 600, fontSize: { xs: '0.875rem', sm: '0.95rem' }, textDecoration: 'none', '&:hover': { color: TEAL }, wordBreak: 'break-all' }}>
                       {value}
                     </Box>
                   ) : (
-                    <Typography sx={{ color: '#fff', fontWeight: 600, fontSize: '0.95rem', fontFamily: "'Saira', sans-serif" }}>{value}</Typography>
+                    <Typography sx={{ color: '#fff', fontWeight: 600, fontSize: { xs: '0.875rem', sm: '0.95rem' }, fontFamily: "'Saira', sans-serif" }}>{value}</Typography>
                   )}
                 </Box>
               </FadeInBox>
@@ -86,9 +90,9 @@ export default function Contact() {
       </Box>
 
       {/* ── Content ── */}
-      <Box sx={{ bgcolor: DARK, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: DARK, py: { xs: 6, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Grid container spacing={{ xs: 6, md: 8 }}>
+          <Grid container spacing={{ xs: 4, md: 8 }}>
 
             {/* Left: contact info + service areas */}
             <Grid size={{ xs: 12, md: 4 }}>
@@ -152,7 +156,7 @@ export default function Contact() {
                         borderRadius: 1.5, px: 1.5, py: 0.6,
                       }}>
                         <LocationOnIcon sx={{ fontSize: 12, color: TEAL, flexShrink: 0 }} />
-                        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem' }}>{area}</Typography>
+                        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', wordBreak: 'break-word' }}>{area}</Typography>
                       </Box>
                     ))}
                   </Box>

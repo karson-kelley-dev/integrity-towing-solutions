@@ -1,13 +1,17 @@
-import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import PhoneIcon from '@mui/icons-material/Phone'
-import { useNavigate } from 'react-router-dom'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import heroBg from '../../assets/grid-hero.png'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
-import QuoteForm from '../../components/QuoteForm'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import PhoneIcon from '@mui/icons-material/Phone'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import FadeInBox from '../../components/FadeInBox'
+import QuoteForm from '../../components/QuoteForm'
 
 const NAVY = '#1D2B45'
 const DARK = '#0d1929'
@@ -35,13 +39,17 @@ const SIDEBAR_SERVICES = [
 
 export default function PrivatePropertyTowing() {
   const navigate = useNavigate()
+  const [expandedCard, setExpandedCard] = useState<number | null>(null)
   return (
     <>
       {/* ── Hero ── */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 4, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(13,25,41,0.78)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, ...DOT_GRID }} />
         <Box sx={{ position: 'absolute', top: -80, right: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={{ xs: 5, md: 8 }} alignItems="flex-start">
+          <Grid container spacing={{ xs: 4, md: 8 }} alignItems="flex-start">
             <Grid size={{ xs: 12, md: 6 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
                 <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
@@ -60,14 +68,22 @@ export default function PrivatePropertyTowing() {
                 drama. We combine clear communication, compliant processes, and disciplined operations to keep
                 your lots, lanes, and fire zones clear.
               </Typography>
-              <Button
-                variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
-                sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 20px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
-              >
-                (919) 790-9393
-              </Button>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Button
+                  variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
+                  sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 20px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
+                >
+                  (919) 790-9393
+                </Button>
+                <Button
+                  variant="outlined" size="large" onClick={() => navigate('/contact')} endIcon={<ArrowForwardIcon />}
+                  sx={{ display: { xs: 'inline-flex', md: 'none' }, borderColor: 'rgba(255,255,255,0.3)', color: '#fff', fontWeight: 600, '&:hover': { borderColor: TEAL, bgcolor: 'rgba(102,153,187,0.08)' }, transition: 'all 0.2s' }}
+                >
+                  Send a Message
+                </Button>
+              </Box>
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
                 <Box sx={{ mb: 3 }}>
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Interested in us servicing your property?</Typography>
@@ -81,10 +97,10 @@ export default function PrivatePropertyTowing() {
       </Box>
 
       {/* ── Service Cards ── */}
-      <Box sx={{ bgcolor: DARK, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: NAVY, py: { xs: 6, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <FadeInBox>
-            <Box sx={{ mb: { xs: 6, md: 8 } }}>
+            <Box sx={{ mb: { xs: 4, md: 8 } }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
                 <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
                 <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>What You Can Expect</Typography>
@@ -100,24 +116,49 @@ export default function PrivatePropertyTowing() {
               </Typography>
             </Box>
           </FadeInBox>
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', lg: 'repeat(3,1fr)' }, gap: 2.5 }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', lg: 'repeat(3,1fr)' }, gap: { xs: 1.5, sm: 2.5 } }}>
             {SERVICE_CARDS.map(({ icon, title, description }, i) => (
               <FadeInBox key={title} delay={i * 80}>
                 <Box sx={{
-                  p: 3.5, height: '100%',
+                  p: { xs: 2, sm: 3.5 },
+                  height: '100%',
                   bgcolor: 'rgba(255,255,255,0.04)',
                   border: '1px solid rgba(255,255,255,0.08)',
                   borderTop: `3px solid ${TEAL}`,
                   borderRadius: 2.5,
-                  display: 'flex', flexDirection: 'column', gap: 2,
                   transition: 'background 0.2s, border-color 0.2s',
                   '&:hover': { bgcolor: 'rgba(102,153,187,0.05)', borderColor: 'rgba(102,153,187,0.3)' },
                 }}>
-                  <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Box component="img" src={icon} alt={title} sx={{ height: 28, width: 'auto' }} />
+                  {/* Mobile: accordion header */}
+                  <Box
+                    onClick={() => setExpandedCard(expandedCard === i ? null : i)}
+                    sx={{ display: { xs: 'flex', sm: 'none' }, alignItems: 'center', gap: 1.5, cursor: 'pointer', userSelect: 'none' }}
+                  >
+                    <Box sx={{ width: 36, height: 36, borderRadius: 1.5, bgcolor: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Box component="img" src={icon} alt={title} sx={{ height: 20, width: 'auto' }} />
+                    </Box>
+                    <Typography sx={{ color: '#fff', fontWeight: 700, fontSize: '0.9rem', lineHeight: 1.3, flex: 1 }}>{title}</Typography>
+                    <ExpandMoreIcon sx={{ color: TEAL, flexShrink: 0, transform: expandedCard === i ? 'rotate(180deg)' : 'none', transition: 'transform 0.25s' }} />
                   </Box>
-                  <Typography variant="h6" sx={{ color: '#fff', fontSize: '1.0rem' }}>{title}</Typography>
-                  <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.75 }}>{description}</Typography>
+                  {/* Mobile: collapsible body */}
+                  <Box sx={{
+                    display: { xs: 'block', sm: 'none' },
+                    maxHeight: expandedCard === i ? '300px' : 0,
+                    overflow: 'hidden',
+                    opacity: expandedCard === i ? 1 : 0,
+                    transition: 'max-height 0.35s ease, opacity 0.25s ease',
+                    pt: expandedCard === i ? 1.5 : 0,
+                  }}>
+                    <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.75 }}>{description}</Typography>
+                  </Box>
+                  {/* Desktop: full layout */}
+                  <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'column', gap: 2, height: '100%' }}>
+                    <Box sx={{ width: 52, height: 52, borderRadius: 2, bgcolor: NAVY, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Box component="img" src={icon} alt={title} sx={{ height: 28, width: 'auto' }} />
+                    </Box>
+                    <Typography variant="h6" sx={{ color: '#fff', fontSize: '1.0rem' }}>{title}</Typography>
+                    <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.75 }}>{description}</Typography>
+                  </Box>
                 </Box>
               </FadeInBox>
             ))}
@@ -126,9 +167,9 @@ export default function PrivatePropertyTowing() {
       </Box>
 
       {/* ── Content + Sidebar ── */}
-      <Box sx={{ bgcolor: NAVY, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: DARK, py: { xs: 6, md: 12 }, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Grid container spacing={{ xs: 5, md: 7 }}>
+          <Grid container spacing={{ xs: 4, md: 7 }}>
             <Grid size={{ xs: 12, md: 8 }}>
               <FadeInBox direction="right">
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
@@ -138,13 +179,14 @@ export default function PrivatePropertyTowing() {
                 <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 2 }}>
                   Why ITS for Private Property Towing in North Carolina
                 </Typography>
-                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.9, mb: 3 }}>
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.9, mb: { xs: 2.5, md: 3 } }}>
                   Property Managers choose ITS because we operate like a partner, not a vendor. We take the time
                   to understand your property and set up an enforcement program that is clear to residents,
                   defensible when challenged, and consistent week after week. Our processes prioritize
                   transparency and accountability—so you always know what happened, why it happened, and how
                   it was documented.
                 </Typography>
+                <Box sx={{ display: { xs: 'block', md: 'none' }, width: '100%', height: 1, bgcolor: 'rgba(255,255,255,0.08)', mb: 2.5 }} />
                 <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.9 }}>
                   ITS also brings scale without sacrificing standards. With infrastructure across Raleigh,
                   Durham, Chapel Hill, and Greensboro, we deliver one consistent approach across
@@ -154,7 +196,7 @@ export default function PrivatePropertyTowing() {
               </FadeInBox>
             </Grid>
 
-            <Grid size={{ xs: 12, md: 4 }}>
+            <Grid size={{ xs: 12, md: 4 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <FadeInBox direction="left">
                 <Box sx={{ position: 'sticky', top: 90 }}>
                   <Box sx={{
@@ -189,43 +231,6 @@ export default function PrivatePropertyTowing() {
         </Container>
       </Box>
 
-      {/* ── CTA ── */}
-      <FadeInBox>
-        <Box sx={{ bgcolor: BLUE, py: { xs: 7, md: 9 } }}>
-          <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-            <Grid container spacing={4} alignItems="center">
-              <Grid size={{ xs: 12, md: 7 }}>
-                <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.65)', fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1 }}>
-                  Ready to Get Started?
-                </Typography>
-                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.5rem' }, mb: 2, lineHeight: 1.2 }}>
-                  Let's Build a Parking Enforcement Program for Your Property
-                </Typography>
-                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.75 }}>
-                  Serving the Triangle and Triad — Raleigh, Durham, Chapel Hill, Greensboro, and surrounding communities.
-                </Typography>
-              </Grid>
-              <Grid size={{ xs: 12, md: 5 }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <Button
-                    variant="contained" size="large" component="a" href="tel:9197909393"
-                    startIcon={<PhoneIcon />} fullWidth
-                    sx={{ bgcolor: '#fff', color: BLUE, fontWeight: 700, fontSize: '1.0625rem', py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' } }}
-                  >
-                    Call (919) 790-9393
-                  </Button>
-                  <Button
-                    variant="outlined" size="large" onClick={() => navigate('/contact')} fullWidth
-                    sx={{ borderColor: 'rgba(255,255,255,0.5)', color: '#fff', fontWeight: 600, fontSize: '1rem', py: 1.75, '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.1)' } }}
-                  >
-                    Send a Message
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </FadeInBox>
     </>
   )
 }

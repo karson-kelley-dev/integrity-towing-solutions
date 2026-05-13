@@ -77,7 +77,7 @@ export default function Services() {
         {SERVICES.map(({ icon, num, title, description, path, accent }, i) => {
           const flip = i % 2 === 1
           return (
-            <FadeInBox key={title} direction={flip ? 'right' : 'left'} distance={40}>
+            <FadeInBox key={title} direction="up" distance={32}>
               <Box
                 sx={{
                   position: 'relative',

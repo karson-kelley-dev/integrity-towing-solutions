@@ -225,7 +225,7 @@ export default function Navbar() {
             </Box>
 
             {/* Desktop Nav */}
-            <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', flex: 1, gap: 0.25 }}>
+            <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 4 }}>
               <NavLink label="Home" active={isActive('/')} onClick={() => go('/')} />
               <DesktopDropdown label="Services" items={SERVICES} active={isServicesActive} navigate={go} />
               <DesktopDropdown label="Auction" items={AUCTIONS} active={isAuctionActive} navigate={go} />
@@ -334,7 +334,7 @@ export default function Navbar() {
         onClose={() => setDrawerOpen(false)}
         PaperProps={{
           sx: {
-            width: 300,
+            width: 'min(300px, calc(100vw - 24px))',
             bgcolor: DARK,
             borderLeft: '1px solid rgba(255,255,255,0.08)',
           },
@@ -477,9 +477,6 @@ export default function Navbar() {
             Get a Quote
           </Button>
         </Box>
-        <Typography sx={{ textAlign: 'center', py: 2, color: 'rgba(255,255,255,0.25)', fontSize: '0.75rem' }}>
-          (919) 790-9393
-        </Typography>
       </Drawer>
     </>
   )

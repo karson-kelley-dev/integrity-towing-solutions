@@ -1,12 +1,14 @@
-import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import PhoneIcon from '@mui/icons-material/Phone'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
-import QuoteForm from '../../components/QuoteForm'
+import heroBg from '../../assets/grid-hero.png'
 import FadeInBox from '../../components/FadeInBox'
+import QuoteForm from '../../components/QuoteForm'
 
 const NAVY = '#1D2B45'
 const DARK = '#0d1929'
@@ -33,10 +35,13 @@ export default function EmergencyResponse() {
   return (
     <>
       {/* ── Hero ── */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 6, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 4, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(13,25,41,0.78)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, ...DOT_GRID }} />
         <Box sx={{ position: 'absolute', bottom: -80, left: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={{ xs: 5, md: 8 }} alignItems="flex-start">
+          <Grid container spacing={{ xs: 4, md: 8 }} alignItems="flex-start">
             <Grid size={{ xs: 12, md: 6 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
                 <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
@@ -54,20 +59,22 @@ export default function EmergencyResponse() {
                 clear vehicles quickly and restore order safely. We work with dispatch, first responders, and
                 on-site stakeholders to keep operations moving.
               </Typography>
-              {/* Urgent callout */}
-              <Box sx={{ bgcolor: 'rgba(102,153,187,0.1)', border: '1px solid rgba(102,153,187,0.25)', borderRadius: 2, p: 2.5, mb: 3 }}>
-                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 700, fontSize: '0.875rem', mb: 1.25 }}>
-                  For 24-Hour Immediate Service:
-                </Typography>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
                   variant="contained" size="large" component="a" href="tel:9197909393" startIcon={<PhoneIcon />}
-                  sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 16px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A' } }}
+                  sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, boxShadow: '0 4px 20px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
                 >
-                  Call (919) 790-9393
+                  (919) 790-9393
+                </Button>
+                <Button
+                  variant="outlined" size="large" onClick={() => navigate('/contact')} endIcon={<ArrowForwardIcon />}
+                  sx={{ display: { xs: 'inline-flex', md: 'none' }, borderColor: 'rgba(255,255,255,0.3)', color: '#fff', fontWeight: 600, '&:hover': { borderColor: TEAL, bgcolor: 'rgba(102,153,187,0.08)' }, transition: 'all 0.2s' }}
+                >
+                  Send a Message
                 </Button>
               </Box>
             </Grid>
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
                 <Box sx={{ mb: 3 }}>
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Request a Quote</Typography>
@@ -81,7 +88,7 @@ export default function EmergencyResponse() {
       </Box>
 
       {/* ── About strip ── */}
-      <Box sx={{ bgcolor: DARK, py: { xs: 6, md: 8 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ bgcolor: NAVY, py: { xs: 5, md: 8 }, position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 50%, rgba(102,153,187,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
           <FadeInBox>
@@ -94,10 +101,10 @@ export default function EmergencyResponse() {
                 it's an accident, a disabled vehicle, or a situation requiring secure transport, our team follows
                 disciplined procedures and uses the right equipment to remove vehicles with care and precision.
               </Typography>
-              <Typography variant="h4" sx={{ color: '#fff', fontSize: { xs: '1.2rem', md: '1.4rem' }, mb: 1.5 }}>
+              <Typography variant="h4" sx={{ display: { xs: 'none', md: 'block' }, color: '#fff', fontSize: { xs: '1.2rem', md: '1.4rem' }, mb: 1.5 }}>
                 Supporting Public Safety Partners Across North Carolina
               </Typography>
-              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '1.0625rem', lineHeight: 1.85 }}>
+              <Typography variant="body1" sx={{ display: { xs: 'none', md: 'block' }, color: 'rgba(255,255,255,0.55)', fontSize: '1.0625rem', lineHeight: 1.85 }}>
                 Emergency work leaves no margin for error. ITS brings trained operators, coordinated dispatch,
                 and the resources to handle complex removals and recoveries—without creating additional risk at
                 the scene. The goal is simple: reduce downtime, improve safety, and get roads, lots, and access
@@ -109,22 +116,22 @@ export default function EmergencyResponse() {
       </Box>
 
       {/* ── Service Cards ── */}
-      <Box sx={{ bgcolor: NAVY, py: { xs: 7, md: 10 } }}>
+      <Box sx={{ bgcolor: DARK, py: { xs: 5, md: 10 }, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <FadeInBox>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
               <Box sx={{ width: 32, height: 2, bgcolor: TEAL }} />
               <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Services</Typography>
             </Box>
-            <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: { xs: 4, md: 5 } }}>
+            <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: { xs: 3, md: 5 } }}>
               Emergency Response Services
             </Typography>
           </FadeInBox>
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2,1fr)', lg: 'repeat(4,1fr)' }, gap: 2.5 }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2,1fr)', md: 'repeat(3,1fr)', lg: 'repeat(4,1fr)' }, gap: { xs: 1.5, sm: 2.5 } }}>
             {SERVICE_CARDS.map(({ icon, title, description }, i) => (
               <FadeInBox key={title} delay={i * 60}>
                 <Box sx={{
-                  p: 3, height: '100%',
+                  p: { xs: 2, sm: 3 }, height: '100%',
                   bgcolor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
                   borderTop: `3px solid ${TEAL}`, borderRadius: 2.5,
                   display: 'flex', flexDirection: 'column', gap: 1.5,
@@ -143,43 +150,6 @@ export default function EmergencyResponse() {
         </Container>
       </Box>
 
-      {/* ── CTA ── */}
-      <FadeInBox>
-        <Box sx={{ bgcolor: BLUE, py: { xs: 7, md: 9 } }}>
-          <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-            <Grid container spacing={4} alignItems="center">
-              <Grid size={{ xs: 12, md: 7 }}>
-                <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.65)', fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1 }}>
-                  Ready to Get Started?
-                </Typography>
-                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.5rem' }, mb: 2, lineHeight: 1.2 }}>
-                  Need Emergency Towing or Accident Scene Support?
-                </Typography>
-                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.75 }}>
-                  Serving Raleigh, Durham, Chapel Hill, Greensboro, and surrounding communities.
-                </Typography>
-              </Grid>
-              <Grid size={{ xs: 12, md: 5 }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <Button
-                    variant="contained" size="large" component="a" href="tel:9197909393"
-                    startIcon={<PhoneIcon />} fullWidth
-                    sx={{ bgcolor: '#fff', color: BLUE, fontWeight: 700, fontSize: '1.0625rem', py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' } }}
-                  >
-                    Call (919) 790-9393
-                  </Button>
-                  <Button
-                    variant="outlined" size="large" onClick={() => navigate('/contact')} fullWidth
-                    sx={{ borderColor: 'rgba(255,255,255,0.5)', color: '#fff', fontWeight: 600, fontSize: '1rem', py: 1.75, '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.1)' } }}
-                  >
-                    Send a Message
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </FadeInBox>
     </>
   )
 }

@@ -1,4 +1,7 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import PhoneIcon from '@mui/icons-material/Phone'
@@ -6,11 +9,11 @@ import Box, { type BoxProps } from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import GlobalStyles from '@mui/material/GlobalStyles'
-import Grid from '@mui/material/Grid'
+import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import heroBg from '../assets/truck-hero.jpg'
+import heroBg from '../assets/grid-hero.png'
 import FadeInBox from '../components/FadeInBox'
 
 // ─── Brand constants ───────────────────────────────────────────────────────
@@ -96,6 +99,8 @@ const SERVICES = [
 export default function Home() {
   const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
+  const [activeTestimonial, setActiveTestimonial] = useState(0)
+  const [expandedService, setExpandedService] = useState<number | null>(null)
   const heroImageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -129,7 +134,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           HERO — full-bleed image, left content overlay
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', display: 'flex', alignItems: 'flex-start' }}>
+      <Box sx={{ position: 'relative', zIndex: 0, height: { xs: 'auto', md: '100vh' }, minHeight: { xs: '100vh', md: 'unset' }, overflow: 'hidden', display: 'flex', alignItems: 'stretch' }}>
 
         {/* Full-bleed background image */}
         <Box
@@ -149,19 +154,22 @@ export default function Home() {
         {/* Teal glow — top right corner */}
         <Box sx={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, transparent 45%, rgba(102,153,187,0.18) 100%)' }} />
 
-        {/* Left content box — naturally sized, floats over image center-left */}
+        {/* Left content box */}
         <Box
           sx={{
             position: 'relative',
             zIndex: 1,
             width: { xs: '100%', md: '50%' },
-            bgcolor: { xs: 'rgba(13,25,41,0.92)', md: NAVY },
+            bgcolor: { xs: 'rgba(13,25,41,0.92)', md: 'rgba(13,25,41,0.78)' },
             ...DOT_GRID,
-            clipPath: { xs: 'none', md: 'polygon(0 0, 100% 0, 88% 100%, 0 100%)' },
+            borderRadius: { xs: 0, md: '0 0 72px 0' },
             pt: { xs: 8, md: 11 },
-            pb: { xs: 8, md: 8 },
-            pr: { xs: 3, md: 14 },
+            pb: { xs: 6, md: 6 },
+            pr: { xs: 3, md: 10 },
             pl: { xs: 3, sm: 4, md: 6, lg: 10 },
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
           }}
         >
           {/* Teal glow top-left */}
@@ -170,6 +178,9 @@ export default function Home() {
             background: 'radial-gradient(circle, rgba(102,153,187,0.1) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
+
+          {/* Top content group */}
+          <Box>
 
           {/* Overline */}
           <Box sx={{ overflow: 'hidden', mb: 2, position: 'relative', zIndex: 1 }}>
@@ -240,7 +251,7 @@ export default function Home() {
             variant="body1"
             sx={{
               color: 'rgba(255,255,255,0.68)',
-              fontSize: { xs: '0.975rem', md: '1.0625rem' },
+              fontSize: { xs: '1rem', md: '1.175rem' },
               lineHeight: 1.85,
               mb: 4,
               maxWidth: 520,
@@ -255,7 +266,7 @@ export default function Home() {
 
           {/* CTAs */}
           <Box sx={{
-            display: 'flex', gap: 2, flexWrap: 'wrap',
+            display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' }, flexWrap: 'wrap',
             animation: 'heroWordReveal 0.7s cubic-bezier(0.22,1,0.36,1) 0.88s both',
             position: 'relative', zIndex: 1,
           }}>
@@ -290,6 +301,7 @@ export default function Home() {
               Our Services
             </Button>
           </Box>
+          </Box>{/* end top content group */}
         </Box>
 
         {/* Scroll indicator */}
@@ -314,7 +326,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           LOCATION STRIP — thin glass bar floating over section boundary
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: DARK, pt: { xs: 5, md: 3 }, pb: 0 }}>
+      <Box sx={{ bgcolor: DARK, pt: { xs: 3, md: 3 }, pb: 0 }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <FadeInBox>
             <Box sx={{
@@ -364,7 +376,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           ABOUT
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: DARK, pt: { xs: 4, md: 5 }, pb: { xs: 7, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+      <Box sx={{ bgcolor: DARK, pt: { xs: 3, md: 5 }, pb: { xs: 5, md: 10 }, position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, rgba(102,153,187,0.05) 0%, transparent 65%)', pointerEvents: 'none' }} />
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
           <FadeInBox>
@@ -394,7 +406,7 @@ export default function Home() {
       ══════════════════════════════════════════════════════════════════ */}
       <Box id="services" sx={{ bgcolor: NAVY }}>
         {/* Section label */}
-        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, pt: { xs: 6, md: 8 }, pb: { xs: 4, md: 6 } }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, pt: { xs: 5, md: 8 }, pb: { xs: 3, md: 6 } }}>
           <FadeInBox>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
               <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
@@ -409,7 +421,7 @@ export default function Home() {
         </Container>
 
         {/* Service cards grid */}
-        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, pb: { xs: 6, md: 10 } }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, pb: { xs: 5, md: 10 } }}>
           <Box sx={{
             display: 'grid',
             gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
@@ -426,52 +438,118 @@ export default function Home() {
                     border: '1px solid rgba(255,255,255,0.08)',
                     borderTop: `3px solid ${accent}`,
                     borderRadius: 2.5,
-                    p: { xs: 3, md: 4 },
+                    p: { xs: 2.5, md: 4 },
                     display: 'flex',
                     flexDirection: 'column',
                     transition: 'background 0.2s, transform 0.2s',
                     '&:hover': {
                       background: 'rgba(255,255,255,0.065)',
-                      transform: 'translateY(-4px)',
+                      transform: { md: 'translateY(-4px)' },
                     },
                   }}
                 >
-                  <Box sx={{
-                    width: 52, height: 52, borderRadius: 1.5,
-                    bgcolor: 'rgba(255,255,255,0.06)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    mb: 3,
-                  }}>
-                    <Box component="img" src={icon} alt={title} sx={{ height: 26, width: 'auto' }} />
-                  </Box>
-                  <Typography variant="h3" sx={{
-                    color: '#fff', fontWeight: 700,
-                    fontSize: { xs: '1.25rem', md: '1.4rem' },
-                    lineHeight: 1.25, mb: 1.75,
-                  }}>
-                    {title}
-                  </Typography>
-                  <Typography variant="body2" sx={{
-                    color: 'rgba(255,255,255,0.58)',
-                    lineHeight: 1.85, mb: 3.5, flex: 1,
-                  }}>
-                    {description}
-                  </Typography>
-                  <Button
-                    variant="text"
-                    onClick={() => navigate(path)}
-                    endIcon={<ArrowForwardIcon />}
+                  {/* ── Mobile: collapsed header row ── */}
+                  <Box
+                    onClick={() => setExpandedService(expandedService === i ? null : i)}
                     sx={{
-                      color: accent, fontWeight: 700, p: 0, fontSize: '0.875rem',
-                      alignSelf: 'flex-start',
-                      letterSpacing: '0.04em',
-                      '&:hover': { bgcolor: 'transparent', color: '#fff', '& .MuiButton-endIcon': { transform: 'translateX(5px)' } },
-                      '& .MuiButton-endIcon': { transition: 'transform 0.2s' },
+                      display: { xs: 'flex', md: 'none' },
+                      alignItems: 'center',
+                      gap: 2,
+                      cursor: 'pointer',
+                      userSelect: 'none',
                     }}
                   >
-                    Learn More
-                  </Button>
+                    <Box sx={{
+                      width: 38, height: 38, borderRadius: 1.5, flexShrink: 0,
+                      bgcolor: 'rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <Box component="img" src={icon} alt={title} sx={{ height: 20, width: 'auto' }} />
+                    </Box>
+                    <Typography sx={{
+                      color: '#fff', fontWeight: 700,
+                      fontSize: '1rem', lineHeight: 1.3, flex: 1,
+                    }}>
+                      {title}
+                    </Typography>
+                    <ExpandMoreIcon sx={{
+                      color: accent, flexShrink: 0,
+                      transform: expandedService === i ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.25s ease',
+                    }} />
+                  </Box>
+
+                  {/* ── Mobile: collapsible body ── */}
+                  <Box sx={{
+                    display: { xs: 'block', md: 'none' },
+                    maxHeight: expandedService === i ? '320px' : 0,
+                    overflow: 'hidden',
+                    opacity: expandedService === i ? 1 : 0,
+                    transition: 'max-height 0.35s ease, opacity 0.25s ease',
+                    pt: expandedService === i ? 2.5 : 0,
+                  }}>
+                    <Typography variant="body2" sx={{
+                      color: 'rgba(255,255,255,0.58)',
+                      lineHeight: 1.85, mb: 2.5,
+                    }}>
+                      {description}
+                    </Typography>
+                    <Button
+                      variant="text"
+                      onClick={() => navigate(path)}
+                      endIcon={<ArrowForwardIcon />}
+                      sx={{
+                        color: accent, fontWeight: 700, p: 0, fontSize: '0.875rem',
+                        alignSelf: 'flex-start',
+                        letterSpacing: '0.04em',
+                        '&:hover': { bgcolor: 'transparent', color: '#fff', '& .MuiButton-endIcon': { transform: 'translateX(5px)' } },
+                        '& .MuiButton-endIcon': { transition: 'transform 0.2s' },
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </Box>
+
+                  {/* ── Desktop: full card layout ── */}
+                  <Box sx={{ display: { xs: 'none', md: 'flex' }, flexDirection: 'column', height: '100%' }}>
+                    <Box sx={{
+                      width: 52, height: 52, borderRadius: 1.5,
+                      bgcolor: 'rgba(255,255,255,0.06)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      mb: 3,
+                    }}>
+                      <Box component="img" src={icon} alt={title} sx={{ height: 26, width: 'auto' }} />
+                    </Box>
+                    <Typography variant="h3" sx={{
+                      color: '#fff', fontWeight: 700,
+                      fontSize: '1.4rem',
+                      lineHeight: 1.25, mb: 1.75,
+                    }}>
+                      {title}
+                    </Typography>
+                    <Typography variant="body2" sx={{
+                      color: 'rgba(255,255,255,0.58)',
+                      lineHeight: 1.85, mb: 3.5, flex: 1,
+                    }}>
+                      {description}
+                    </Typography>
+                    <Button
+                      variant="text"
+                      onClick={() => navigate(path)}
+                      endIcon={<ArrowForwardIcon />}
+                      sx={{
+                        color: accent, fontWeight: 700, p: 0, fontSize: '0.875rem',
+                        alignSelf: 'flex-start',
+                        letterSpacing: '0.04em',
+                        '&:hover': { bgcolor: 'transparent', color: '#fff', '& .MuiButton-endIcon': { transform: 'translateX(5px)' } },
+                        '& .MuiButton-endIcon': { transition: 'transform 0.2s' },
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </Box>
                 </Box>
               </FadeInBox>
             ))}
@@ -482,7 +560,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: DARK, ...DOT_GRID, py: { xs: 8, md: 12 } }}>
+      <Box sx={{ bgcolor: DARK, ...DOT_GRID, py: { xs: 6, md: 12 } }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <FadeInBox>
             <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 7 } }}>
@@ -494,81 +572,79 @@ export default function Home() {
               </Typography>
             </Box>
           </FadeInBox>
-          <Grid container spacing={3} justifyContent="center">
-            {TESTIMONIALS.map(({ quote, name, source }, i) => (
-              <Grid key={name} size={{ xs: 12, md: 4 }}>
-                <FadeInBox direction="up" delay={i * 100} distance={28}>
-                  <TiltCard sx={{
-                    p: { xs: 3, md: 3.5 },
-                    height: '100%',
-                    bgcolor: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    borderLeft: `3px solid ${TEAL}`,
-                    borderRadius: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}>
-                    <Typography sx={{ color: TEAL, fontSize: '3rem', lineHeight: 0.8, fontFamily: 'Georgia, serif', mb: 1.5, mt: -0.5 }}>
-                      &ldquo;
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, flex: 1, mb: 2.5, fontStyle: 'italic' }}>
-                      {quote}
-                    </Typography>
-                    <Box>
-                      <Typography sx={{ color: '#fff', fontWeight: 700, fontFamily: "'Saira', sans-serif", fontSize: '0.95rem' }}>
-                        {name}
-                      </Typography>
-                      <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem', fontFamily: "'Saira', sans-serif" }}>
-                        {source}
-                      </Typography>
-                    </Box>
-                  </TiltCard>
-                </FadeInBox>
-              </Grid>
+          {/* Carousel — all breakpoints */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0.5, md: 2 } }}>
+            <IconButton
+              onClick={() => setActiveTestimonial((activeTestimonial + TESTIMONIALS.length - 1) % TESTIMONIALS.length)}
+              sx={{
+                color: TEAL, flexShrink: 0,
+                bgcolor: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                '&:hover': { bgcolor: 'rgba(102,153,187,0.15)' },
+              }}
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeftIcon />
+            </IconButton>
+            <Box sx={{ flex: 1, maxWidth: { md: 720 }, mx: 'auto' }}>
+              <TiltCard sx={{
+                p: { xs: 3, md: 3.5 },
+                bgcolor: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                borderLeft: `3px solid ${TEAL}`,
+                borderRadius: 2,
+                display: 'flex',
+                flexDirection: 'column',
+              }}>
+                <Typography sx={{ color: TEAL, fontSize: '3rem', lineHeight: 0.8, fontFamily: 'Georgia, serif', mb: 1.5, mt: -0.5 }}>
+                  &ldquo;
+                </Typography>
+                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, flex: 1, mb: 2.5, fontStyle: 'italic' }}>
+                  {TESTIMONIALS[activeTestimonial].quote}
+                </Typography>
+                <Box>
+                  <Typography sx={{ color: '#fff', fontWeight: 700, fontFamily: "'Saira', sans-serif", fontSize: '0.95rem' }}>
+                    {TESTIMONIALS[activeTestimonial].name}
+                  </Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem', fontFamily: "'Saira', sans-serif" }}>
+                    {TESTIMONIALS[activeTestimonial].source}
+                  </Typography>
+                </Box>
+              </TiltCard>
+            </Box>
+            <IconButton
+              onClick={() => setActiveTestimonial((activeTestimonial + 1) % TESTIMONIALS.length)}
+              sx={{
+                color: TEAL, flexShrink: 0,
+                bgcolor: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                '&:hover': { bgcolor: 'rgba(102,153,187,0.15)' },
+              }}
+              aria-label="Next testimonial"
+            >
+              <ChevronRightIcon />
+            </IconButton>
+          </Box>
+          {/* Dot indicators */}
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1.25, mt: 3 }}>
+            {TESTIMONIALS.map((_, i) => (
+              <Box
+                key={i}
+                onClick={() => setActiveTestimonial(i)}
+                sx={{
+                  width: i === activeTestimonial ? 22 : 8,
+                  height: 8,
+                  borderRadius: 4,
+                  bgcolor: i === activeTestimonial ? TEAL : 'rgba(255,255,255,0.22)',
+                  cursor: 'pointer',
+                  transition: 'width 0.3s ease, background-color 0.2s ease',
+                }}
+              />
             ))}
-          </Grid>
+          </Box>
         </Container>
       </Box>
 
-      {/* ══════════════════════════════════════════════════════════════════
-          BOTTOM CTA
-      ══════════════════════════════════════════════════════════════════ */}
-      <FadeInBox>
-        <Box sx={{ bgcolor: BLUE, py: { xs: 7, md: 9 } }}>
-          <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-            <Grid container spacing={4} alignItems="center">
-              <Grid size={{ xs: 12, md: 7 }}>
-                <Typography variant="overline" sx={{ color: 'rgba(255,255,255,0.65)', fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1 }}>
-                  Ready to Get Started?
-                </Typography>
-                <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.5rem' }, mb: 2, lineHeight: 1.2 }}>
-                  Let's Build a Parking Enforcement Program for Your Property
-                </Typography>
-                <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.75)', fontSize: '1.0625rem', lineHeight: 1.75 }}>
-                  Serving the Triangle and Triad — Raleigh, Durham, Chapel Hill, Greensboro, and surrounding communities.
-                </Typography>
-              </Grid>
-              <Grid size={{ xs: 12, md: 5 }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <Button
-                    variant="contained" size="large" component="a" href="tel:9197909393"
-                    startIcon={<PhoneIcon />} fullWidth
-                    sx={{ bgcolor: '#fff', color: BLUE, fontWeight: 700, fontSize: '1.0625rem', py: 1.75, boxShadow: 'none', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)' } }}
-                  >
-                    Call (919) 790-9393
-                  </Button>
-                  <Button
-                    variant="outlined" size="large" onClick={() => navigate('/contact')} fullWidth
-                    sx={{ borderColor: 'rgba(255,255,255,0.5)', color: '#fff', fontWeight: 600, fontSize: '1rem', py: 1.75, '&:hover': { borderColor: '#fff', bgcolor: 'rgba(255,255,255,0.1)' } }}
-                  >
-                    Send a Message
-                  </Button>
-                </Box>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </FadeInBox>
 
     </>
   )
