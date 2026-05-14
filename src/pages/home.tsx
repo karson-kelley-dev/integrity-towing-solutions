@@ -159,8 +159,11 @@ export default function Home() {
           sx={{
             position: 'relative',
             zIndex: 1,
-            width: { xs: '100%', md: '60%' },
-            bgcolor: { xs: 'rgba(13,25,41,0.92)', md: 'rgba(13,25,41,0.78)' },
+            width: { xs: '100%', md: '54%' },
+            background: {
+              xs: 'rgba(13,25,41,0.92)',
+              md: 'linear-gradient(to right, rgba(13,25,41,0.92) 0%, rgba(13,25,41,0.78) 60%, rgba(13,25,41,0.0) 100%)',
+            },
             ...DOT_GRID,
             borderRadius: { xs: 0, md: '0 0 72px 0' },
             pt: { xs: 8, md: 11 },
@@ -289,7 +292,10 @@ export default function Home() {
             <Button
               variant="outlined"
               size="large"
-              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const el = document.getElementById('services')
+                if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' })
+              }}
               endIcon={<ArrowForwardIcon />}
               sx={{
                 borderColor: 'rgba(255,255,255,0.3)', color: '#fff', fontWeight: 600, fontSize: '1rem',
