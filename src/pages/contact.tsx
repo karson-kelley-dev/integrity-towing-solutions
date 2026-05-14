@@ -33,7 +33,7 @@ export default function Contact() {
       {/* ── Hero ── */}
       <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 5, md: 10 }, position: 'relative', overflow: 'hidden' }}>
         <Box sx={{ position: 'absolute', inset: 0, backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(29,43,69,0.85)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(13,25,41,0.78)' }} />
         <Box sx={{ position: 'absolute', inset: 0, ...DOT_GRID }} />
         {/* Teal glow */}
         <Box sx={{ position: 'absolute', top: -80, right: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.09) 0%, transparent 70%)', pointerEvents: 'none' }} />

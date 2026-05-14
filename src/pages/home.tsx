@@ -161,7 +161,7 @@ export default function Home() {
             zIndex: 1,
             width: { xs: '100%', md: '54%' },
             background: {
-              xs: 'rgba(13,25,41,0.92)',
+              xs: 'rgba(13,25,41,0.5)',
               md: 'linear-gradient(to right, rgba(13,25,41,0.92) 0%, rgba(13,25,41,0.78) 60%, rgba(13,25,41,0.0) 100%)',
             },
             ...DOT_GRID,
@@ -208,6 +208,7 @@ export default function Home() {
           }} />
 
           {/* H1 — word-by-word stagger */}
+          
           <Typography
             component="h1"
             aria-label="Parking Management Done Right."
