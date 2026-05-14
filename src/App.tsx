@@ -35,11 +35,11 @@ function App() {
       <ScrollToTop />
       <Routes>
         {/* Standalone — no navbar/footer */}
-        <Route path="/coming-soon" element={<ComingSoon />} />
+        <Route path="/" element={<ComingSoon />} />
 
         {/* All other routes wrapped in Layout */}
         <Route element={<WithLayout />}>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/services/private-property" element={<PrivateProperty />} />
           <Route path="/services/emergency-response" element={<Emergency />} />
           <Route path="/services/mass-relocation" element={<MassRelocation />} />
