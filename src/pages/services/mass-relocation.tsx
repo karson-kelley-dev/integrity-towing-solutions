@@ -85,14 +85,14 @@ export default function MassRelocation() {
                 </Typography>
               </Box>
               <Typography component="h1" sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em', mb: 2.5 }}>
-                Mass Relocation
-                <Box component="span" sx={{ color: TEAL, display: 'block' }}>Towing Services</Box>
+                Large-Scale
+                <Box component="span" sx={{ color: TEAL, display: 'block' }}>Operations</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
                 Need to relocate a large number of vehicles for a construction project, major event, or property
-                transition? ITS provides organized mass relocation towing services designed to move high volumes
+                transition? ITS provides organized large-scale vehicle relocation designed to move high volumes
                 efficiently, safely, and with minimal disruption. We plan the logistics up front, execute with
-                disciplined coordination, and keep stakeholders informed throughout the move.
+                disciplined coordination, and keep stakeholders informed throughout the operation.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
@@ -115,7 +115,7 @@ export default function MassRelocation() {
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Let's Plan Your Project</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>Request a quote for your relocation needs.</Typography>
                 </Box>
-                <QuoteForm heading="" defaultSubject="Mass Relocation" />
+                <QuoteForm heading="" defaultSubject="Large-Scale Operations" />
               </Box>
             </Grid>
           </Grid>
@@ -152,11 +152,11 @@ export default function MassRelocation() {
                   <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Features</Typography>
                 </Box>
                 <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 2 }}>
-                  Features of Our Vehicle Relocation Services
+                  Features of Our Large-Scale Operations
                 </Typography>
                 <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.85, mb: 4 }}>
-                  When it comes to large-scale projects requiring the relocation of multiple vehicles, the right partner
-                  is the difference between an orderly move and a logistical headache. ITS supports property teams,
+                  When large-scale projects require the relocation of multiple vehicles, the right partner
+                  is the difference between an orderly operation and a logistical headache. ITS supports property teams,
                   contractors, and event stakeholders with experienced operators, the right equipment, and a process
                   built for high-volume coordination.
                 </Typography>
@@ -186,7 +186,7 @@ export default function MassRelocation() {
                 <ContentGrid items={TIPS} />
 
                 <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.85, mt: 3 }}>
-                  Ready to plan your relocation project? Contact ITS at{' '}
+                  Ready to plan your next large-scale operation? Contact ITS at{' '}
                   <Box component="a" href="tel:9197909393" sx={{ color: TEAL, fontWeight: 600, textDecoration: 'none', '&:hover': { color: '#fff' } }}>(919) 790-9393</Box>.
                 </Typography>
               </FadeInBox>
@@ -220,6 +220,35 @@ export default function MassRelocation() {
               </FadeInBox>
             </Grid>
           </Grid>
+        </Container>
+      </Box>
+
+      {/* ── CTA Section ── */}
+      <Box sx={{ bgcolor: NAVY, py: { xs: 6, md: 8 }, textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <Container maxWidth="md">
+          <FadeInBox>
+            <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2, fontWeight: 700 }}>
+              Planning a large-scale operation?
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', mb: 4, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
+              From construction projects to property transitions, ITS coordinates every detail so your timeline stays on track.
+            </Typography>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => navigate('/contact')}
+              endIcon={<ArrowForwardIcon />}
+              sx={{
+                bgcolor: TEAL, color: '#fff', fontWeight: 700, fontSize: '1rem',
+                px: 4, py: 1.6,
+                boxShadow: '0 4px 20px rgba(102,153,187,0.4)',
+                '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' },
+                transition: 'all 0.2s',
+              }}
+            >
+              Let's Coordinate
+            </Button>
+          </FadeInBox>
         </Container>
       </Box>
 

@@ -56,7 +56,7 @@ export default function Footer() {
               sx={{ height: 50, width: 'auto', mb: 2.5, filter: 'brightness(0) invert(1)' }}
             />
             <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, maxWidth: 300, mb: 3 }}>
-              Professional towing and parking management for property managers across the Triangle and Triad of North Carolina.
+              Structured parking management and operational support for property managers across the Triangle and Triad of North Carolina.
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
               <PhoneIcon sx={{ fontSize: 16, color: '#6699BB' }} />
@@ -85,9 +85,9 @@ export default function Footer() {
             <Typography variant="subtitle1" sx={{ color: '#fff', fontWeight: 700, mb: 2, fontSize: '0.95rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               Services
             </Typography>
-            <FooterLink label="Private Property Towing" path="/services/private-property" navigate={navigate} />
-            <FooterLink label="Emergency Response" path="/services/emergency-response" navigate={navigate} />
-            <FooterLink label="Mass Relocation" path="/services/mass-relocation" navigate={navigate} />
+            <FooterLink label="Parking Enforcement" path="/services/private-property" navigate={navigate} />
+            <FooterLink label="24/7 Client Support" path="/services/emergency-response" navigate={navigate} />
+            <FooterLink label="Large-Scale Operations" path="/services/mass-relocation" navigate={navigate} />
             <FooterLink label="Vehicle Auctions" path="/auction/raleigh" navigate={navigate} />
           </Box>
 

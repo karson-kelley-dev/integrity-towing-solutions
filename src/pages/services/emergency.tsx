@@ -46,18 +46,18 @@ export default function EmergencyResponse() {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
                 <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
                 <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.75rem' }}>
-                  Emergency Towing &amp; Accident Scene Support
+                  Around-the-Clock Operational Support
                 </Typography>
               </Box>
               <Typography component="h1" sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em', mb: 2.5 }}>
-                Emergency Response &amp;
-                <Box component="span" sx={{ color: TEAL, display: 'block' }}>Accident Scene Management</Box>
+                24/7 Client
+                <Box component="span" sx={{ color: TEAL, display: 'block' }}>Support</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 3, maxWidth: 480 }}>
                 When an incident blocks access, disrupts traffic flow, or creates a safety risk, response time and
-                coordination matter. ITS provides emergency response towing and accident scene support to help
-                clear vehicles quickly and restore order safely. We work with dispatch, first responders, and
-                on-site stakeholders to keep operations moving.
+                coordination matter. ITS provides around-the-clock operational support to help
+                clear situations quickly and restore order safely. We work with dispatch, first responders, and
+                on-site stakeholders to keep your properties moving.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
@@ -80,7 +80,7 @@ export default function EmergencyResponse() {
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Request a Quote</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>For emergency service call (919) 790-9393 directly.</Typography>
                 </Box>
-                <QuoteForm heading="" defaultSubject="Emergency Response" />
+                <QuoteForm heading="" defaultSubject="24/7 Operational Support" />
               </Box>
             </Grid>
           </Grid>
@@ -124,7 +124,7 @@ export default function EmergencyResponse() {
               <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Services</Typography>
             </Box>
             <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: { xs: 3, md: 5 } }}>
-              Emergency Response Services
+              Client Support Services
             </Typography>
           </FadeInBox>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2,1fr)', md: 'repeat(3,1fr)', lg: 'repeat(4,1fr)' }, gap: { xs: 1.5, sm: 2.5 } }}>
@@ -147,6 +147,35 @@ export default function EmergencyResponse() {
               </FadeInBox>
             ))}
           </Box>
+        </Container>
+      </Box>
+
+      {/* ── CTA Section ── */}
+      <Box sx={{ bgcolor: NAVY, py: { xs: 6, md: 8 }, textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <Container maxWidth="md">
+          <FadeInBox>
+            <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2, fontWeight: 700 }}>
+              Need a reliable after-hours partner for your properties?
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', mb: 4, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
+              ITS provides coordinated operational support around the clock — so your team can focus on management, not emergencies.
+            </Typography>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => navigate('/contact')}
+              endIcon={<ArrowForwardIcon />}
+              sx={{
+                bgcolor: TEAL, color: '#fff', fontWeight: 700, fontSize: '1rem',
+                px: 4, py: 1.6,
+                boxShadow: '0 4px 20px rgba(102,153,187,0.4)',
+                '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' },
+                transition: 'all 0.2s',
+              }}
+            >
+              Get in Touch
+            </Button>
+          </FadeInBox>
         </Container>
       </Box>
 

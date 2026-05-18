@@ -17,20 +17,20 @@ export interface SubjectRoute {
 
 export const SUBJECT_ROUTES: SubjectRoute[] = [
   {
-    label: 'Private Property Towing',
-    value: 'Private Property Towing',
+    label: 'Parking Enforcement',
+    value: 'Parking Enforcement',
     serviceId: 'YOUR_SERVICE_ID',
     templateId: 'YOUR_TEMPLATE_ID',
   },
   {
-    label: 'Emergency Response',
-    value: 'Emergency Response',
+    label: '24/7 Client Support',
+    value: '24/7 Client Support',
     serviceId: 'YOUR_SERVICE_ID',
     templateId: 'YOUR_TEMPLATE_ID',
   },
   {
-    label: 'Mass Relocation',
-    value: 'Mass Relocation',
+    label: 'Large-Scale Operations',
+    value: 'Large-Scale Operations',
     serviceId: 'YOUR_SERVICE_ID',
     templateId: 'YOUR_TEMPLATE_ID',
   },

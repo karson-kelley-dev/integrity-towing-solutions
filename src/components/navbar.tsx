@@ -32,9 +32,9 @@ const NAVY = '#1D2B45'
 const DARK = '#0d1929'
 
 const SERVICES = [
-  { label: 'Private Property Towing', path: '/services/private-property' },
-  { label: 'Emergency Response', path: '/services/emergency-response' },
-  { label: 'Mass Relocation', path: '/services/mass-relocation' },
+  { label: 'Parking Enforcement', path: '/services/private-property' },
+  { label: '24/7 Client Support', path: '/services/emergency-response' },
+  { label: 'Large-Scale Operations', path: '/services/mass-relocation' },
 ]
 const AUCTIONS = [
   { label: 'Raleigh', path: '/auction/raleigh' },
@@ -302,7 +302,7 @@ export default function Navbar() {
                   transition: 'all 0.2s',
                 }}
               >
-                Get a Quote
+                Request a Consultation
               </Button>
             </Box>
 

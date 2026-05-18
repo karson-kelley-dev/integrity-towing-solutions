@@ -58,13 +58,13 @@ export default function PrivatePropertyTowing() {
                 </Typography>
               </Box>
               <Typography component="h1" sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em', mb: 2.5 }}>
-                Private Property Towing
-                <Box component="span" sx={{ color: TEAL, display: 'block' }}>in North Carolina</Box>
+                Parking Enforcement
+                <Box component="span" sx={{ color: TEAL, display: 'block' }}>for North Carolina Properties</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
-                When parking violations become the norm, your property pays the price—lost spaces for residents
-                and guests, increased frustration, and avoidable safety and access issues. ITS provides private
-                property towing built for property managers who need consistent enforcement without unnecessary
+                When parking violations become the norm, your property pays the price — lost spaces for residents
+                and guests, increased frustration, and avoidable safety and access issues. ITS provides structured
+                parking enforcement built for property managers who need consistent oversight without unnecessary
                 drama. We combine clear communication, compliant processes, and disciplined operations to keep
                 your lots, lanes, and fire zones clear.
               </Typography>
@@ -89,7 +89,7 @@ export default function PrivatePropertyTowing() {
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Interested in us servicing your property?</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>We'll get back to you within 1 business hour.</Typography>
                 </Box>
-                <QuoteForm heading="" defaultSubject="Private Property Towing" />
+                <QuoteForm heading="" defaultSubject="Parking Enforcement" />
               </Box>
             </Grid>
           </Grid>
@@ -106,12 +106,12 @@ export default function PrivatePropertyTowing() {
                 <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>What You Can Expect</Typography>
               </Box>
               <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.9rem', md: '2.4rem' }, mb: 2, maxWidth: 600 }}>
-                Built for Property Managers (Not Just Tows)
+                Built for Property Managers
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', maxWidth: 640, fontSize: '1.0625rem', lineHeight: 1.8 }}>
-                Private property towing works best when it's structured like a program—not a random call when things
-                get bad. ITS designs parking enforcement programs around your property type, layout, and resident
-                flow, then executes with consistency. The result is predictable enforcement, better resident
+                Parking enforcement works best when it's structured like a program — not a random call when things
+                get bad. ITS designs enforcement programs around your property type, layout, and resident
+                flow, then executes with consistency. The result is predictable oversight, better resident
                 understanding of the rules, and fewer escalations for your team.
               </Typography>
             </Box>
@@ -177,7 +177,7 @@ export default function PrivatePropertyTowing() {
                   <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Why ITS</Typography>
                 </Box>
                 <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '1.8rem', md: '2.2rem' }, mb: 2 }}>
-                  Why ITS for Private Property Towing in North Carolina
+                  Why Property Managers Choose ITS
                 </Typography>
                 <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.9, mb: { xs: 2.5, md: 3 } }}>
                   Property Managers choose ITS because we operate like a partner, not a vendor. We take the time
@@ -207,7 +207,7 @@ export default function PrivatePropertyTowing() {
                     borderRadius: 2.5, boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
                   }}>
                     <Typography variant="h6" sx={{ color: '#fff', mb: 2.5, fontSize: '1rem', fontWeight: 700, fontFamily: "'Saira', sans-serif" }}>
-                      Private Property Services
+                      Parking Enforcement Services
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25 }}>
                       {SIDEBAR_SERVICES.map((s) => (
@@ -228,6 +228,35 @@ export default function PrivatePropertyTowing() {
               </FadeInBox>
             </Grid>
           </Grid>
+        </Container>
+      </Box>
+
+      {/* ── CTA Section ── */}
+      <Box sx={{ bgcolor: NAVY, py: { xs: 6, md: 8 }, textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <Container maxWidth="md">
+          <FadeInBox>
+            <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2, fontWeight: 700 }}>
+              Ready to bring structure to your property's parking operations?
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', mb: 4, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
+              Let us evaluate your property and build an enforcement program tailored to your community.
+            </Typography>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => navigate('/contact')}
+              endIcon={<ArrowForwardIcon />}
+              sx={{
+                bgcolor: TEAL, color: '#fff', fontWeight: 700, fontSize: '1rem',
+                px: 4, py: 1.6,
+                boxShadow: '0 4px 20px rgba(102,153,187,0.4)',
+                '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' },
+                transition: 'all 0.2s',
+              }}
+            >
+              Request a Property Assessment
+            </Button>
+          </FadeInBox>
         </Container>
       </Box>
 

@@ -5,6 +5,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 import PhoneIcon from '@mui/icons-material/Phone'
+// import StarIcon from '@mui/icons-material/Star'
+// import VisibilityIcon from '@mui/icons-material/Visibility'
+// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+// import GavelIcon from '@mui/icons-material/Gavel'
+// import ShieldIcon from '@mui/icons-material/Shield'
 import Box, { type BoxProps } from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
@@ -58,12 +63,12 @@ const TESTIMONIALS = [
     source: 'Raleigh, NC',
   },
   {
-    quote: "Finally a towing company that actually communicates. We always know what's happening on our properties, and enforcement has been consistent since day one.",
+    quote: "Finally a parking management partner that actually communicates. We always know what's happening on our properties, and enforcement has been consistent since day one.",
     name: 'Regional Portfolio Manager',
     source: 'Triangle Area',
   },
   {
-    quote: "We've worked with several towing companies over the years. ITS stands out for their process and accountability — exactly what we needed.",
+    quote: "We've worked with several enforcement providers over the years. ITS stands out for their process and accountability — exactly what we needed.",
     name: 'HOA Board Member',
     source: 'Greensboro, NC',
   },
@@ -72,29 +77,37 @@ const TESTIMONIALS = [
 const SERVICES = [
   {
     icon: '/images/icon-ppi.png',
-    title: 'Private Property Towing',
+    title: 'Parking Enforcement',
     description:
-      'Parking enforcement built for property managers — written authorization, clear documentation, and consistent processes that protect your property and residents.',
+      'Structured enforcement programs built for property managers — written authorization, clear documentation, and consistent processes that protect your property and residents.',
     path: '/services/private-property',
     accent: TEAL,
   },
   {
     icon: '/images/icon-roadside.png',
-    title: 'Emergency Response & Accident Scene Management',
+    title: '24/7 Client Support',
     description:
-      'Fast, coordinated response for incidents and disabled vehicles — helping restore access, reduce risk, and keep traffic and cities moving.',
+      'Around-the-clock response for incidents, disabled vehicles, and urgent site needs — helping restore access, reduce risk, and keep your operations moving.',
     path: '/services/emergency-response',
     accent: BLUE,
   },
   {
     icon: '/images/icon-mass.png',
-    title: 'Mass Relocation Towing Services',
+    title: 'Large-Scale Operations',
     description:
-      'Efficient, organized towing support for large-scale moves and repositioning — planned logistics, clear communication, and minimal disruption for your site.',
+      'Coordinated vehicle relocation for construction projects, events, and property transitions — planned logistics, clear communication, and minimal disruption.',
     path: '/services/mass-relocation',
     accent: TEAL,
   },
 ]
+
+// const VALUES = [
+//   { icon: <StarIcon />, title: 'Excellence', description: 'We hold ourselves to the highest standard in every interaction, every process, and every property we serve.' },
+//   { icon: <VisibilityIcon />, title: 'Transparency', description: 'Clients always know what is happening on their properties — no surprises, no gaps, no guesswork.' },
+//   { icon: <FavoriteBorderIcon />, title: 'Honesty', description: 'We do what we say, document what we do, and stand behind every action we take.' },
+//   { icon: <GavelIcon />, title: 'Compliance', description: 'Every enforcement action is grounded in written authorization, proper signage, and full regulatory adherence.' },
+//   { icon: <ShieldIcon />, title: 'Safety', description: 'The safety of residents, vehicles, and our team drives every operational decision we make.' },
+// ]
 
 export default function Home() {
   const navigate = useNavigate()
@@ -195,7 +208,7 @@ export default function Home() {
                 animation: 'heroWordReveal 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s both',
               }}
             >
-              Parking Management &amp; Towing Services
+              Parking Management &amp; Operational Services
             </Typography>
           </Box>
 
@@ -263,9 +276,9 @@ export default function Home() {
               position: 'relative', zIndex: 1,
             }}
           >
-            Integrity Towing Solutions is a private property impound partner built to bring professionalism,
-            compliance, and clear accountability to parking enforcement. We exist to raise the standard
-            for private property impound — giving property managers a towing partner they can rely on.
+            Integrity Towing Solutions is a parking management partner built to bring professionalism,
+            compliance, and clear accountability to property operations. We exist to raise the standard
+            for parking enforcement — giving property managers an operational partner they can rely on.
           </Typography>
 
           {/* CTAs */}
@@ -395,10 +408,10 @@ export default function Home() {
                 </Typography>
               </Box>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: { xs: '1rem', md: '1.0625rem' }, lineHeight: 1.9 }}>
-                Every tow is grounded in written authorization, proper signage, and compliance with North Carolina statutes,
+                Every enforcement action is grounded in written authorization, proper signage, and compliance with North Carolina statutes,
                 backed by documentation that stands up to questions and reviews. We operate with transparency, so clients
                 always know what is happening on their properties and nothing falls through the cracks. We focus exclusively
-                on private property impound and use data-driven operations to improve enforcement over time. Today, ITS manages
+                on structured parking management and use data-driven operations to improve enforcement over time. Today, ITS manages
                 over 1,100 parking enforcement programs across Raleigh, Durham, Chapel Hill, and Greensboro — delivering a
                 consistent standard in every market.
               </Typography>
@@ -652,6 +665,55 @@ export default function Home() {
         </Container>
       </Box>
 
+      {/* ══════════════════════════════════════════════════════════════════
+          VALUES — commented out, earmarked for future revisit
+      ══════════════════════════════════════════════════════════════════ */}
+      {/* VALUES SECTION COMMENTED OUT — revisit with client
+      <Box sx={{ bgcolor: NAVY, py: { xs: 6, md: 12 }, position: 'relative', overflow: 'hidden' }}>
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
+          <FadeInBox>
+            <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 7 } }}>
+              <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.12em', fontSize: '0.8rem', display: 'block', mb: 1 }}>
+                What We Stand For
+              </Typography>
+              <Typography variant="h2" sx={{ color: '#fff', fontSize: { xs: '2rem', md: '2.5rem' }, mb: 1.5 }}>
+                Our Values
+              </Typography>
+            </Box>
+          </FadeInBox>
+          {VALUES cards here}
+        </Container>
+      </Box>
+      */}
+
+      {/* ── Homepage CTA ── */}
+      <Box sx={{ bgcolor: NAVY, py: { xs: 6, md: 8 }, textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+        <Container maxWidth="md">
+          <FadeInBox>
+            <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2, fontWeight: 700 }}>
+              Structured parking management for properties that demand more.
+            </Typography>
+            <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', mb: 4, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
+              Let's talk about how ITS can support your property's parking operations with the consistency and oversight your team expects.
+            </Typography>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => navigate('/contact')}
+              endIcon={<ArrowForwardIcon />}
+              sx={{
+                bgcolor: TEAL, color: '#fff', fontWeight: 700, fontSize: '1rem',
+                px: 4, py: 1.6,
+                boxShadow: '0 4px 20px rgba(102,153,187,0.4)',
+                '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' },
+                transition: 'all 0.2s',
+              }}
+            >
+              Request a Consultation
+            </Button>
+          </FadeInBox>
+        </Container>
+      </Box>
 
     </>
   )
