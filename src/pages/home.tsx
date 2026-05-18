@@ -277,7 +277,7 @@ export default function Home() {
             }}
           >
             Integrity Towing Solutions is a parking management partner built to bring professionalism,
-            compliance, and clear accountability to property operations. We exist to raise the standard
+            compliance, and clear accountability to parking management. We exist to raise the standard
             for parking enforcement — giving property managers an operational partner they can rely on.
           </Typography>
 
