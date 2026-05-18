@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
 import FadeInBox from '../../components/FadeInBox'
-import QuoteForm from '../../components/QuoteForm'
+import ServiceForm from '../../components/ServiceForm'
 
 const NAVY = '#1D2B45'
 const DARK = '#0d1929'
@@ -113,9 +113,12 @@ export default function MassRelocation() {
               <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
                 <Box sx={{ mb: 3 }}>
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Let's Plan Your Project</Typography>
-                  <Typography variant="body2" sx={{ color: '#6b7a8d' }}>Request a quote for your relocation needs.</Typography>
+                  <Typography variant="body2" sx={{ color: '#6b7a8d' }}>Tell us about your upcoming operation.</Typography>
                 </Box>
-                <QuoteForm heading="" defaultSubject="Large-Scale Operations" />
+                <ServiceForm categories={[
+                  { key: 'assessment', label: 'Property Assessment', shortLabel: 'New Project' },
+                  { key: 'support-ticket', label: 'Open Support Ticket', shortLabel: 'General Inquiry' },
+                ]} />
               </Box>
             </Grid>
           </Grid>

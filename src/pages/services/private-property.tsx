@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import FadeInBox from '../../components/FadeInBox'
-import QuoteForm from '../../components/QuoteForm'
+import ServiceForm from '../../components/ServiceForm'
 
 const NAVY = '#1D2B45'
 const DARK = '#0d1929'
@@ -89,7 +89,10 @@ export default function PrivatePropertyTowing() {
                   <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Interested in us servicing your property?</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>We'll get back to you within 1 business hour.</Typography>
                 </Box>
-                <QuoteForm heading="" defaultSubject="Parking Enforcement" />
+                <ServiceForm categories={[
+                  { key: 'assessment', label: 'Property Assessment', shortLabel: 'New Property' },
+                  { key: 'client-support', label: 'Client Support', shortLabel: 'Existing Client' },
+                ]} />
               </Box>
             </Grid>
           </Grid>

@@ -8,6 +8,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import FadeInBox from '../../components/FadeInBox'
+import heroBg from '../../assets/grid-hero.png'
 
 const NAVY = '#1D2B45'
 const DARK = '#0d1929'
@@ -22,7 +23,7 @@ const AUCTION_DETAILS = [
   'Valid government-issued photo ID required to bid',
   'Payment due in full at time of purchase',
   'Vehicles sold as-is, no warranties expressed or implied',
-  'Buyer responsible for towing or transport of purchased vehicle',
+  'Buyer responsible for transport of purchased vehicle',
 ]
 
 const LOCATION = 'Raleigh'
@@ -34,16 +35,10 @@ export default function RaleighAuction() {
   return (
     <>
       {/* ── Hero ── */}
-      <Box sx={{ bgcolor: NAVY, ...DOT_GRID, pt: { xs: 10, md: 14 }, pb: { xs: 7, md: 10 }, position: 'relative', overflow: 'hidden' }}>
-        {/* Ghost location name */}
-        <Typography sx={{
-          position: 'absolute', right: '-2%', bottom: '-15%',
-          fontSize: { xs: '18vw', md: '22vw' }, fontWeight: 900,
-          color: 'rgba(255,255,255,0.025)', fontFamily: "'Saira', sans-serif",
-          lineHeight: 1, userSelect: 'none', pointerEvents: 'none', letterSpacing: '-0.04em',
-        }}>
-          {LOCATION}
-        </Typography>
+      <Box sx={{ pt: { xs: 10, md: 14 }, pb: { xs: 7, md: 10 }, position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ position: 'absolute', inset: 0, backgroundImage: `url(${heroBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(13,25,41,0.78)' }} />
+        <Box sx={{ position: 'absolute', inset: 0, ...DOT_GRID }} />
         <Box sx={{ position: 'absolute', top: -80, left: -80, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(102,153,187,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 }, position: 'relative', zIndex: 1 }}>
@@ -62,8 +57,8 @@ export default function RaleighAuction() {
             <Box component="span" sx={{ color: TEAL }}>Auction</Box>
           </Typography>
           <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.62)', fontSize: '1.0625rem', lineHeight: 1.8, maxWidth: 560, mb: 3 }}>
-            Bid on impounded and recovered vehicles at our {LOCATION} location. Auctions are held
-            regularly — call or check back for upcoming dates and listings.
+            Browse and bid on vehicles at our {LOCATION} facility. Public auctions are held regularly — call
+            or check back for upcoming dates and current inventory.
           </Typography>
           <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
             <LocationOnIcon sx={{ color: TEAL, fontSize: 18 }} />
@@ -90,9 +85,9 @@ export default function RaleighAuction() {
                   <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>{FULL_ADDRESS}</Typography>
                 </Box>
                 <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.85, mb: 5 }}>
-                  ITS holds regular public auctions of impounded and unclaimed vehicles at our {LOCATION}{' '}
-                  facility. Vehicles are sold as-is. All winning bidders must provide a valid photo ID and
-                  payment at time of sale.
+                  ITS holds regular public auctions of unclaimed vehicles at our {LOCATION} facility.
+                  All vehicles are sold as-is. Winning bidders must present a valid photo ID and submit
+                  payment at the time of sale.
                 </Typography>
 
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2.5 }}>

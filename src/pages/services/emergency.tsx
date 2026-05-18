@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
 import heroBg from '../../assets/grid-hero.png'
 import FadeInBox from '../../components/FadeInBox'
-import QuoteForm from '../../components/QuoteForm'
+import ServiceForm from '../../components/ServiceForm'
 
 const NAVY = '#1D2B45'
 const DARK = '#0d1929'
@@ -77,10 +77,13 @@ export default function EmergencyResponse() {
             <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
                 <Box sx={{ mb: 3 }}>
-                  <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Request a Quote</Typography>
+                  <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>How can we help?</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>For emergency service call (919) 790-9393 directly.</Typography>
                 </Box>
-                <QuoteForm heading="" defaultSubject="24/7 Operational Support" />
+                <ServiceForm categories={[
+                  { key: 'client-support', label: 'Client Support', shortLabel: 'Client Support' },
+                  { key: 'enforcement', label: 'Enforcement Questions', shortLabel: 'Enforcement' },
+                ]} />
               </Box>
             </Grid>
           </Grid>
