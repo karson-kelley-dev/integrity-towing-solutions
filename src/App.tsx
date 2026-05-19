@@ -34,11 +34,10 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        {/* Coming soon — all routes point here for now */}
-        <Route path="*" element={<ComingSoon />} />
-
-        {/* Full site routes — uncomment when ready to go live
+        {/* Standalone — no navbar/footer */}
         <Route path="/coming-soon" element={<ComingSoon />} />
+
+        {/* All other routes wrapped in Layout */}
         <Route element={<WithLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/services/private-property" element={<PrivateProperty />} />
@@ -50,7 +49,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/employment" element={<Employment />} />
         </Route>
-        */}
       </Routes>
     </BrowserRouter>
   )
