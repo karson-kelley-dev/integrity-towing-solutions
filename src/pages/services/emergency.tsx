@@ -46,18 +46,18 @@ export default function EmergencyResponse() {
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1.5 }}>
                 <Box sx={{ width: 40, height: 2, bgcolor: TEAL }} />
                 <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.75rem' }}>
-                  Around-the-Clock Operational Support
+                  Emergency Towing &amp; Accident Scene Support
                 </Typography>
               </Box>
               <Typography component="h1" sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 800, fontSize: { xs: '2.2rem', md: '3rem' }, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.02em', mb: 2.5 }}>
-                24/7 Client
-                <Box component="span" sx={{ color: TEAL, display: 'block' }}>Support</Box>
+                Emergency Response &amp;
+                <Box component="span" sx={{ color: TEAL, display: 'block' }}>Accident Scene Management</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 3, maxWidth: 480 }}>
                 When an incident blocks access, disrupts traffic flow, or creates a safety risk, response time and
-                coordination matter. ITS provides around-the-clock operational support to help
-                clear situations quickly and restore order safely. We work with dispatch, first responders, and
-                on-site stakeholders to keep your properties moving.
+                coordination matter. ITS provides emergency response towing and accident scene support to help
+                clear vehicles quickly and restore order safely. We work with dispatch, first responders, and
+                on-site stakeholders to keep operations moving.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
@@ -77,7 +77,7 @@ export default function EmergencyResponse() {
             <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <Box sx={{ bgcolor: '#fff', borderRadius: 3, p: { xs: 3, md: 4 }, boxShadow: '0 24px 64px rgba(0,0,0,0.4)', borderTop: `4px solid ${TEAL}` }}>
                 <Box sx={{ mb: 3 }}>
-                  <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>How can we help?</Typography>
+                  <Typography variant="h6" sx={{ color: NAVY, fontWeight: 700 }}>Request a Quote</Typography>
                   <Typography variant="body2" sx={{ color: '#6b7a8d' }}>For emergency service call (919) 790-9393 directly.</Typography>
                 </Box>
                 <ServiceForm categories={[
@@ -127,7 +127,7 @@ export default function EmergencyResponse() {
               <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Services</Typography>
             </Box>
             <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: { xs: 3, md: 5 } }}>
-              Client Support Services
+              Emergency Response Services
             </Typography>
           </FadeInBox>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2,1fr)', md: 'repeat(3,1fr)', lg: 'repeat(4,1fr)' }, gap: { xs: 1.5, sm: 2.5 } }}>
@@ -158,10 +158,10 @@ export default function EmergencyResponse() {
         <Container maxWidth="md">
           <FadeInBox>
             <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2, fontWeight: 700 }}>
-              Need a reliable after-hours partner for your properties?
+              Need reliable emergency response and scene management?
             </Typography>
             <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', mb: 4, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
-              ITS provides coordinated operational support around the clock — so your team can focus on management, not emergencies.
+              ITS provides coordinated towing and recovery support around the clock — trained operators, the right equipment, and disciplined execution.
             </Typography>
             <Button
               variant="contained"

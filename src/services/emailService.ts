@@ -23,14 +23,14 @@ export const SUBJECT_ROUTES: SubjectRoute[] = [
     templateId: 'YOUR_TEMPLATE_ID',
   },
   {
-    label: '24/7 Client Support',
-    value: '24/7 Client Support',
+    label: 'Emergency Response',
+    value: 'Emergency Response',
     serviceId: 'YOUR_SERVICE_ID',
     templateId: 'YOUR_TEMPLATE_ID',
   },
   {
-    label: 'Large-Scale Operations',
-    value: 'Large-Scale Operations',
+    label: 'Mass Relocation',
+    value: 'Mass Relocation',
     serviceId: 'YOUR_SERVICE_ID',
     templateId: 'YOUR_TEMPLATE_ID',
   },

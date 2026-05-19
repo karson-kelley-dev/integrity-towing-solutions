@@ -86,8 +86,8 @@ export default function Footer() {
               Services
             </Typography>
             <FooterLink label="Parking Enforcement" path="/services/private-property" navigate={navigate} />
-            <FooterLink label="24/7 Client Support" path="/services/emergency-response" navigate={navigate} />
-            <FooterLink label="Large-Scale Operations" path="/services/mass-relocation" navigate={navigate} />
+            <FooterLink label="Emergency Response" path="/services/emergency-response" navigate={navigate} />
+            <FooterLink label="Mass Relocation" path="/services/mass-relocation" navigate={navigate} />
             <FooterLink label="Vehicle Auctions" path="/auction/raleigh" navigate={navigate} />
           </Box>
 

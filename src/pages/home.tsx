@@ -85,17 +85,17 @@ const SERVICES = [
   },
   {
     icon: '/images/icon-roadside.png',
-    title: '24/7 Client Support',
+    title: 'Emergency Response',
     description:
-      'Around-the-clock response for incidents, disabled vehicles, and urgent site needs — helping restore access, reduce risk, and keep your operations moving.',
+      'Fast, coordinated response for incidents and disabled vehicles — helping restore access, reduce risk, and keep traffic and cities moving.',
     path: '/services/emergency-response',
     accent: BLUE,
   },
   {
     icon: '/images/icon-mass.png',
-    title: 'Large-Scale Operations',
+    title: 'Mass Relocation',
     description:
-      'Coordinated vehicle relocation for construction projects, events, and property transitions — planned logistics, clear communication, and minimal disruption.',
+      'Efficient, organized support for large-scale moves and repositioning — planned logistics, clear communication, and minimal disruption for your site.',
     path: '/services/mass-relocation',
     accent: TEAL,
   },
