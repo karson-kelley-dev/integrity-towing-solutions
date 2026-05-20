@@ -23,12 +23,12 @@ const DOT_GRID = {
 }
 
 const SERVICE_CARDS = [
-  { icon: '/images/icon-its-white.png', title: 'Property Manager Portal', description: 'Real-time visibility into parking trends, issues, and violations — plus a centralized place to track and manage every parking enforcement request.' },
-  { icon: '/images/icon-custom-policies.png', title: 'Custom Program Tailored for Your Community', description: 'A parking enforcement plan built around your property type, resident flow, and problem areas — not a one-size-fits-all template.' },
-  { icon: '/images/icon-sign.svg', title: 'Signage & Install', description: 'Professional, compliant signage — assessed for your layout and installed so expectations are clear and enforcement is defensible.' },
-  { icon: '/images/icon-account-manager.png', title: 'Account Manager', description: 'A dedicated point of contact who knows your property, helps manage updates, and keeps the program running smoothly.' },
-  { icon: '/images/icon-immediate-towing.png', title: 'Immediate Towing', description: 'When violations impact safety, access, or operations, we respond quickly to remove unauthorized vehicles and restore order.' },
-  { icon: '/images/icon-parking-permits.png', title: 'Parking Permits', description: 'A structured permit process that helps residents and guests park correctly and reduces confusion, disputes, and unnecessary escalations.' },
+  { icon: '/images/icon-its-white.png', title: 'Property Management Portal', description: 'Real-time visibility into parking activity, enforcement requests, property communication, and operational updates all in one centralized place.' },
+  { icon: '/images/icon-custom-policies.png', title: 'Customized Parking Program', description: 'A parking management program designed around your property layout, resident traffic flow, operational needs, and recurring problem areas.' },
+  { icon: '/images/icon-sign.svg', title: 'Signage & Compliance', description: 'Professionally managed signage solutions designed to support compliance, visibility, and enforceable parking expectations throughout your property.' },
+  { icon: '/images/icon-account-manager.png', title: 'Dedicated Client Support', description: 'A direct point of contact who understands your property, coordinates updates, and helps keep operations running smoothly.' },
+  { icon: '/images/icon-immediate-towing.png', title: 'Rapid Enforcement Response', description: 'When violations impact safety, access, or property operations, our teams respond quickly to help restore order and maintain accessibility.' },
+  { icon: '/images/icon-parking-permits.png', title: 'Parking Permits', description: 'Structured permit management designed to help residents and guests park correctly while reducing confusion, disputes, and unnecessary escalations.' },
 ]
 
 const SIDEBAR_SERVICES = [
@@ -108,10 +108,7 @@ export default function PrivatePropertyTowing() {
                 Built for Property Managers
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', maxWidth: 640, fontSize: '1.0625rem', lineHeight: 1.8 }}>
-                Parking enforcement works best when it's structured like a program — not a random call when things
-                get bad. ITS designs enforcement programs around your property type, layout, and resident
-                flow, then executes with consistency. The result is predictable oversight, better resident
-                understanding of the rules, and fewer escalations for your team.
+                Parking management works best when it's structured like a program — not a reaction after problems arise. ITS builds parking programs around your property layout, traffic flow, and community needs, then executes with consistency and clear communication. The result is more organized parking operations, fewer resident escalations, and better day-to-day oversight for your team.
               </Typography>
             </Box>
           </FadeInBox>
