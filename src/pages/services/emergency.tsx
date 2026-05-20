@@ -54,10 +54,7 @@ export default function EmergencyResponse() {
                 <Box component="span" sx={{ color: TEAL, display: 'block' }}>Accident Scene Management</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 3, maxWidth: 480 }}>
-                When an incident blocks access, disrupts traffic flow, or creates a safety risk, response time and
-                coordination matter. ITS provides emergency response towing and accident scene support to help
-                clear vehicles quickly and restore order safely. We work with dispatch, first responders, and
-                on-site stakeholders to keep operations moving.
+                ITS provides 24/7 operational support for accident scenes, roadway incidents, disabled vehicles, and emergency response situations throughout the communities we serve. As an active police rotation partner, our teams work alongside law enforcement, fire departments, state agencies, and Hazmat personnel to help keep roadways clear, traffic moving, and scenes operating safely and efficiently.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
@@ -100,18 +97,13 @@ export default function EmergencyResponse() {
                 Rapid response. Safe recovery. Professional execution.
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 3 }}>
-                Our priority is public safety and efficient scene clearance from the moment we arrive. Whether
-                it's an accident, a disabled vehicle, or a situation requiring secure transport, our team follows
-                disciplined procedures and uses the right equipment to remove vehicles with care and precision.
+                Public safety and efficient scene clearance are our priorities from the moment we arrive. Whether responding to an accident, disabled vehicle, or secure transport situation, our teams follow disciplined procedures and use the right equipment to recover and remove vehicles safely, efficiently, and with care.
               </Typography>
               <Typography variant="h4" sx={{ display: { xs: 'none', md: 'block' }, color: '#fff', fontSize: { xs: '1.2rem', md: '1.4rem' }, mb: 1.5 }}>
                 Supporting Public Safety Partners Across North Carolina
               </Typography>
               <Typography variant="body1" sx={{ display: { xs: 'none', md: 'block' }, color: 'rgba(255,255,255,0.55)', fontSize: '1.0625rem', lineHeight: 1.85 }}>
-                Emergency work leaves no margin for error. ITS brings trained operators, coordinated dispatch,
-                and the resources to handle complex removals and recoveries—without creating additional risk at
-                the scene. The goal is simple: reduce downtime, improve safety, and get roads, lots, and access
-                points back to normal as quickly as possible.
+                Emergency response work leaves no margin for error. ITS provides trained operators, coordinated dispatch, and the operational support needed to handle complex recoveries without creating additional risk at the scene. Our goal is simple: improve safety, reduce roadway disruption, and help return roads, properties, and access points back to normal as quickly as possible.
               </Typography>
             </Box>
           </FadeInBox>

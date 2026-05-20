@@ -1,5 +1,4 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import heroBg from '../../assets/grid-hero.png'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import PhoneIcon from '@mui/icons-material/Phone'
 import Box from '@mui/material/Box'
@@ -8,6 +7,7 @@ import Container from '@mui/material/Container'
 import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
+import heroBg from '../../assets/grid-hero.png'
 import FadeInBox from '../../components/FadeInBox'
 import ServiceForm from '../../components/ServiceForm'
 
@@ -89,10 +89,7 @@ export default function MassRelocation() {
                 <Box component="span" sx={{ color: TEAL, display: 'block' }}>Towing Services</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
-                Need to relocate a large number of vehicles for a construction project, major event, or property
-                transition? ITS provides organized mass relocation towing services designed to move high volumes
-                efficiently, safely, and with minimal disruption. We plan the logistics up front, execute with
-                disciplined coordination, and keep stakeholders informed throughout the move.
+                ITS provides organized small to large-scale vehicle relocation services for multifamily communities, commercial properties, municipalities, infrastructure projects, and special events. Whether supporting capital improvements, parking lot renovations, property transitions, or coordinated city operations, our teams execute with clear communication, disciplined coordination, and minimal disruption to daily operations.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button
@@ -135,9 +132,7 @@ export default function MassRelocation() {
                 Efficient planning. Coordinated execution. Minimal disruption.
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '1.0625rem', lineHeight: 1.85 }}>
-                From staging and sequencing to safe drop locations and documentation, our team manages the details
-                that keep large-scale moves on track. Whether you're relocating vehicles across a site or off-site
-                for a defined window, ITS helps you protect timelines, reduce risk, and keep operations moving.
+                From planning logistics upfront to keeping stakeholders informed throughout the process, ITS helps keep projects organized, accessible, and moving efficiently from start to finish.
               </Typography>
             </Box>
           </FadeInBox>

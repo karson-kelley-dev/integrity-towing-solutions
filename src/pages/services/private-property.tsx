@@ -1,5 +1,4 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import heroBg from '../../assets/grid-hero.png'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import PhoneIcon from '@mui/icons-material/Phone'
@@ -10,6 +9,7 @@ import Grid from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import heroBg from '../../assets/grid-hero.png'
 import FadeInBox from '../../components/FadeInBox'
 import ServiceForm from '../../components/ServiceForm'
 
@@ -62,11 +62,7 @@ export default function PrivatePropertyTowing() {
                 <Box component="span" sx={{ color: TEAL, display: 'block' }}>for North Carolina Properties</Box>
               </Typography>
               <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
-                When parking violations become the norm, your property pays the price — lost spaces for residents
-                and guests, increased frustration, and avoidable safety and access issues. ITS provides structured
-                parking enforcement built for property managers who need consistent oversight without unnecessary
-                drama. We combine clear communication, compliant processes, and disciplined operations to keep
-                your lots, lanes, and fire zones clear.
+                When parking violations become the norm, your property pays the price — from resident frustration and blocked access to ongoing operational disruptions. ITS provides structured parking management and enforcement designed for property managers who need consistent oversight without unnecessary friction. Through compliant processes, clear communication, and disciplined operations, we help keep lots, lanes, fire zones, and community parking areas organized and accessible.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                 <Button

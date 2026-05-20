@@ -691,10 +691,10 @@ export default function Home() {
         <Container maxWidth="md">
           <FadeInBox>
             <Typography variant="h3" sx={{ color: '#fff', fontSize: { xs: '1.6rem', md: '2rem' }, mb: 2, fontWeight: 700 }}>
-              Structured parking management for properties that demand more.
+              Structured parking management for properties that expect more.
             </Typography>
             <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', mb: 4, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
-              Let's talk about how ITS can support your property's parking operations with the consistency and oversight your team expects.
+              Let's talk about how ITS can support your parking operations with the consistency, communication, and oversight your team depends on.
             </Typography>
             <Button
               variant="contained"
