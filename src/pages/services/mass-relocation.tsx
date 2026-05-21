@@ -88,7 +88,7 @@ export default function MassRelocation() {
                 Mass Relocation
                 <Box component="span" sx={{ color: TEAL, display: 'block' }}>Towing Services</Box>
               </Typography>
-              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
+              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: { xs: '1rem', md: '1.175rem' }, lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
                 ITS provides organized small to large-scale vehicle relocation services for multifamily communities, commercial properties, municipalities, infrastructure projects, and special events. Whether supporting capital improvements, parking lot renovations, property transitions, or coordinated city operations, our teams execute with clear communication, disciplined coordination, and minimal disruption to daily operations.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>

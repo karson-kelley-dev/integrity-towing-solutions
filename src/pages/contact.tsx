@@ -157,7 +157,7 @@ export default function Contact() {
           }}>
             Contact <Box component="span" sx={{ color: TEAL }}>Us</Box>
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.62)', fontSize: '1.0625rem', lineHeight: 1.8, maxWidth: 560 }}>
+          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.62)', fontSize: { xs: '1rem', md: '1.175rem' }, lineHeight: 1.8, maxWidth: 560 }}>
             Select a category below to route your request to the right team.
           </Typography>
 

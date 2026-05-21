@@ -61,7 +61,7 @@ export default function PrivatePropertyTowing() {
                 Parking Enforcement
                 <Box component="span" sx={{ color: TEAL, display: 'block' }}>for North Carolina Properties</Box>
               </Typography>
-              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
+              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: { xs: '1rem', md: '1.175rem' }, lineHeight: 1.85, mb: 4, maxWidth: 480 }}>
                 When parking violations become the norm, your property pays the price — from resident frustration and blocked access to ongoing operational disruptions. ITS provides structured parking management and enforcement designed for property managers who need consistent oversight without unnecessary friction. Through compliant processes, clear communication, and disciplined operations, we help keep lots, lanes, fire zones, and community parking areas organized and accessible.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>

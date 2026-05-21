@@ -65,7 +65,7 @@ export default function Auction() {
             Public Vehicle{' '}
             <Box component="span" sx={{ color: TEAL }}>Auctions</Box>
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.62)', fontSize: '1.0625rem', lineHeight: 1.8, maxWidth: 600, mb: 3 }}>
+          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.62)', fontSize: { xs: '1rem', md: '1.175rem' }, lineHeight: 1.8, maxWidth: 600, mb: 3 }}>
             ITS conducts regular public vehicle auctions through our online auction platform powered by Autura. Buyers can browse available inventory, review upcoming sales, place bids online, and schedule vehicle pickup through the links below.
           </Typography>
           <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, maxWidth: 560 }}>

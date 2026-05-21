@@ -53,7 +53,7 @@ export default function EmergencyResponse() {
                 Emergency Response &amp;
                 <Box component="span" sx={{ color: TEAL, display: 'block' }}>Accident Scene Management</Box>
               </Typography>
-              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.0625rem', lineHeight: 1.85, mb: 3, maxWidth: 480 }}>
+              <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: { xs: '1rem', md: '1.175rem' }, lineHeight: 1.85, mb: 3, maxWidth: 480 }}>
                 ITS provides 24/7 operational support for accident scenes, roadway incidents, disabled vehicles, and emergency response situations throughout the communities we serve. As an active police rotation partner, our teams work alongside law enforcement, fire departments, state agencies, and Hazmat personnel to help keep roadways clear, traffic moving, and scenes operating safely and efficiently.
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>

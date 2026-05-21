@@ -346,7 +346,7 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════════════════════
           LOCATION STRIP — thin glass bar floating over section boundary
       ══════════════════════════════════════════════════════════════════ */}
-      <Box sx={{ bgcolor: DARK, pt: { xs: 3, md: 3 }, pb: 0 }}>
+      <Box sx={{ display: { xs: 'none', lg: 'block' }, bgcolor: DARK, pt: { xs: 3, md: 3 }, pb: 0 }}>
         <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <FadeInBox>
             <Box sx={{
