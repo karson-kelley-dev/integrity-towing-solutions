@@ -8,9 +8,10 @@ function ScrollToTop() {
 }
 
 import Layout from './layout/index'
-import DurhamAuction from './pages/auction/durham'
-import GreensboroAuction from './pages/auction/greensboro'
-import RaleighAuction from './pages/auction/raleigh'
+import Auction from './pages/auction/index'
+// import DurhamAuction from './pages/auction/durham'
+// import GreensboroAuction from './pages/auction/greensboro'
+// import RaleighAuction from './pages/auction/raleigh'
 import ComingSoon from './pages/coming-soon'
 import Contact from './pages/contact'
 import Employment from './pages/employment'
@@ -43,9 +44,7 @@ function App() {
           <Route path="/services/private-property" element={<PrivateProperty />} />
           <Route path="/services/emergency-response" element={<Emergency />} />
           <Route path="/services/mass-relocation" element={<MassRelocation />} />
-          <Route path="/auction/raleigh" element={<RaleighAuction />} />
-          <Route path="/auction/durham" element={<DurhamAuction />} />
-          <Route path="/auction/greensboro" element={<GreensboroAuction />} />
+          <Route path="/auction" element={<Auction />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/employment" element={<Employment />} />
         </Route>

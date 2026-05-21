@@ -88,7 +88,7 @@ export default function Footer() {
             <FooterLink label="Parking Enforcement" path="/services/private-property" navigate={navigate} />
             <FooterLink label="Emergency Response" path="/services/emergency-response" navigate={navigate} />
             <FooterLink label="Mass Relocation" path="/services/mass-relocation" navigate={navigate} />
-            <FooterLink label="Vehicle Auctions" path="/auction/raleigh" navigate={navigate} />
+            <FooterLink label="Vehicle Auctions" path="/auction" navigate={navigate} />
           </Box>
 
           {/* Quick Links col */}
@@ -124,9 +124,9 @@ export default function Footer() {
               Locations
             </Typography>
             {[
-              { city: 'Raleigh', addr: '3201 Durham Drive, Raleigh, NC 27603', path: '/auction/raleigh' },
-              { city: 'Durham', addr: '1025 Harvest Street, Durham, NC 27704', path: '/auction/durham' },
-              { city: 'Greensboro', addr: '2040 Fairview Street, Greensboro, NC 27405', path: '/auction/greensboro' },
+              { city: 'Raleigh', addr: '3201 Durham Drive, Raleigh, NC 27603', path: '/auction' },
+              { city: 'Durham', addr: '1025 Harvest Street, Durham, NC 27704', path: '/auction' },
+              { city: 'Greensboro', addr: '2040 Fairview Street, Greensboro, NC 27405', path: '/auction' },
             ].map(({ city, addr, path }) => (
               <Box key={city} sx={{ mb: 2, display: 'flex', gap: 1, alignItems: 'flex-start' }}>
                 <LocationOnIcon sx={{ fontSize: 16, color: '#6699BB', mt: 0.25, flexShrink: 0 }} />

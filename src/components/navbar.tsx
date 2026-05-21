@@ -36,11 +36,11 @@ const SERVICES = [
   { label: 'Emergency Response', path: '/services/emergency-response' },
   { label: 'Mass Relocation', path: '/services/mass-relocation' },
 ]
-const AUCTIONS = [
-  { label: 'Raleigh', path: '/auction/raleigh' },
-  { label: 'Durham', path: '/auction/durham' },
-  { label: 'Greensboro', path: '/auction/greensboro' },
-]
+// const AUCTIONS = [
+//   { label: 'Raleigh', path: '/auction/raleigh' },
+//   { label: 'Durham', path: '/auction/durham' },
+//   { label: 'Greensboro', path: '/auction/greensboro' },
+// ]
 
 // ─── Desktop dropdown with dark glass panel ────────────────────────────────
 function DesktopDropdown({
@@ -228,7 +228,7 @@ export default function Navbar() {
             <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 4 }}>
               <NavLink label="Home" active={isActive('/')} onClick={() => go('/')} />
               <DesktopDropdown label="Services" items={SERVICES} active={isServicesActive} navigate={go} />
-              <DesktopDropdown label="Auction" items={AUCTIONS} active={isAuctionActive} navigate={go} />
+              <NavLink label="Auction" active={isActive('/auction')} onClick={() => go('/auction')} />
               {/* <NavLink label="Find My Vehicle" active={isActive('/find-my-vehicle')} onClick={() => go('/find-my-vehicle')} /> */}
               <Box
                 component="a"
@@ -391,26 +391,12 @@ export default function Navbar() {
           </Collapse>
 
           {/* Auction */}
-          <ListItemButton onClick={() => setAuctionOpen(!auctionOpen)} sx={{
+          <ListItemButton onClick={() => go('/auction')} sx={{
             py: 1.75, px: 3, borderBottom: '1px solid rgba(255,255,255,0.05)',
             '&:hover': { bgcolor: 'rgba(255,255,255,0.04)' },
           }}>
             <ListItemText primary="Auction" primaryTypographyProps={{ fontWeight: 600, color: '#fff', fontFamily: "'Saira', sans-serif", fontSize: '0.95rem' }} />
-            {auctionOpen ? <ExpandLessIcon sx={{ color: TEAL, fontSize: 18 }} /> : <ExpandMoreIcon sx={{ color: 'rgba(255,255,255,0.4)', fontSize: 18 }} />}
           </ListItemButton>
-          <Collapse in={auctionOpen}>
-            {AUCTIONS.map(({ label, path }) => (
-              <ListItemButton key={path} onClick={() => go(path)} sx={{
-                py: 1.25, pl: 5, pr: 3,
-                borderBottom: '1px solid rgba(255,255,255,0.03)',
-                bgcolor: 'rgba(0,0,0,0.2)',
-                '&:hover': { bgcolor: 'rgba(102,153,187,0.08)' },
-              }}>
-                <Box sx={{ width: 4, height: 4, borderRadius: '50%', bgcolor: TEAL, mr: 1.5, flexShrink: 0 }} />
-                <ListItemText primary={label} primaryTypographyProps={{ fontSize: '0.875rem', color: 'rgba(255,255,255,0.7)', fontFamily: "'Saira', sans-serif" }} />
-              </ListItemButton>
-            ))}
-          </Collapse>
 
           {[
             // { label: 'Find My Vehicle', action: () => go('/find-my-vehicle') },
