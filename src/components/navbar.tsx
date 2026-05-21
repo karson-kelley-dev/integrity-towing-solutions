@@ -220,7 +220,7 @@ export default function Navbar() {
                 component="img"
                 src={logoDark}
                 alt="Integrity Towing Solutions"
-                sx={{ height: { xs: 36, md: 42 }, width: 'auto', filter: 'brightness(0) invert(1)', transition: 'opacity 0.2s', '&:hover': { opacity: 0.85 } }}
+                sx={{ height: { xs: 43, md: 50 }, width: 'auto', filter: 'brightness(0) invert(1)', transition: 'opacity 0.2s', '&:hover': { opacity: 0.85 } }}
               />
             </Box>
 
@@ -258,7 +258,7 @@ export default function Navbar() {
                 sx={{
                   display: 'flex', alignItems: 'center', gap: 1,
                   border: '1px solid rgba(255,255,255,0.15)',
-                  borderRadius: '8px', px: 1.25, py: 0.6,
+                  borderRadius: '8px', px: 1.5, py: 0.75,
                   textDecoration: 'none',
                   bgcolor: 'rgba(255,255,255,0.06)',
                   backdropFilter: 'blur(8px)',
@@ -266,10 +266,10 @@ export default function Navbar() {
                   '&:hover': { borderColor: TEAL, bgcolor: 'rgba(102,153,187,0.08)' },
                 }}
               >
-                <Box component="img" src={itsIconWhite} alt="Portal" sx={{ height: 26, width: 'auto' }} />
+                <Box component="img" src={itsIconWhite} alt="Portal" sx={{ height: 38, width: 'auto' }} />
                 <Box sx={{ borderLeft: '1px solid rgba(255,255,255,0.12)', pl: 1 }}>
-                  <Typography sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 700, fontSize: '0.62rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.1, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Client</Typography>
-                  <Typography sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 700, fontSize: '0.62rem', color: TEAL, lineHeight: 1.1, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Portal</Typography>
+                  <Typography sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 700, fontSize: '0.74rem', color: 'rgba(255,255,255,0.7)', lineHeight: 1.1, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Client</Typography>
+                  <Typography sx={{ fontFamily: "'Saira', sans-serif", fontWeight: 700, fontSize: '0.74rem', color: TEAL, lineHeight: 1.1, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Portal</Typography>
                 </Box>
               </Box>
 
@@ -302,7 +302,7 @@ export default function Navbar() {
                   transition: 'all 0.2s',
                 }}
               >
-                Request a Consultation
+                Get Started
               </Button>
             </Box>
 
@@ -438,7 +438,7 @@ export default function Navbar() {
             href={PORTAL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            startIcon={<Box component="img" src={itsIcon} alt="ITS" sx={{ height: 20, width: 'auto' }} />}
+            startIcon={<Box component="img" src={itsIconWhite} alt="ITS" sx={{ height: 28, width: 'auto' }} />}
             endIcon={<OpenInNewIcon sx={{ fontSize: '0.85rem !important' }} />}
             sx={{
               borderColor: 'rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.8)',
