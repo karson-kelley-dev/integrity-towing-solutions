@@ -25,7 +25,7 @@ const DOT_GRID = {
 const AUCTION_SCHEDULE = [
   { location: 'Raleigh', address: '3201 Durham Drive, Raleigh, NC 27603', cadence: 'Weekly' },
   { location: 'Durham', address: '1025 Harvest Street, Durham, NC 27704', cadence: 'Monthly' },
-  { location: 'Greensboro', address: '2040 Fairview Street, Greensboro, NC 27405', cadence: 'Scheduled based on available inventory' },
+  { location: 'Greensboro', address: '2040 Fairview Street, Greensboro, NC 27405', cadence: 'Monthly' },
 ]
 
 const PICKUP_HOURS = [
@@ -34,10 +34,11 @@ const PICKUP_HOURS = [
   { label: 'Friday Pickup', hours: '10:00 AM – 12:00 PM' },
 ]
 
-const AUCTION_LINKS = [
-  { label: 'Browse Auction Inventory', href: '#', icon: <GavelIcon /> },
-  { label: 'Schedule Vehicle Pickup', href: '#', icon: <CalendarTodayIcon /> },
-  { label: 'Auction Terms & Conditions', href: '#', icon: <ArrowForwardIcon /> },
+const AUCTION_LOCATIONS = [
+  { label: 'Raleigh Auction', href: 'https://app.marketplace.autura.com/auctions/series/RDU-NC/245', icon: <GavelIcon /> },
+  { label: 'Durham Auction', href: 'https://app.marketplace.autura.com/auctions/series/RDU-NC/249', icon: <GavelIcon /> },
+  { label: 'Greensboro Auction', href: 'https://app.marketplace.autura.com/auctions/series/GSO-NC/403', icon: <GavelIcon /> },
+  { label: 'Schedule Vehicle Pickup', href: 'https://calendly.com/itsauction', icon: <CalendarTodayIcon /> },
 ]
 
 export default function Auction() {
@@ -88,7 +89,7 @@ export default function Auction() {
             <Box sx={{
               display: 'flex', gap: { xs: 2, md: 3 }, flexWrap: 'wrap', mt: 3,
             }}>
-              {AUCTION_LINKS.map(({ label, href, icon }) => (
+              {AUCTION_LOCATIONS.map(({ label, href, icon }) => (
                 <Button
                   key={label}
                   variant="outlined"
@@ -188,26 +189,11 @@ export default function Auction() {
                   <Typography variant="overline" sx={{ color: TEAL, fontWeight: 700, letterSpacing: '0.14em', fontSize: '0.72rem' }}>Tow-Out Assistance</Typography>
                 </Box>
                 <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.85, mb: 2 }}>
-                  Need transportation assistance for your purchased vehicle? Tow-out services are available:
+                  We offer tow-out services to deliver your auction vehicle to you. For pricing and availability, contact{' '}
+                  <Box component="a" href="mailto:auction@integritytow.com" sx={{ color: TEAL, fontWeight: 600, textDecoration: 'none', '&:hover': { color: '#fff' } }}>
+                    auction@integritytow.com
+                  </Box>.
                 </Typography>
-                <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', mb: 2 }}>
-                  <Box sx={{
-                    px: 2.5, py: 1.5, borderRadius: 2,
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}>
-                    <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.4)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', mb: 0.25, fontSize: '0.65rem' }}>Hookup Fee</Typography>
-                    <Typography sx={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem', fontFamily: "'Saira', sans-serif" }}>$125</Typography>
-                  </Box>
-                  <Box sx={{
-                    px: 2.5, py: 1.5, borderRadius: 2,
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}>
-                    <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.4)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', display: 'block', mb: 0.25, fontSize: '0.65rem' }}>Per Mile</Typography>
-                    <Typography sx={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem', fontFamily: "'Saira', sans-serif" }}>$5</Typography>
-                  </Box>
-                </Box>
               </FadeInBox>
             </Grid>
 
@@ -257,7 +243,7 @@ export default function Auction() {
                     <Box sx={{ mt: 3, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
                       <Button
                         fullWidth variant="contained" size="large"
-                        component="a" href="#" target="_blank" rel="noopener noreferrer"
+                        component="a" href="https://app.marketplace.autura.com/auctions/series/RDU-NC/245" target="_blank" rel="noopener noreferrer"
                         startIcon={<GavelIcon />}
                         sx={{ bgcolor: TEAL, color: '#fff', fontWeight: 700, py: 1.75, boxShadow: '0 4px 16px rgba(102,153,187,0.35)', '&:hover': { bgcolor: '#4D7A9A', transform: 'translateY(-2px)' }, transition: 'all 0.2s' }}
                       >
