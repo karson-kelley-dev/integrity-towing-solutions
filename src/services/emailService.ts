@@ -2,7 +2,7 @@ import emailjs from '@emailjs/browser'
 
 // ── Shared public key ─────────────────────────────────────────────────────────
 // Found in EmailJS dashboard → Account → Public Key
-export const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'
+export const EMAILJS_PUBLIC_KEY = 'aVPic-0A3lHEPhWLS'
 
 // ── Subject → routing map ─────────────────────────────────────────────────────
 // Each entry maps a dropdown option to a specific EmailJS service + template.
@@ -19,32 +19,32 @@ export const SUBJECT_ROUTES: SubjectRoute[] = [
   {
     label: 'Parking Enforcement',
     value: 'Parking Enforcement',
-    serviceId: 'YOUR_SERVICE_ID',
-    templateId: 'YOUR_TEMPLATE_ID',
+    serviceId: 'service_hei7b9a',
+    templateId: 'template_iweg7am',
   },
   {
     label: 'Emergency Response',
     value: 'Emergency Response',
-    serviceId: 'YOUR_SERVICE_ID',
-    templateId: 'YOUR_TEMPLATE_ID',
+    serviceId: 'service_hei7b9a',
+    templateId: 'template_iweg7am',
   },
   {
     label: 'Mass Relocation',
     value: 'Mass Relocation',
-    serviceId: 'YOUR_SERVICE_ID',
-    templateId: 'YOUR_TEMPLATE_ID',
+    serviceId: 'service_hei7b9a',
+    templateId: 'template_iweg7am',
   },
   {
     label: 'Employment Application',
     value: 'Employment Application',
-    serviceId: 'YOUR_SERVICE_ID',
-    templateId: 'YOUR_TEMPLATE_ID',
+    serviceId: 'service_hei7b9a',
+    templateId: 'template_iweg7am',
   },
   {
     label: 'General Inquiry',
     value: 'General Inquiry',
-    serviceId: 'YOUR_SERVICE_ID',
-    templateId: 'YOUR_TEMPLATE_ID',
+    serviceId: 'service_hei7b9a',
+    templateId: 'template_iweg7am',
   },
 ]
 
