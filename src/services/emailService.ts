@@ -1,56 +1,29 @@
-import emailjs from '@emailjs/browser'
+// ── Contact form email ────────────────────────────────────────────────────────
+// The forms POST here → a Vercel serverless function (api/contact.js) → Resend.
+// This replaces the old client-side EmailJS flow: no API key in the browser, the
+// recipient isn't exposed, and mail sends from the company's own domain.
+//
+// Same-origin path — Vercel serves the function next to the site, so no CORS.
+const CONTACT_ENDPOINT = '/api/contact'
 
-// ── Shared public key ─────────────────────────────────────────────────────────
-// Found in EmailJS dashboard → Account → Public Key
-export const EMAILJS_PUBLIC_KEY = 'aVPic-0A3lHEPhWLS'
-
-// ── Subject → routing map ─────────────────────────────────────────────────────
-// Each entry maps a dropdown option to a specific EmailJS service + template.
-// serviceId  — EmailJS Email Service (one per sending email account)
-// templateId — EmailJS Template (configure the "To" address inside each template)
+// ── Subject dropdown ──────────────────────────────────────────────────────────
+// Labels + values for the <Select>. Routing (who receives it) now lives in the
+// serverless function, so no per-subject service/template ids here anymore.
 export interface SubjectRoute {
-  label: string     // shown in the dropdown
-  value: string     // used as the email subject line
-  serviceId: string
-  templateId: string
+  label: string
+  value: string
 }
 
 export const SUBJECT_ROUTES: SubjectRoute[] = [
-  {
-    label: 'Parking Enforcement',
-    value: 'Parking Enforcement',
-    serviceId: 'service_hei7b9a',
-    templateId: 'template_iweg7am',
-  },
-  {
-    label: 'Emergency Response',
-    value: 'Emergency Response',
-    serviceId: 'service_hei7b9a',
-    templateId: 'template_iweg7am',
-  },
-  {
-    label: 'Mass Relocation',
-    value: 'Mass Relocation',
-    serviceId: 'service_hei7b9a',
-    templateId: 'template_iweg7am',
-  },
-  {
-    label: 'Employment Application',
-    value: 'Employment Application',
-    serviceId: 'service_hei7b9a',
-    templateId: 'template_iweg7am',
-  },
-  {
-    label: 'General Inquiry',
-    value: 'General Inquiry',
-    serviceId: 'service_hei7b9a',
-    templateId: 'template_iweg7am',
-  },
+  { label: 'Parking Enforcement', value: 'Parking Enforcement' },
+  { label: 'Emergency Response', value: 'Emergency Response' },
+  { label: 'Mass Relocation', value: 'Mass Relocation' },
+  { label: 'Employment Application', value: 'Employment Application' },
+  { label: 'General Inquiry', value: 'General Inquiry' },
 ]
 
-// ── Payload sent to every template ───────────────────────────────────────────
-// Template variables: {{from_name}}, {{from_email}}, {{phone}},
-//                     {{address}}, {{subject}}, {{message}}
+// ── Send ──────────────────────────────────────────────────────────────────────
+// Signature unchanged from the EmailJS version, so the forms don't change.
 export interface EmailPayload {
   from_name: string
   from_email: string
@@ -59,12 +32,20 @@ export interface EmailPayload {
   message: string
 }
 
-// ── Send helper ───────────────────────────────────────────────────────────────
 export async function sendEmail(route: SubjectRoute, payload: EmailPayload): Promise<void> {
-  await emailjs.send(
-    route.serviceId,
-    route.templateId,
-    { ...payload, subject: route.value },
-    EMAILJS_PUBLIC_KEY,
-  )
+  const res = await fetch(CONTACT_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: payload.from_name,
+      email: payload.from_email,
+      phone: payload.phone,
+      address: payload.address,
+      subject: route.value,
+      message: payload.message,
+    }),
+  })
+  if (!res.ok) {
+    throw new Error(`Contact send failed: ${res.status}`)
+  }
 }
