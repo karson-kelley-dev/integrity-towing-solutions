@@ -49,7 +49,7 @@ EnvironmentFile=/etc/itg-contact.env
 Environment=PORT=8788
 Restart=always
 RestartSec=3
-User=www-data
+User=nginx
 NoNewPrivileges=true
 
 [Install]
